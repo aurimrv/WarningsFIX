@@ -1,0 +1,4 @@
+Fourballs/source/paper/Fourballs.java
+Fourballs/outputs/06-pmd-Fourballs/06-pmd-source-paper-Fourballs.java
+Fourballs/outputs/07-esc-java-Fourballs/07-esc-java-source-paper-Fourballs.java
+Fourballs/outputs/05-jlint-Fourballs/05-jlint-source-paper-Fourballs.java

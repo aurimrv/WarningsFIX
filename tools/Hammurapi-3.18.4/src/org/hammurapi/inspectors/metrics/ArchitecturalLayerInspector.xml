@@ -1,0 +1,1084 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--  Version Nbr 3.7
+ --> 
+
+ <!-- 
+Date		Version Nbr	Author		Comment
+=================================================================================================
+11-Nov-2004	1.0		Amit		Added the org.apache.struts.util.GenericDataSource
+								in the Architectural Layer Mapping "Model View Controller"
+26-Nov-2004	2.0		Tasneem		Added sun.jdbc.rowset.CachedRowSet and javax.sql.RowSet
+								under TechStackEntity "SQLCommon"
+								Added org.xml.sax.SAXParseException under TechStackEntity 
+								"XML SAX "
+1-Dec-2004	3.0		Tasneem		Added the org.apache.commons.collections under the 
+								Apache Commons Collection
+								Added com.sun.jts.jta.UserTransactionImpl under the TeckStack
+								Entity "JTA"
+								Added the TechStackEntity "Documentum"	
+9-Dec-2004	3.1		Tasneem		Added TechStack Entity "Castor JDO" and "Jfree Chart"
+14-Dec-2004	3.2		Pankaj		Added net.sf.hibernate.Criteria,net.sf.hibernate.Query 
+4-Jan-2005	3.3		Johannes	License, Jar, and Home Tags added. //TODO: Version check & QA needed
+17-Jan-2005	3.4		Tasneem     Added TechStackEntity Apache Commons FileUpload
+								Added com.sun.image.codec.jpeg.ImageFormatException and
+								com.sun.image.codec.jpeg.JPEGImageEncoder to 
+								TechStackEntity "ImageProcessing"
+								Added "oracle.jdbc.pool.OracleConnectionCacheImpl" to
+								TechStackEntity PL/SQL
+24-Jan-2005	3.5		Tasneem		added techstack entity jakarta httpclient and jclass
+
+28-Jan-2005	3.6		Tasneem		Added TechStack Entity for Netscape Directory Service for	
+								java, Added org.xml.sax.InputSource to Tech Stack Entity
+								XML Sax
+3-Mar-2005	3.7		Tasneem		Added Tech Stack Entity "Documentum Client Workflow"
+
+-->
+
+
+ 
+ 
+
+
+
+<?xml-stylesheet type="text/xsl" href="ArchitecturalLayerDefinition.xsl"?>
+
+<ArchitecturalLayerMappingSet>
+   <ArchitecturalLayerMapping name="Presentation Layer">
+      <TechStackEntity name="HTTP Servlet" rating="OK" complexity="small">
+         
+            <VariableMapping name="javax.servlet.ServletContext" />
+
+            <VariableMapping name="javax.servlet.ServletConfig" />
+
+            <VariableMapping name="javax.servlet.ServletOutputStream" />
+
+            <VariableMapping name="javax.servlet.*" />
+         
+            <ExtensionMapping name="javax.servlet.ServletContext" />
+             	<License name="UNKNOWN"/>
+	       	<JarFile name="UNKNOWN" version="NA" size="0"/>
+		<Home url=""/>
+      </TechStackEntity>
+      
+      <TechStackEntity name="Struts Error Tag" rating="Restricted" complexity="small">
+      	<VariableMapping name="com.cj.strutserror.*"/>
+
+		<License name="UNKNOWN"/>
+	       	<JarFile name="UNKNOWN" version="NA" size="6446"/>
+		<Home url="http://www.servletsuite.com/servlets/strutserrortag.htm"/>
+		
+	</TechStackEntity>
+		
+      <TechStackEntity name="Image Processing" rating="OK" complexity="medium">
+         <VariableMapping name="com.sun.jimi.*" />
+       		<License name="Sun Binary Code License Agreement"/>
+	       	<JarFile name="knta_jimi.jar" version="1.0" size="482608"/>
+	       	<JarFile name="JimiProClasses.zip" version="NA" size="445000"/>
+	       	<Home url="http://java.sun.com/products/jimi/"/>
+         <VariableMapping name="com.sun.image.codec.jpeg.ImageFormatException" />
+         <VariableMapping name="com.sun.image.codec.jpeg.JPEGImageEncoder" />
+
+      </TechStackEntity>
+
+      <TechStackEntity name="Servlet" rating="OK" complexity="medium">
+         <ExtensionMapping name="javax.servlet.http.HttpServlet" />
+
+         <VariableMapping name="javax.servlet.ServletContext" />
+
+         <VariableMapping name="javax.servlet.ServletConfig" />
+
+         <VariableMapping name="javax.servlet.ServletOutputStream" />
+
+         <VariableMapping name="javax.servlet.*" />
+             	<License name="UNKNOWN"/>
+	       	<JarFile name="J2EE.jar" version="NA" size="0"/>
+	       	<Home url=""/>
+      </TechStackEntity>
+
+      <TechStackEntity name="JSP" rating="OK" complexity="small">
+         <ExtensionMapping name="org.apache.jasper.runtime.HttpJspBase" />
+
+		 <VariableMapping name="org.apache.jasper.runtime.TagHandlerPool" />
+
+         <VariableMapping name="javax.servlet.http.HttpServletRequest" />
+
+         <VariableMapping name="javax.servlet.http.HttpServletResponse" />
+
+         <VariableMapping name="javax.servlet.http.HttpSession" />
+
+         <VariableMapping name="javax.servlet.http.*" />
+
+         <VariableMapping name="javax.servlet.jsp.JspFactory" />
+
+         <VariableMapping name="javax.servlet.jsp.JspWriter" />
+
+         <VariableMapping name="javax.servlet.jsp.PageContext" />
+             	<License name="UNKNOWN"/>
+	       	<JarFile name="UNKNOWN" version="NA" size="0"/>
+	       	<Home url=""/>
+      </TechStackEntity>
+
+      <TechStackEntity name="Struts Form" rating="OK" complexity="small">
+         <ExtensionMapping name="org.apache.struts.action.ActionForm" />
+
+         <VariableMapping name="org.apache.struts.action.ActionForm" />
+
+         <VariableMapping name="org.apache.struts.action.DynaActionForm" />
+             	<License name="Apache"/>
+	       	<JarFile name="UNKNOWN" version="1.2" size="0"/>
+	       	<Home url=""/>
+      </TechStackEntity>
+
+      <TechStackEntity name="Struts Menu" rating="Evaluation" complexity="small">
+         <ExtensionMapping name="net.sf.navigator.displayer.MessageResourcesMenuDisplayer" />
+
+         <VariableMapping name="net.sf.navigator.menu.MenuComponent" />
+
+         <VariableMapping name="net.sf.navigator.displayer.MenuDisplayerMapping" />
+
+         <VariableMapping name="net.sf.navigator.displayer.MessageResourcesMenuDisplayer" />
+
+         <VariableMapping name="net.sf.navigator.*" />
+             	<License name="Apache 1.1"/>
+	       	<JarFile name="struts-menu-2.1.jar" version="2.1" size="42000"/>
+	       	<JarFile name="struts-menu-2.0.jar" version="2.0" size="41385"/>
+	       	<Home url=""/>
+      </TechStackEntity>
+
+   
+   <TechStackEntity name="Struts Layout" rating="Banned" complexity="small">
+            
+            <VariableMapping name="fr.improve.struts.taglib.layout.*" />
+            <VariableMapping name="fr.improve.struts.*" />
+            <License name="GPL"/>
+   	       	<JarFile name="Struts-Layout.jar" version="NA" size="487000"/>
+   	       	<Home url="http://struts.application-servers.com/"/>
+      </TechStackEntity>
+
+      <TechStackEntity name="Struts PlugIn" rating="OK" complexity="small">
+         <ExtensionMapping name="org.apache.struts.action.PlugIn" />
+             	<License name="Apache"/>
+	       	<JarFile name="struts.jar" version="1.1" size="487000"/>
+	       	<Home url=""/>
+      </TechStackEntity>
+
+      <TechStackEntity name="TIB InConcert Web XML" rating="OK" complexity="medium">
+         <VariableMapping name="com.inconcert.xml.sax.IcWebStateBean" />
+
+         <VariableMapping name="com.inconcert.xml.sax.IcWebStateBean" />
+
+         <VariableMapping name="com.inconcert.xml.sax.*" />
+             	<License name="UNKNOWN"/>
+	       	<JarFile name="UNKNOWN" version="NA" size="0"/>
+	       	<Home url=""/>
+      </TechStackEntity>
+
+  <TechStackEntity name="Struts Tag Library" rating="OK" complexity="small">
+	     <VariableMapping name="org.apache.struts.taglib.bean.*" />
+
+         <VariableMapping name="org.apache.struts.taglib.html.*" />
+
+		 <VariableMapping name="org.apache.struts.taglib.logic.*" />
+
+		 <VariableMapping name="org.apache.struts.taglib.tiles.*" />
+
+		 <VariableMapping name="com.cj.strutserror.ForEachErrorTag" />
+
+		 <VariableMapping name="org.apache.struts.taglib.nested.html.*" />
+ 		 
+		 <VariableMapping name="org.apache.struts.taglib.nested.logic.*" />
+             	<License name="UNKNOWN"/>
+	       	<JarFile name="UNKNOWN" version="NA" size="0"/>
+	       	<Home url=""/>
+      </TechStackEntity>
+
+	  <TechStackEntity name="Display Tag Library" rating="OK" complexity="small">
+	     <VariableMapping name="org.apache.taglibs.displaysearch.*" />
+
+	     <VariableMapping name="org.apache.taglibs.display.*" />
+
+ 	     <VariableMapping name="org.displaytag.tags.*" />
+
+	     <VariableMapping name="org.displaytag.properties.*" />								
+
+		 <VariableMapping name="org.displaytag.model.*" />
+		 
+		 <VariableMapping name="org.displaytag.export.MediaTypeEnum" />
+
+		 <VariableMapping name="org.apache.taglibs.standard.tag.common.core.*" />
+							   
+		 <VariableMapping name="org.apache.taglibs.standard.tag.el.core.*" />
+
+             	<License name="LPGL"/>
+             	<!-- ?? -->
+	       	<JarFile name="displaytag.jar" version="1.0 rc1" size="0"/>
+	       	<JarFile name="display.jar" version="NA" size="48000"/>
+	       	<JarFile name="standard.jar" version="NA" size="572000"/>
+	       	<Home url=""/>
+      </TechStackEntity>
+
+   </ArchitecturalLayerMapping>
+   
+   
+
+   <ArchitecturalLayerMapping name="Model View Controller">
+      <TechStackEntity name="Struts MVC" rating="OK" complexity="medium">
+         <ExtensionMapping name="org.apache.struts.action.Action" />
+
+         <VariableMapping name="org.apache.struts.action.ActionMapping" />
+
+         <VariableMapping name="org.apache.struts.action.ActionError" />
+
+         <VariableMapping name="org.apache.struts.action.ActionErrors" />
+
+         <VariableMapping name="org.apache.struts.util.MessageResources" />
+
+		 <VariableMapping name="org.apache.struts.util.MessageResourcesFactory" />
+
+		 <VariableMapping name="org.apache.struts.util.GenericDataSource" />
+
+         <VariableMapping name="org.apache.struts.action.ActionServlet" />
+
+         <VariableMapping name="org.apache.struts.action.ActionMessage" />
+
+         <VariableMapping name="org.apache.struts.action.ActionMessages" />
+
+         <VariableMapping name="org.apache.struts.action.ActionForward" />
+
+         <VariableMapping name="org.apache.struts.action.*" />
+
+         <VariableMapping name="org.apache.struts.config.*" />
+             	<License name="Apache"/>
+	       	<JarFile name="struts.jar" version="1.2" size="0"/>
+	       	<JarFile name="struts.jar" version="1.1" size="487000"/>
+	       	<JarFile name="struts-legacy.jar.jar" version="1.1" size="487000"/>
+	       	
+	       	<Home url="http://struts.apache.org/"/>
+      </TechStackEntity>
+   </ArchitecturalLayerMapping>
+
+
+
+   <ArchitecturalLayerMapping name="Business Layer">
+      <TechStackEntity name="EJB" rating="OK" complexity="medium">
+         <ExtensionMapping name="javax.ejb.EJBObject" />
+
+         <ExtensionMapping name="javax.ejb.EJBHome" />
+
+         <VariableMapping name="javax.ejb.CreateException" />
+
+         <VariableMapping name="javax.ejb.EJBHome" />
+
+         <VariableMapping name="javax.ejb.EJBObject" />
+
+         <VariableMapping name="javax.ejb.Handle" />
+
+         <VariableMapping name="javax.ejb.*" />
+             	<License name="UNKNOWN"/>
+	       	<JarFile name="UNKNOWN" version="NA" size="0"/>
+	       	<Home url=""/>
+      </TechStackEntity>
+
+      <TechStackEntity name="EJB SessionBean" rating="OK" complexity="medium">
+         <ExtensionMapping name="javax.ejb.SessionBean" />
+
+         <ExtensionMapping name="javax.ejb.SessionContext" />
+             	<License name="UNKNOWN"/>
+	       	<JarFile name="UNKNOWN" version="NA" size="0"/>
+	       	<Home url=""/>
+      </TechStackEntity>
+
+      <TechStackEntity name="Value Object" rating="OK" complexity="mini">
+      </TechStackEntity>
+
+      <TechStackEntity name="GetterSetter" rating="OK" complexity="mini">
+      </TechStackEntity>
+   </ArchitecturalLayerMapping>
+
+   <ArchitecturalLayerMapping name="Data Transfer Objects">
+   </ArchitecturalLayerMapping>
+
+   <ArchitecturalLayerMapping name="Integration Layer">
+
+
+ <TechStackEntity name="Documentum Workflow" rating="Restricted" complexity="medium">
+      <VariableMapping name="com.documentum.services.workflow.*" />
+      
+             	<License name="Commercial"/>
+	       	
+	       	<JarFile name="workflow.jar" version="NA" size="127932"/>
+	       	
+	       	<Home url="http://documentum.com/"/>
+   </TechStackEntity>
+
+
+
+ <TechStackEntity name="Documentum" rating="OK" complexity="medium">
+      <VariableMapping name="com.documentum.services.workflow.*" />
+      
+             	<License name="Commercial"/>
+	       	
+	       	<JarFile name="workflow.jar" version="NA" size="127932"/>
+
+		<JarFile name="All-MB.jar" version="NA" size="185620"/> 
+		<JarFile name="bpmutil.jar" version="NA" size="36440"/> 
+		<JarFile name="bsf.jar" version="NA" size="105573"/> 
+		<JarFile name="ci.jar" version="NA" size="193765"/> 
+		<JarFile name="dfc.jar" version="NA" size="3531295"/> 
+		<JarFile name="dfcbase.jar" version="NA" size="23956"/> 
+
+		<JarFile name="subscription.jar" version="8588"/> 
+		<JarFile name="workflow.jar" version="127932"/> 
+	       	
+	       	<Home url="http://documentum.com/"/>
+   </TechStackEntity>
+
+	<TechStackEntity name="Documentum Client Workflow" rating="OK" complexity="medium">
+
+	      <VariableMapping name="com.documentum.fc.client.IDfWorkflow" />
+          <VariableMapping name="com.documentum.fc.client.IDfWorkflowBuilder" />
+	      <VariableMapping name="com.documentum.fc.common.DfList" />
+
+	</TechStackEntity>
+
+
+ <TechStackEntity name="Java Microsoft Bridge" rating="Restricted" complexity="medium">
+      <VariableMapping name="javax.management.*" />
+      <VariableMapping name="outlook.*" />
+             	<License name="Commercial"/>
+	       	
+	       	<JarFile name="jintegra.jar" version="NA" size="505334"/>
+	       	<JarFile name="outlook.jar" version="NA" size="1030000"/>
+	       	<Home url="http://j-integra.intrinsyc.com/"/>
+   </TechStackEntity>
+
+   <TechStackEntity name="JMX" rating="OK" complexity="medium">
+      <VariableMapping name="javax.management.*" />
+             	<License name="Propeitary - No Fees"/>
+	       	<JarFile name="jmxri.jar" version="1.2" size="358000"/>
+	       	<JarFile name="jmxtools.jar" version="1.2" size="100000"/>
+	       	<Home url="http://java.sun.com/products/JavaManagement/"/>
+   </TechStackEntity>
+
+
+   <TechStackEntity name="Struts Upload" rating="OK" complexity="small">
+      <VariableMapping name="org.apache.struts.upload.FormFile" />
+             	<License name="UNKNOWN"/>
+	       	<JarFile name="UNKNOWN" version="NA" size="0"/>
+	       	<Home url=""/>
+   </TechStackEntity>
+
+   <TechStackEntity name="Activation Framework" rating="OK" complexity="mini">
+      <VariableMapping name="javax.activation.DataHandler" />
+
+      <VariableMapping name="javax.activation.FileDataSource" />
+
+      <VariableMapping name="javax.activation.DataSource" />
+
+      <VariableMapping name="javax.activation.*" />
+
+             	<License name="Propeitary - No Fees"/>
+	       	<JarFile name="activation.jar" version="1.0.2" size="45386"/>
+		<Home url=""/>
+   </TechStackEntity>
+
+   <TechStackEntity name="JNDI" rating="OK" complexity="medium">
+      <VariableMapping name="javax.naming.*" />
+             	<License name="Sun"/>
+	       	<JarFile name="jndi.jar" version="1.2.1" size="97159"/>
+	       	<Home url="http://java.sun.com/products/jndi/"/>
+   </TechStackEntity>
+
+   <TechStackEntity name="EJB EntityBean" rating="OK" complexity="medium">
+      <ExtensionMapping name="javax.ejb.EntityBean" />
+
+      <ExtensionMapping name="javax.ejb.EntityContext" />
+             	<License name="Sun"/>
+	       	<JarFile name="J2EE.jar" version="NA" size="6809949"/>
+	       	<Home url="http://java.sun.com/j2ee"/>
+   </TechStackEntity>
+
+	<TechStackEntity name="Documentum" rating="OK" complexity="medium">
+		<VariableMapping name="com.documentum.com.IDfClientX" />
+		<VariableMapping name="com.documentum.fc.client.IDfClient" /> 
+		<VariableMapping name="com.documentum.fc.client.IDfCollection" /> 
+		<VariableMapping name="com.documentum.fc.client.IDfPersistentObject" /> 
+		<VariableMapping name="com.documentum.fc.client.IDfQuery" /> 
+		<VariableMapping name="com.documentum.fc.client.IDfSession" /> 
+		<VariableMapping name="com.documentum.fc.client.IDfSessionManager" /> 
+		<VariableMapping name="com.documentum.fc.client.IDfSysObject" /> 
+		<VariableMapping name="com.documentum.fc.common.DfException" /> 
+		<VariableMapping name="com.documentum.fc.common.IDfId" /> 
+		<VariableMapping name="com.documentum.fc.common.IDfLoginInfo" /> 
+		<VariableMapping name="com.documentum.fc.common.IDfTime" /> 
+
+             	<License name="UNKNOWN"/>
+	       	<JarFile name="UNKNOWN" version="NA" size="0"/>
+	       	<Home url=""/>
+   </TechStackEntity>
+
+
+   <TechStackEntity name="FileNET ERC Proxy" rating="OK" complexity="small">
+      <VariableMapping name="com.gecapital.erc.FileNet.FileNetProxy" />
+             	<License name="UNKNOWN"/>
+	       	<JarFile name="UNKNOWN" version="NA" size="0"/>
+	       	<Home url=""/>
+   </TechStackEntity>
+
+   <TechStackEntity name="Hibernate" rating="Evaluation" complexity="medium">
+      <VariableMapping name="net.sf.hibernate.Session" />
+
+      <VariableMapping name="net.sf.hibernate.SessionFactory" />
+
+      <VariableMapping name="net.sf.hibernate.cfg.Configuration" />
+
+      <VariableMapping name="net.sf.hibernate.Transaction" />
+
+      <VariableMapping name="net.sf.hibernate.type.Type[]" />
+
+      <VariableMapping name="net.sf.hibernate.HibernateException" />
+
+      <VariableMapping name="net.sf.hibernate.SessionFactory" />
+      <VariableMapping name="net.sf.hibernate.Criteria" />
+      <VariableMapping name="net.sf.hibernate.Query" />
+             	<License name="LGPL"/>
+	       	<JarFile name="hibernate2.jar" version="2.0.3" size="0"/>
+	       	<Home url="http://hibernate.org"/>
+   </TechStackEntity>
+
+   <TechStackEntity name="Jakarta Common DB Utils" rating="Restricted Use" complexity="medium">
+      <VariableMapping name="org.apache.commons.dbutils.*" />
+
+      <VariableMapping name="org.apache.commons.dbutils.handlers.*" />
+             	<License name="UNKNOWN"/>
+	       	<JarFile name="UNKNOWN" version="NA" size="0"/>
+	       	<Home url=""/>
+   </TechStackEntity>
+
+   <TechStackEntity name="JMS" rating="OK" complexity="high">
+      <VariableMapping name="javax.jms.*" />
+             	<License name="Sun"/>
+	       	<JarFile name="jms.jar" version="1.1" size="27724"/>
+	       	<Home url="http://java.sun.com/products/jms/"/>
+   </TechStackEntity>
+
+   <TechStackEntity name="JTA" rating="OK" complexity="medium">
+      <ExtensionMapping name="javax.transaction.UserTransaction" />
+	  
+	  <VariableMapping name="com.sun.enterprise.distributedtx.UserTransactionImpl" />
+	  <VariableMapping name="com.sun.jts.jta.UserTransactionImpl" />
+      
+	  <VariableMapping name="javax.transaction.*" />
+             	<License name="Sun"/>
+	       	<JarFile name="jta.jar" version="NA" size="8812"/>
+	       	<Home url="http://java.sun.com/products/jta/"/>
+   </TechStackEntity>
+
+   <TechStackEntity name="Spring Framework" rating="Evaluation" complexity="medium">
+      <VariableMapping name="org.springframework.transaction.PlatformTransactionManager" />
+
+      <VariableMapping name="org.springframework.transaction.support.TransactionTemplate" />
+
+      <VariableMapping name="org.springframework.transaction.TransactionStatus" />
+
+      <VariableMapping name="org.springframework.web.context.WebApplicationContext" />
+
+      <VariableMapping name="org.springframework.context.support.ClassPathXmlApplicationContext" />
+             	<License name="Apache"/>
+	       		<JarFile name="spring-aop.jar" version="1.1.1" size="138090"/>  	
+		 	<JarFile name="spring-context.jar" version="1.1.1" size="247282"/>  	
+		 	<JarFile name="spring-core.jar" version="1.1.1" size="243840"/>  	
+		 	<JarFile name="spring-dao.jar" version="1.1.1" size="234502"/>  	
+		 	<JarFile name="spring-mock.jar" version="1.1.1" size="35970"/>  	
+		 	<JarFile name="spring-orm.jar" version="1.1.1" size="192601"/>  	
+		 	<JarFile name="spring-web.jar" version="1.1.1" size="93801"/>  	
+		 	<JarFile name="spring-webmvc.jar" version="1.1.1" size="165979"/>  	
+		 	<JarFile name="spring.jar" version="1.1.1" size="1312533"/>  	
+               	<Home url="http://www.springframework.org/"/>
+   </TechStackEntity>
+
+   <TechStackEntity name="JXL Java Excel API" rating="OK" complexity="high">
+      <VariableMapping name="jxl.write.*" />
+
+      <VariableMapping name="jxl.format.*" />
+
+      <VariableMapping name="jxl.*" />
+             	<License name="LGPL"/>
+	       	<JarFile name="UNKNOWN" version="2.4.5" size="415694"/>
+	       	<Home url="http://www.andykhan.com/jexcelapi/"/>
+   </TechStackEntity>
+
+   <TechStackEntity name="Mail" rating="OK" complexity="medium">
+      <VariableMapping name="javax.mail.internet.InternetAddress" />
+
+      <VariableMapping name="javax.mail.internet.MimeBodyPart" />
+
+      <VariableMapping name="javax.mail.internet.MimeMessage" />
+
+      <VariableMapping name="javax.mail.internet.MimeMultipart" />
+
+      <VariableMapping name="javax.mail.Message" />
+
+      <VariableMapping name="javax.mail.Multipart" />
+
+      <VariableMapping name="javax.mail.Session" />
+
+      <VariableMapping name="javax.mail.Transport" />
+
+      <VariableMapping name="javax.mail.internet.*" />
+
+      <VariableMapping name="javax.mail.MessagingException" />
+
+      <VariableMapping name="javax.mail.SendFailedException" />
+
+      <VariableMapping name="javax.mail.Authenticator" />
+
+      <VariableMapping name="javax.mail.*" />
+
+	  
+             	<License name="Sun"/>
+	       	<JarFile name="mail.jar" version="1.2" size="327603"/>
+	       	<JarFile name="mailapi.jar" version="1.2" size="150000"/>
+	       	<JarFile name="pop3.jar" version="1.2" size="15000"/>
+	       	<JarFile name="smtp.jar" version="1.2" size="12000"/>
+	       	<JarFile name="imap.jar" version="1.2" size="101000"/>
+	       	<Home url="http://java.sun.com/products/javamail/"/>
+
+   </TechStackEntity>
+
+   <TechStackEntity name="Network" rating="OK" complexity="medium">
+      <VariableMapping name="java.net.URL" />
+
+      <VariableMapping name="java.net.*" />
+             	<License name="UNKNOWN"/>
+	       	<JarFile name="UNKNOWN" version="NA" size="0"/>
+	       	<Home url=""/>
+   </TechStackEntity>
+
+   <TechStackEntity name="PDF Generator ITEXT" rating="OK" complexity="high">
+      <VariableMapping name="com.lowagie.*" />
+             	<License name="UNKNOWN"/>
+	       	<JarFile name="lowagie.jar" version="NA" size="698810"/>
+	       	<Home url="http://www.lowagie.com/iText/"/>
+   </TechStackEntity>
+
+   <TechStackEntity name="FTP Client Jakarta Common Net" rating="OK" complexity="small">
+      <ExtensionMapping name="org.apache.commons.net.ftp.FTPClient" />
+	    
+	  <VariableMapping name="org.apache.commons.net.ftp.*" />
+             	<License name="Apache"/>
+	       	<JarFile name="commons-net-1.2.2.jar" version="1.2.2" size="150000"/>
+	       	<Home url=""/>
+   </TechStackEntity>
+
+     <TechStackEntity name="FTP Client Enterprise Distributed" rating="OK" complexity="small">
+   
+	  <VariableMapping name="com.enterprisedt.net.ftp.*" />
+             	<License name="UNKNOWN"/>
+	       	<JarFile name="UNKNOWN" version="NA" size="0"/>
+	       	<Home url=""/>
+   </TechStackEntity>
+
+   <TechStackEntity name="PL/SQL" rating="Restricted Use" complexity="high">
+      <VariableMapping name="oracle.jdbc.driver.OracleCallableStatement" />
+      <VariableMapping name="oracle.jdbc.pool.OracleConnectionCacheImpl" />
+
+      <VariableMapping name="oracle.sql.ARRAY" />
+
+      <VariableMapping name="oracle.sql.ArrayDescriptor" />
+
+      <VariableMapping name="oracle.sql.STRUCT" />
+	 
+
+      <VariableMapping name="oracle.sql.StructDescriptor" />
+             	<License name="UNKNOWN"/>
+	       	<JarFile name="UNKNOWN" version="NA" size="0"/>
+	       	<Home url=""/>
+   </TechStackEntity>
+   
+    <TechStackEntity name="MS SQL Server" rating="Banned" complexity="medium">
+         <VariableMapping name="com.microsoft.jdbc.sqlserver.*" />
+         <VariableMapping name="com.microsoft.util.*"/>
+         <VariableMapping name="com.microsoft.jdbcx.base.*"/>
+         <VariableMapping name="com.microsoft.jdbc.base.*"/>
+         <VariableMapping name="com.microsoft.jdbc.extensions.*"/>
+         <VariableMapping name="com.microsoft.jdbc.vprt.*"/>
+        	<License name="Commercial"/>
+	       	<JarFile name="mssqlserver.jar" version="NA" size="67024"/>
+	       	<JarFile name="msutil.jar" version="NA" size="58903"/>
+	       	<JarFile name="msbase.jar" version="NA" size="286707"/> 
+	       	<Home url=""/>
+   </TechStackEntity>
+
+   <TechStackEntity name="Quartz" rating="Restricted Use" complexity="medium">
+      <ExtensionMapping name="org.quartz.StatefulJob" />
+
+      <ExtensionMapping name="org.quartz.xml.JobSchedulingDataProcessor" />
+
+      <VariableMapping name="org.quartz.CronTrigger" />
+
+      <VariableMapping name="org.quartz.Trigger" />
+
+      <VariableMapping name="org.quartz.Scheduler" />
+
+      <VariableMapping name="org.quartz.TriggerListener" />
+
+      <VariableMapping name="org.quartz.JobExecutionContext" />
+
+	  <VariableMapping name="org.quartz.JobDataMap" />
+	  
+	  <VariableMapping name="org.quartz.JobDetail" />
+
+             	<License name="UNKNOWN"/>
+	       	<JarFile name="UNKNOWN" version="NA" size="0"/>
+	       	<Home url=""/>
+   </TechStackEntity>
+
+   <TechStackEntity name="RMI" rating="OK" complexity="high">
+      <VariableMapping name="javax.rmi.*" />
+             	<License name="UNKNOWN"/>
+	       	<JarFile name="UNKNOWN" version="NA" size="0"/>
+	       	<Home url=""/>
+   </TechStackEntity>
+
+
+   <TechStackEntity name="SQL Common" rating="OK" complexity="medium">
+      <VariableMapping name="java.sql.Statement" />
+
+      <VariableMapping name="java.sql.Connection" />
+
+      <VariableMapping name="java.sql.ResultSet" />
+	<VariableMapping name= "sun.jdbc.rowset.CachedRowSet" />
+	<VariableMapping name= "javax.sql.RowSet" />
+    	<License name="Commercial"/>
+    	<License name="GPL"/>
+      	<JarFile name="classes.zip" version="NA" size="296000"/>
+      	<JarFile name="classes12.zip" version="12" size="296000"/>
+ 	<JarFile name="ojdbc14_g.jar" version="NA" size="1380000"/>
+ 	<Home url=""/>
+   </TechStackEntity>
+   
+
+   <TechStackEntity name="SQL Datasource" rating="OK" complexity="small">
+      <VariableMapping name="javax.sql.DataSource" />
+
+	  <VariableMapping name="com.ddtek.jdbcx.sqlserver.SQLServerDataSource" />
+             	<License name="UNKNOWN"/>
+	       	<JarFile name="UNKNOWN" version="NA" size="0"/>
+	       	<Home url=""/>
+   </TechStackEntity>
+
+   <TechStackEntity name="SQL Depreciated" rating="DEPRECIATED" complexity="medium">
+      <VariableMapping name="java.sql.ResultSetMetaData" />
+             	<License name="UNKNOWN"/>
+	       	<JarFile name="UNKNOWN" version="NA" size="0"/>
+	       	<Home url=""/>
+   </TechStackEntity>
+
+   
+   <TechStackEntity name="SQL LOB" rating="OK" complexity="medium">
+      <VariableMapping name="java.sql.Blob" />
+
+      <VariableMapping name="java.sql.Clob" />
+
+      <VariableMapping name="oracle.sql.BLOB" />
+
+      <VariableMapping name="oracle.sql.CLOB" />
+             	<License name="UNKNOWN"/>
+	       	<JarFile name="UNKNOWN" version="NA" size="0"/>
+	       	<Home url=""/>
+   </TechStackEntity>
+
+   <TechStackEntity name="SQL Prepared" rating="OK" complexity="medium">
+      <VariableMapping name="java.sql.PreparedStatement" />
+             	<License name="UNKNOWN"/>
+	       	<JarFile name="UNKNOWN" version="NA" size="0"/>
+   </TechStackEntity>
+
+   <TechStackEntity name="TIB Core" rating="OK" complexity="high">
+      <VariableMapping name="com.tibco.tibrv.*" />
+             	<License name="UNKNOWN"/>
+	       	<JarFile name="UNKNOWN" version="NA" size="0"/>
+	       	<Home url=""/>
+   </TechStackEntity>
+
+   <TechStackEntity name="TIB InConcert" rating="OK" complexity="high">
+      <VariableMapping name="com.tibco.inconcert.*" />
+
+      <VariableMapping name="com.inconcert.icjava.*" />
+             	<License name="UNKNOWN"/>
+	       	<JarFile name="UNKNOWN" version="NA" size="0"/>
+	       	<Home url=""/>
+   </TechStackEntity>
+
+   <TechStackEntity name="Castor JDO" rating="OK" complexity="medium">
+      <VariableMapping name="org.exolab.castor.jdo.Database" />
+      <VariableMapping name="org.exolab.castor.jdo.DatabaseNotFoundException" />
+	  <VariableMapping name="org.exolab.castor.jdo.JDO" />
+	  <VariableMapping name="org.exolab.castor.jdo.LockNotGrantedException" />
+	  <VariableMapping name="org.exolab.castor.jdo.ObjectNotFoundException" />
+	  <VariableMapping name="org.exolab.castor.jdo.OQLQuery" />
+	  <VariableMapping name="org.exolab.castor.jdo.PersistenceException" />
+	  <VariableMapping name="org.exolab.castor.jdo.QueryResults" />
+	  <VariableMapping name="org.exolab.castor.jdo.TransactionAbortedException" />
+	  <VariableMapping name="org.exolab.castor.jdo.TransactionNotInProgressException" />
+	  <VariableMapping name="org.exolab.castor.mapping.MappingException" />
+
+             	<License name="LPGL"/>
+	       	<JarFile name="castor-0.9.5.3.jar" version="0.9.5.3" size="1674935"/>
+	       	<JarFile name="castor-0.9.5.3-xml.jar" version="0.9.5.3" size="1176879"/>
+	       	<Home url=""/>
+   </TechStackEntity>
+
+   </ArchitecturalLayerMapping>
+
+
+
+   <ArchitecturalLayerMapping name="Helper">
+
+      <TechStackEntity name="Merant Spy" rating="Restricted" complexity="small">
+         <VariableMapping name="com.merant.datadirect.jdbc.*" />
+         <VariableMapping name="com.merant.jdbc.*" />
+         <VariableMapping name="intersolv.merant.jdbcspy.*" />
+             	<License name="Commercial"/>
+	       	<JarFile name="spy.jar" version="NA" size="46865"/>
+	       	<Home url=""/>
+      </TechStackEntity>
+
+      <TechStackEntity name="Apache Commons Validator" rating="OK" complexity="small">
+         <VariableMapping name="org.apache.commons.validator.*" />
+             	<License name="Apache"/>
+	       	<JarFile name="commons-validator.jar" version="1.1.3" size="46865"/>
+	       	<Home url=""/>
+      </TechStackEntity>
+
+	<TechStackEntity name="Apache Commons Collection" rating="OK" complexity="small">
+         <VariableMapping name="org.apache.commons.collections.*" />
+             	<License name="UNKNOWN"/>
+	       	<JarFile name="UNKNOWN" version="NA" size="0"/>
+	       	<Home url=""/>
+      </TechStackEntity>
+
+	<TechStackEntity name="Apache Commons FileUpload" rating="OK" complexity="small">
+         <VariableMapping name="org.apache.commons.fileupload.DiskFileUpload" />
+         <VariableMapping name="org.apache.commons.fileupload.FileItem" />
+         <VariableMapping name="org.apache.commons.fileupload.FileUploadException" />
+
+      </TechStackEntity>
+
+
+      <TechStackEntity name="Castor" rating="OK" complexity="medium">
+         <VariableMapping name="org.exolab.castor.xml.Unmarshaller" />
+
+         <VariableMapping name="org.exolab.castor.mapping.Mapping" />
+
+         <VariableMapping name="org.exolab.castor.xml.Marshaller" />
+             	<License name="UNKNOWN"/>
+	       	<JarFile name="UNKNOWN" version="NA" size="0"/>
+	       	<Home url=""/>
+      </TechStackEntity>
+
+      <TechStackEntity name="Exception" rating="OK" complexity="mini">
+         <ExtensionMapping name="java.lang.Exception" />
+      </TechStackEntity>
+
+      <TechStackEntity name="File Property" rating="OK" complexity="small">
+         <VariableMapping name="java.util.PropertyResourceBundle" />
+
+         <VariableMapping name="java.util.ResourceBundle" />
+
+         <VariableMapping name="java.util.Property" />
+      </TechStackEntity>
+
+      <TechStackEntity name="IO File" rating="OK" complexity="small">
+         <VariableMapping name="java.io.File" />
+
+         <VariableMapping name="java.io.FileWriter" />
+
+         <VariableMapping name="java.io.FileReader" />
+
+         <VariableMapping name="java.io.FileInputStream" />
+
+         <VariableMapping name="java.io.FileInputStream" />
+
+         <VariableMapping name="java.io.OutputStream" />
+
+         <VariableMapping name="java.io.InputStream" />
+      </TechStackEntity>
+
+      <TechStackEntity name="Jakarta Common Bean Utils" rating="OK" complexity="small">
+         <VariableMapping name="org.apache.commons.beanutils.*" />
+             	<License name="Apache"/>
+	       	<JarFile name="commons-beanutils.jar" version="1.7.0" size="118726"/>
+	       	<JarFile name="commons-beanutils-bean-collections.jar" version="NA" size="0"/>
+	       	<JarFile name="commons-beanutils-core.jar" version="NA" size="0"/>
+	       	<Home url="http://jakarta.apache.org/commons/beanutils/"/>
+      </TechStackEntity>
+
+      <TechStackEntity name="Jakarta Common Digester" rating="OK" complexity="medium">
+         <VariableMapping name="org.apache.commons.digester.*" />
+             	<License name="Apache"/>
+	       	<JarFile name="commons-digester.jar" version="NA" size="109096"/>
+	       	<Home url="http://jakarta.apache.org/commons/digester/"/>
+      </TechStackEntity>
+
+      <TechStackEntity name="Jakarta POI Factory" rating="OK" complexity="medium">
+         <VariableMapping name="org.apache.poi.hssf.usermodel.*" />
+
+		 <VariableMapping name="org.apache.poi.poifs.filesystem.*" />
+             	<License name="Apache"/>
+	       	<JarFile name="UNKNOWN" version="NA" size="0"/>
+	       	<Home url=""/>
+      </TechStackEntity>
+
+	  <TechStackEntity name="ACME Utils" rating="OK" complexity="small">
+         <VariableMapping name="Acme.JPM.Encoders.GifEncoder" />
+             	
+             	<License name="LPGL"/>
+	       	<JarFile name="acme.jar" version="NA" size="0"/>
+	       	<Home url=""/>
+      </TechStackEntity>
+	  
+	  <TechStackEntity name="XSL-FO Processor" rating="OK" complexity="medium">
+         <VariableMapping name="org.apache.fop.apps.*" />
+         
+		 <VariableMapping name="org.apache.fop.fo.*" />
+
+             	<License name="UNKNOWN"/>
+	       	<JarFile name="UNKNOWN" version="NA" size="0"/>
+	       	<Home url=""/>
+         <VariableMapping name="org.apache.fop.configuration.*" />
+
+      </TechStackEntity>
+
+      <TechStackEntity name="Logger Log4j" rating="OK" complexity="medium">
+         <ExtensionMapping name="org.apache.log4j.Logger" />
+             	<License name="UNKNOWN"/>
+	       	<JarFile name="UNKNOWN" version="NA" size="0"/>
+	       	<Home url=""/>
+      </TechStackEntity>
+
+      <TechStackEntity name="Logging" rating="OK" complexity="medium">
+         <VariableMapping name="org.apache.commons.logging.Log" />
+
+         <VariableMapping name="org.apache.log4j.Level" />
+
+         <VariableMapping name="org.apache.commons.logging.LogFactory" />
+
+         <VariableMapping name="org.apache.log4j.Logger" />
+
+         <VariableMapping name="org.apache.log4j.*" />
+             	<License name="Apache 1.1"/>
+	       	<JarFile name="log4j-1.2.8.jar" version="1.2.8" size="352668"/>
+	       	<JarFile name="com-log4j.jar" version="" size="388306"/>
+	       	<Home url="http://logging.apache.org/log4j/docs/index.html"/>
+      </TechStackEntity>
+
+      <TechStackEntity name="Logging_Depreciated" rating="DEPRECIATED" complexity="medium">
+         <VariableMapping name="org.apache.log4j.Category" />
+             	<License name="Apache 1.1"/>
+	       	<JarFile name="log4j.jar" version="1.1.3" size="156000"/>
+	       	<Home url="http://logging.apache.org/log4j/docs/index.html"/>
+      </TechStackEntity>
+
+      <TechStackEntity name="Velocity" rating="OK" complexity="medium">
+         <VariableMapping name="org.apache.velocity.*" />
+             	<License name="UNKNOWN"/>
+	       	<JarFile name="UNKNOWN" version="NA" size="0"/>
+	       	<Home url=""/>
+      </TechStackEntity>
+
+      <TechStackEntity name="XML Parser" rating="OK" complexity="medium">
+         <VariableMapping name="javax.xml.parsers.*" />
+             	<License name="UNKNOWN"/>
+	       	<JarFile name="UNKNOWN" version="NA" size="0"/>
+	       	<Home url=""/>
+      </TechStackEntity>
+
+      <TechStackEntity name="XML Transformer" rating="OK" complexity="medium">
+         <VariableMapping name="javax.xml.transform.*" />
+
+		 <VariableMapping name="javax.xml.transform.dom.*" />
+         
+		 <VariableMapping name="javax.xml.transform.sax.*" />
+         
+		 <VariableMapping name="javax.xml.transform.stream.*" />
+             	<License name="UNKNOWN"/>
+	       	<JarFile name="UNKNOWN" version="NA" size="0"/>
+	       	<Home url=""/>
+      </TechStackEntity>
+
+      <TechStackEntity name="XML SAX" rating="OK" complexity="medium">
+		  <VariableMapping name="org.xml.sax.SAXException" />
+
+		  <VariableMapping name="org.xml.sax.XMLReader" />
+		  
+		  <VariableMapping name="org.xml.sax.XMLFilter" />
+		  
+		  <VariableMapping name="org.xml.sax.DTDHandler" />
+		  
+		  <VariableMapping name="org.xml.sax.ContentHandler" />
+		  
+		  <VariableMapping name="org.xml.sax.Attributes" />
+		  
+		  <VariableMapping name="org.xml.sax.ErrorHandler" />
+		  
+		  <VariableMapping name="org.xml.sax.helpers.DefaultHandler" />
+
+		  <VariableMapping name="org.xml.sax.SAXParseException" />
+
+		  <VariableMapping name="org.xml.sax.InputSource" />
+		  
+             	<License name="UNKNOWN"/>
+	       	<JarFile name="UNKNOWN" version="NA" size="0"/>
+	       	<Home url=""/>
+      </TechStackEntity>
+
+      <TechStackEntity name="XML W3C DOM" rating="OK" complexity="medium">
+         <VariableMapping name="org.w3c.dom.Document" />
+
+         <VariableMapping name="org.w3c.dom.Element" />
+
+         <VariableMapping name="org.w3c.dom.Node" />
+
+         <VariableMapping name="org.w3c.dom.NodeList" />
+
+         <VariableMapping name="org.w3c.dom.*" />
+             	<License name="UNKNOWN"/>
+	       	<JarFile name="UNKNOWN" version="NA" size="0"/>
+	       	<Home url=""/>
+
+      </TechStackEntity>
+
+      <TechStackEntity name="Jakarta HTTPClient" rating="OK" complexity="medium">
+        <VariableMapping name="org.apache.commons.httpclient.HttpClient" />		  
+        <VariableMapping name="org.apache.commons.httpclient.HttpMethod" /> 
+        <VariableMapping name="org.apache.commons.httpclient.NameValuePair[]" /> 
+        <VariableMapping name="org.apache.commons.httpclient.protocol.Protocol" /> 
+      </TechStackEntity>
+
+      <TechStackEntity name="JClass" rating="Restricted" complexity="medium">
+		<VariableMapping name="com.klg.jclass.chart.ChartDataView" />
+		<VariableMapping name="com.klg.jclass.chart.data.JCDefaultDataSource" />
+		<VariableMapping name="com.klg.jclass.chart.JCAxis" />
+		<VariableMapping name="com.klg.jclass.chart.JCCandleChartFormat" />
+		<VariableMapping name="com.klg.jclass.chart.JCChartLabel" />
+		<VariableMapping name="com.klg.jclass.chart.JCChartStyle" />
+		<VariableMapping name="com.klg.jclass.chart.JCPieChartFormat" />
+		<VariableMapping name="com.klg.jclass.schart.JCServerChart" />
+		 </TechStackEntity>
+
+   </ArchitecturalLayerMapping>
+
+   <ArchitecturalLayerMapping name="Security">
+      <TechStackEntity name="JCE Crypto" rating="OK" complexity="medium">
+         <VariableMapping name="javax.crypto.*" />
+             	<License name="Sun"/>
+	       	<JarFile name="jce.jar" version="1.2.2" size="76355"/>
+	       	<Home url="http://java.sun.com/products/jce/"/>
+      </TechStackEntity>
+
+      <TechStackEntity name="Security Certificate" rating="OK" complexity="medium">
+         <VariableMapping name="javax.security.cert.X509Certificate" />
+
+         <VariableMapping name="javax.security.cert.*" />
+
+         <VariableMapping name="com.ibm.xml.dsig.*" />
+             	<License name="UNKNOWN"/>
+	       	<JarFile name="UNKNOWN" version="NA" size="0"/>
+	       	<Home url=""/>
+      </TechStackEntity>
+
+      <TechStackEntity name="SSL" rating="OK" complexity="standard">
+         <VariableMapping name="javax.net.ssl.SSLSocket" />
+
+         <VariableMapping name="javax.net.ssl.*" />
+
+         <VariableMapping name="com.sun.net.ssl.*" />
+             	<License name="UNKNOWN"/>
+	       	<JarFile name="UNKNOWN" version="NA" size="0"/>
+	       	<Home url=""/>
+      </TechStackEntity>
+
+	  <TechStackEntity name="Jfree Chart" rating="OK" complexity="medium">
+         <VariableMapping name="org.jfree.data.DefaultIntervalCategoryDataset"/>
+
+             	<License name="UNKNOWN"/>
+	       	<JarFile name="UNKNOWN" version="NA" size="0"/>
+	       	<Home url=""/>
+      </TechStackEntity>
+
+	  <TechStackEntity name="Netscape Directory Service for	
+							java" rating="OK" complexity="medium">
+         <VariableMapping name="netscape.ldap.LDAPAttribute"/>
+         <VariableMapping name="netscape.ldap.LDAPAttributeSet"/>
+         <VariableMapping name="netscape.ldap.LDAPConnection"/>
+         <VariableMapping name="netscape.ldap.LDAPEntry"/>
+         <VariableMapping name="netscape.ldap.LDAPException"/>
+         <VariableMapping name="netscape.ldap.LDAPSearchResults"/>		 
+         <VariableMapping name="netscape.ldap.LDAPUrl"/>
+  
+             	<License name="UNKNOWN"/>
+	       	<JarFile name="UNKNOWN" version="NA" size="0"/>
+	       	<Home url=""/>
+      </TechStackEntity>
+
+
+   </ArchitecturalLayerMapping>
+
+   <ArchitecturalLayerMapping name="Tests">
+      <TechStackEntity name="HttpUnit" rating="OK" complexity="high">
+         <VariableMapping name="com.meterware.httpunit.WebConversation" />
+
+         <VariableMapping name="com.meterware.httpunit.WebLink[]" />
+
+         <VariableMapping name="com.meterware.httpunit.WebForm" />
+
+         <VariableMapping name="com.meterware.httpunit.*" />
+             	<License name="LPGL"/>
+	       	<JarFile name="httpunit.jar" version="1.5.4" size="341000"/>
+	       	<Home url=""/>
+      </TechStackEntity>
+
+      <TechStackEntity name="JUnit Test" rating="OK" complexity="medium">
+         <ExtensionMapping name="junit.framework.Test" />
+
+         <ExtensionMapping name="junit.framework.TestCase" />
+
+         <VariableMapping name="junit.framework.TestSuite" />
+             	<License name="Common Public License"/>
+	       	<JarFile name="junit.jar" version="3.8.1" size="203000"/>
+	       	<Home url="http://www.junit.org/index.htm"/>
+      </TechStackEntity>
+
+	<TechStackEntity name="Struts Test" rating="OK" complexity="medium">
+
+		 <ExtensionMapping name="servletunit.struts.CactusStrutsTestCase" />
+       
+             	<License name="UNKNOWN"/>
+	       	<JarFile name="UNKNOWN" version="NA" size="0"/>
+	       	<Home url=""/>
+      </TechStackEntity>
+
+     <TechStackEntity name="Server Side Test" rating="OK" complexity="medium">
+         <VariableMapping name="org.apache.cactus.server.HttpServletRequestWrapper" />
+         <VariableMapping name="org.apache.cactus.server.ServletConfigWrapper" />
+             	<License name="UNKNOWN"/>
+	       	<JarFile name="UNKNOWN" version="NA" size="0"/>
+      </TechStackEntity>
+
+   </ArchitecturalLayerMapping>
+
+   <ArchitecturalLayerMapping name="Controller">
+   </ArchitecturalLayerMapping>
+   
+   <ComplexityMappingTable>
+   	<ComplexityMapping name="mini" rate="1"/>
+   	<ComplexityMapping name="small" rate="2"/>
+   	<ComplexityMapping name="medium" rate="5"/>
+   	<ComplexityMapping name="high" rate="10"/>
+   	<ComplexityMapping name="huge" rate="20"/>
+   </ComplexityMappingTable>
+</ArchitecturalLayerMappingSet>
+

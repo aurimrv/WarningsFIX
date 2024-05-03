@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root><label>pool1</label><branch><leaf><label>org.apache.commons.pool</label><weight>43</weight><value>43</value></leaf></branch><branch><leaf><label>org.apache.commons.pool.impl</label><weight>471</weight><value>471</value></leaf></branch></root>

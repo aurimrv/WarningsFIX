@@ -1,0 +1,66 @@
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<TITLE>Hammurapi 3.18.4 [Inspector]</TITLE>
+<STYLE>
+		                <!-- 
+		                    TABLE.standard { background:silver }
+		                    TH.standard { font:bold; background:white }
+		                    TR.standard { background:white }
+		                    .code-snippet { background-color:EEEEEE; color:blue }
+		                    .hidden { color:EEEEEE; } 
+				    span.problem { font:bold; color:red }
+				    span.fix { font:bold; color:green }
+		                 --> 
+		                </STYLE>
+</HEAD>
+<BODY>
+<DL>
+<DT>
+<a name="inspector_ER-080"><B style="color:blue">ER-080</B> </a>Avoid "for", "do", "while", "if" and "if ... else" statements with empty bodies</DT>
+<P></P>
+<DD>
+<TABLE cellspacing="1" cellpadding="3" class="standard">
+<TR class="standard">
+<TH align="left" valign="top">Severity</TH><TD>1</TD>
+</TR>
+<TR class="standard">
+<TH align="left" valign="top">Enabled</TH><TD>yes</TD>
+</TR>
+<TR class="standard">
+<TH align="left" valign="top">Waivable</TH><TD></TD>
+</TR>
+<TR class="standard">
+<TH align="left" valign="top">Violation</TH><TD>
+<PRE class="code-snippet">private static final int RETVAL1 = 10;
+private static final int RETVAL2 = 1;
+public int getInt(final boolean which) {
+	if (which) {
+	} else {
+		return RETVAL2;
+	}
+	return RETVAL1;
+}</PRE>
+</TD>
+</TR>
+<TR class="standard">
+<TH align="left" valign="top">Fix</TH><TD>
+<PRE class="code-snippet">private static final int RETVAL1 = 10;
+private static final int RETVAL2 = 1;
+public int getInt(final boolean which) {
+	if (which) {
+		return RETVAL1;
+	} else {
+		return RETVAL2;
+	}
+}</PRE>
+</TD>
+</TR>
+</TABLE>
+</DD>
+<P></P>
+</DL>
+<HR>
+<i>Hammurapi 3.18.4 Copyright &copy; 2004 Hammurapi Group. All Rights Reserved.</i>
+</BODY>
+</HTML>

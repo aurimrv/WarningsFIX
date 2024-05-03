@@ -1,0 +1,74 @@
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<TITLE>Hammurapi 3.18.4 [Inspector]</TITLE>
+<STYLE>
+		                <!-- 
+		                    TABLE.standard { background:silver }
+		                    TH.standard { font:bold; background:white }
+		                    TR.standard { background:white }
+		                    .code-snippet { background-color:EEEEEE; color:blue }
+		                    .hidden { color:EEEEEE; } 
+				    span.problem { font:bold; color:red }
+				    span.fix { font:bold; color:green }
+		                 --> 
+		                </STYLE>
+</HEAD>
+<BODY>
+<DL>
+<DT>
+<a name="inspector_ER-039"><B style="color:blue">ER-039</B> </a>Catching too general exception type.</DT>
+<P></P>
+<DD>
+<TABLE cellspacing="1" cellpadding="3" class="standard">
+<TR class="standard">
+<TH align="left" valign="top">Severity</TH><TD>2</TD>
+</TR>
+<TR class="standard">
+<TH align="left" valign="top">Enabled</TH><TD>yes</TD>
+</TR>
+<TR class="standard">
+<TH align="left" valign="top">Waivable</TH><TD></TD>
+</TR>
+<TR class="standard">
+<TH align="left" valign="top">Configuration</TH><TD>
+<PRE>Too general exceptions to be catched:
+
+</PRE>
+</TD>
+</TR>
+<TR class="standard">
+<TH align="left" valign="top">Rationale</TH><TD>Application shall define exception hierarchy and exception handling strategy, 
+    	catching of Throwable, Exception or RuntimeException shall not be a common practice, but 
+    	be concentrated in a few classes, for which waivers shall be given.</TD>
+</TR>
+<TR class="standard">
+<TH align="left" valign="top">Violation</TH><TD>
+<PRE class="code-snippet">try {
+	InputStream is = new FileInputStream(fName);
+	return is.read();
+} catch (Exception e) {
+	logger.error(FILE_ERROR_TXT, e);
+	throw new HammurapiTestCasesException(e);
+}</PRE>
+</TD>
+</TR>
+<TR class="standard">
+<TH align="left" valign="top">Fix</TH><TD>
+<PRE class="code-snippet">try {
+	InputStream is = new FileInputStream(fName);
+	return is.read();
+} catch (java.io.IOException e) {
+	logger.error(FILE_ERROR_TXT, e);
+	throw new HammurapiTestCasesException(e);
+}</PRE>
+</TD>
+</TR>
+</TABLE>
+</DD>
+<P></P>
+</DL>
+<HR>
+<i>Hammurapi 3.18.4 Copyright &copy; 2004 Hammurapi Group. All Rights Reserved.</i>
+</BODY>
+</HTML>

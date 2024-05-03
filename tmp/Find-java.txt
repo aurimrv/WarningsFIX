@@ -1,0 +1,4 @@
+Find/source/paper/Find.java
+Find/outputs/05-jlint-Find/05-jlint-source-paper-Find.java
+Find/outputs/07-esc-java-Find/07-esc-java-source-paper-Find.java
+Find/outputs/06-pmd-Find/06-pmd-source-paper-Find.java

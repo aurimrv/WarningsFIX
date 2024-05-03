@@ -1,0 +1,60 @@
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<TITLE>Hammurapi 3.18.4 [Inspector]</TITLE>
+<STYLE>
+		                <!-- 
+		                    TABLE.standard { background:silver }
+		                    TH.standard { font:bold; background:white }
+		                    TR.standard { background:white }
+		                    .code-snippet { background-color:EEEEEE; color:blue }
+		                    .hidden { color:EEEEEE; } 
+				    span.problem { font:bold; color:red }
+				    span.fix { font:bold; color:green }
+		                 --> 
+		                </STYLE>
+</HEAD>
+<BODY>
+<DL>
+<DT>
+<a name="inspector_ER-063"><B style="color:blue">ER-063</B> </a>Declare 'ejbPostCreate ()' "public" and neither "static" nor "final"</DT>
+<P></P>
+<DD>
+<TABLE cellspacing="1" cellpadding="3" class="standard">
+<TR class="standard">
+<TH align="left" valign="top">Severity</TH><TD>1</TD>
+</TR>
+<TR class="standard">
+<TH align="left" valign="top">Enabled</TH><TD>yes</TD>
+</TR>
+<TR class="standard">
+<TH align="left" valign="top">Waivable</TH><TD></TD>
+</TR>
+<TR class="standard">
+<TH align="left" valign="top">Violation</TH><TD>
+<PRE class="code-snippet">void ejbPostCreate() {
+}
+static void ejbPostCreate(final int pProdSubmissionID) {
+}
+public final void ejbPostCreate(final Integer pProdSubmissionID) {
+}</PRE>
+</TD>
+</TR>
+<TR class="standard">
+<TH align="left" valign="top">Fix</TH><TD>
+<PRE class="code-snippet">public void ejbPostCreate() {
+}
+public void ejbPostCreate(final int pProdSubmissionID) {
+}
+public void ejbPostCreate(final Integer pProdSubmissionID) {
+}</PRE>
+</TD>
+</TR>
+</TABLE>
+</DD>
+<P></P>
+</DL>
+<HR>
+<i>Hammurapi 3.18.4 Copyright &copy; 2004 Hammurapi Group. All Rights Reserved.</i>
+</BODY>
+</HTML>

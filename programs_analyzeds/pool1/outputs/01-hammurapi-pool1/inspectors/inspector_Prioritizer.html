@@ -1,0 +1,44 @@
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<TITLE>Hammurapi 3.18.4 [Inspector]</TITLE>
+<STYLE>
+		                <!-- 
+		                    TABLE.standard { background:silver }
+		                    TH.standard { font:bold; background:white }
+		                    TR.standard { background:white }
+		                    .code-snippet { background-color:EEEEEE; color:blue }
+		                    .hidden { color:EEEEEE; } 
+				    span.problem { font:bold; color:red }
+				    span.fix { font:bold; color:green }
+		                 --> 
+		                </STYLE>
+</HEAD>
+<BODY>
+<DL>
+<DT>
+<a name="inspector_Prioritizer"><B style="color:blue">Prioritizer</B> </a>Generates priority metric. This metric is calculated 
+		as 100/((ln(clients+1)+1)*violationLevel+1) where clients is a number 
+		of classes which depend on classes in this file and violationLevel is a weighed sum
+		of violations in the file. In a nutshell the worse the code in the file the lower
+		priority metric value and as such the higher its position in the list.</DT>
+<P></P>
+<DD>
+<TABLE cellspacing="1" cellpadding="3" class="standard">
+<TR class="standard">
+<TH align="left" valign="top">Severity</TH><TD>5</TD>
+</TR>
+<TR class="standard">
+<TH align="left" valign="top">Enabled</TH><TD>yes</TD>
+</TR>
+<TR class="standard">
+<TH align="left" valign="top">Waivable</TH><TD></TD>
+</TR>
+</TABLE>
+</DD>
+<P></P>
+</DL>
+<HR>
+<i>Hammurapi 3.18.4 Copyright &copy; 2004 Hammurapi Group. All Rights Reserved.</i>
+</BODY>
+</HTML>

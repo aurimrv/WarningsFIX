@@ -1,0 +1,82 @@
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<TITLE>Hammurapi 3.18.4 [Inspector]</TITLE>
+<STYLE>
+		                <!-- 
+		                    TABLE.standard { background:silver }
+		                    TH.standard { font:bold; background:white }
+		                    TR.standard { background:white }
+		                    .code-snippet { background-color:EEEEEE; color:blue }
+		                    .hidden { color:EEEEEE; } 
+				    span.problem { font:bold; color:red }
+				    span.fix { font:bold; color:green }
+		                 --> 
+		                </STYLE>
+</HEAD>
+<BODY>
+<DL>
+<DT>
+<a name="inspector_ER-206"><B style="color:blue">ER-206</B> </a> Wrong declaration of SQL Resources Management: Do not declare Statements and ResultSets on Instance Level but use local variables on method level only. You may run in leakage problems if you do not close these resources in a connection-pooled environment. </DT>
+<P></P>
+<DD>
+<TABLE class="standard" cellpadding="3" cellspacing="1">
+<TR class="standard">
+<TH valign="top" align="left">Severity</TH><TD>2</TD>
+</TR>
+<TR class="standard">
+<TH valign="top" align="left">Enabled</TH><TD>yes</TD>
+</TR>
+<TR class="standard">
+<TH valign="top" align="left">Waivable</TH><TD></TD>
+</TR>
+<TR class="standard">
+<TH valign="top" align="left">Violation</TH><TD>
+<PRE class="code-snippet">public class MyDao {
+Statement global_stmt = null;
+ResultSet rs = null;
+public void select(){
+	Connection lcon_dbConnection = getConnection();
+	int i = 0;
+	try{
+	    global_stmt = lcon_dbConnection.createStatement();
+	    rs	= global_stmt.executeQuery("SELECT * FROM DUAL" );
+	 } catch (Exception ex){
+	     ex.printStackTrace();
+	 }
+}</PRE>
+</TD>
+</TR>
+<TR class="standard">
+<TH valign="top" align="left">Fix</TH><TD>
+<PRE class="code-snippet">public class MyDao {
+		        
+public void selectWithLocalResources() throws Exception{
+    Statement stmt = null;
+    ResultSet rs = null;
+try{
+    Connection lcon_dbConnection = getConnection();
+    stmt = lcon_dbConnection.createStatement();
+    rs	= global_stmt.executeQuery("SELECT * FROM DUAL" );
+ } catch (Exception ex){
+     ex.printStackTrace();
+ }finally{
+	if (stmt != null){
+	   stmt.close();
+	}
+	if (rs != null){
+	    rs.close();
+	}
+ }
+}
+}</PRE>
+</TD>
+</TR>
+</TABLE>
+</DD>
+<P></P>
+</DL>
+<HR>
+<i>Hammurapi 3.18.4 Copyright &copy; 2004 Hammurapi Group. All Rights Reserved.</i>
+</BODY>
+</HTML>

@@ -1,0 +1,9 @@
+
+<waivers>
+	<waiver>
+		<inspector-name>ER-002</inspector-name>
+		<signature>a/B.java:an[B]:ai[getAA()]:en[1]:er[java.lang.NumberFormatException]</signature>
+		<reason>Sample waiver</reason>
+		<expiration-date>2007/01/22</expiration-date>
+	</waiver>
+</waivers>

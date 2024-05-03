@@ -1,0 +1,163 @@
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<TITLE>query</TITLE>
+<STYLE>
+                    <!-- 
+                        TABLE.standard { background:silver }
+                        TH.standard { font:bold; background:gray; color:white }
+                        TR.standard { background:white }
+                        .code-snippet { background-color:EEEEEE; color:blue }
+                        .hidden { color:EEEEEE; }
+                     --> 
+                    </STYLE>
+</HEAD>
+<BODY>
+<H1>query</H1>
+<H2>Description</H2>
+            
+<P>
+            
+</P>
+            
+<H2>Implementing Class</H2>
+                
+<P>com.pavelvlasov.sqlc.QueryEntry</P>
+            
+            
+<H2>Attributes</H2>
+                
+<TABLE cellpadding="3" cellspacing="1" class="standard">
+                    
+<TR class="standard">
+                        
+<TH class="standard">Attribute</TH>
+                        <TH class="standard">Description</TH>
+                        <TH class="standard">Required</TH>
+                    
+</TR>
+                    
+<TR class="standard">
+                        
+<TD class="standard">smartBase</TD>
+                        <TD class="standard">Base class (fully qualified name) for generated smart implementation. Default is com.pavelvlasov.sql.DatabaseObject The base class is supposed to have same constructors and methods as DatabaseObject. The idea is to subclass DatabaseObject to introduce additional qualities like audit, metrics, security, ... whithout changing class' contract. Applies only if isSmart==true. If not set explicitly the value is inherited from the task.
+</TD>
+                        <TD class="standard">No.</TD>
+                    
+</TR>
+                    
+<TR class="standard">
+                        
+<TD class="standard">smart</TD>
+                        <TD class="standard">Forces generation of smart interface implementation
+</TD>
+                        <TD class="standard">No.</TD>
+                    
+</TR>
+                    
+<TR class="standard">
+                        
+<TD class="standard">generateMutators</TD>
+                        <TD class="standard">If 'true' (default) then mutators (setters) are generated along with accessors (getters) in row interface.
+</TD>
+                        <TD class="standard">No.</TD>
+                    
+</TR>
+                    
+<TR class="standard">
+                        
+<TD class="standard">singleRow</TD>
+                        <TD class="standard">Set it to true if query always yield a single row, of if you are interesed in only the first row from returned resultset.
+</TD>
+                        <TD class="standard">No.</TD>
+                    
+</TR>
+                    
+<TR class="standard">
+                        
+<TD class="standard">hasNullableParameters</TD>
+                        <TD class="standard">Set it to true if query contains primitive type parameters which can be 'NULL' and engine will be generated with primitive type wrapper classes as parameters. E.g. java.lang.Integer instead of int.
+</TD>
+                        <TD class="standard">No.</TD>
+                    
+</TR>
+                    
+<TR class="standard">
+                        
+<TD class="standard">parameters</TD>
+                        <TD class="standard">Sets parameter names and types. Useful with not fully compilian JDBC drivers. Comma separated list of parameters in Java format, e.g. int a, long b, java.lang.String c. Type is optional. Class names must be fully qualified. Specifications can be skipped, e.g. int a,,java.lang.String c Type can include SQL type as defined in java.sql.Types. E.g. int:INTEGER, both sides are optional. Nullability can be specified using 'nullable' and 'not nullable' modifiers. Full types grammar looks like: <PRE> parameters = parameter? (, parameter)* parameter = name | (typeDefinition name ("nullable" | "not nullable")?) typeDefinition = javaType | (javaType? ":" sqlType?) </PRE> An alternative way to override parameter types is to use nested parameter element. Nested elements take precedence over parameters attribute.
+</TD>
+                        <TD class="standard">No.</TD>
+                    
+</TR>
+                    
+<TR class="standard">
+                        
+<TD class="standard">name</TD>
+                        <TD class="standard">Statement name
+</TD>
+                        <TD class="standard">Yes.</TD>
+                    
+</TR>
+                    
+<TR class="standard">
+                        
+<TD class="standard">description</TD>
+                        <TD class="standard">Statement description
+</TD>
+                        <TD class="standard">No.</TD>
+                    
+</TR>
+                    
+<TR class="standard">
+                        
+<TD class="standard">useSqlTypes</TD>
+                        <TD class="standard">If true then generated classes will use setObject(int, Object, int) method instead of setObject(int, Object) to set parameters of object type. Inherits value from task. Default value is false.
+</TD>
+                        <TD class="standard">No.</TD>
+                    
+</TR>
+                
+</TABLE>
+            
+
+            
+<H2>Nested Elements</H2>
+                
+<TABLE cellpadding="3" cellspacing="1" class="standard">
+                    
+<TR class="standard">
+                        
+<TH class="standard">Element</TH>
+                        <TH class="standard">Description</TH>
+                    
+</TR>
+                    
+<TR class="standard">
+                        
+<TD class="standard"><a href="../../../com/pavelvlasov/sqlc/ColumnType.html">column</a></TD>
+                        <TD class="standard">Column type. Overrides type reported by database.</TD>
+                    
+</TR>
+                    
+<TR class="standard">
+                        
+<TD class="standard"><a href="../../../com/pavelvlasov/sqlc/ParamType.html">parameter</a></TD>
+                        <TD class="standard">Parameter type. Overrides type reported by database.</TD>
+                    
+</TR>
+                    
+<TR class="standard">
+                        
+<TD class="standard"><a href="http://java.sun.com/j2se/1.4.2/docs/api/java/lang/String.html">text</a></TD>
+                        <TD class="standard">SQL query per-se.</TD>
+                    
+</TR>
+                
+</TABLE>
+            
+        
+<HR>
+<I>Hammurapi 3.18.4 Copyright &copy;2004 Hammurapi Group. All Rights Reserved.</I>
+</BODY>
+</HTML>

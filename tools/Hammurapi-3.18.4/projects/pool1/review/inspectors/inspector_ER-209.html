@@ -1,0 +1,92 @@
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<TITLE>Hammurapi 3.18.4 [Inspector]</TITLE>
+<STYLE>
+		                <!-- 
+		                    TABLE.standard { background:silver }
+		                    TH.standard { font:bold; background:white }
+		                    TR.standard { background:white }
+		                    .code-snippet { background-color:EEEEEE; color:blue }
+		                    .hidden { color:EEEEEE; } 
+				    span.problem { font:bold; color:red }
+				    span.fix { font:bold; color:green }
+		                 --> 
+		                </STYLE>
+</HEAD>
+<BODY>
+<DL>
+<DT>
+<a name="inspector_ER-209"><B style="color:blue">ER-209</B> </a>SQL Resource Management - Create Statement Number doesn't fit to Close Statement : You have to close each created SQL Statement on method level. The inspector counts the number of create- and close statement calls, and report a violation if there are less close calls as create calls. This may be wrong diagnosis if you nest your create statements in if-then-else blocks. If you use a operation in the finally block for closing your SQL resource, please define the operation name in the inspector.xml. Hammurapi will search for this method call and check the parameter list. This rule is only applicable in a connection-pooled environment.</DT>
+<P></P>
+<DD>
+<TABLE cellspacing="1" cellpadding="3" class="standard">
+<TR class="standard">
+<TH align="left" valign="top">Severity</TH><TD>1</TD>
+</TR>
+<TR class="standard">
+<TH align="left" valign="top">Enabled</TH><TD>no</TD>
+</TR>
+<TR class="standard">
+<TH align="left" valign="top">Waivable</TH><TD></TD>
+</TR>
+<TR class="standard">
+<TH align="left" valign="top">Violation</TH><TD>
+<PRE class="code-snippet">
+         public void selectMultiplePrepStatements(){
+                 PreparedStatement pstmt = null;
+                 Connection conn = null;
+                 try{
+                     pstmt=conn.prepareStatement("SELECT * FROM Something");
+                     
+                     //-- do something but no close()
+                     pstmt=conn.prepareStatement("SELECT * FROM Something");
+                 } catch (Exception ex){
+                     ex.printStackTrace();
+                 } finally {
+                     try{
+                    
+                         if(pstmt != null){pstmt.close();}
+                                 } catch (Exception ex){
+                         ex.printStackTrace();
+                     }
+                 }
+             }
+      </PRE>
+</TD>
+</TR>
+<TR class="standard">
+<TH align="left" valign="top">Fix</TH><TD>
+<PRE class="code-snippet">
+         public void selectMultiplePrepStatements(){
+                 PreparedStatement pstmt = null;
+                 Connection conn = null;
+                 try{
+                     pstmt=conn.prepareStatement("SELECT * FROM Something");
+                     pstmt.close();
+                     //-- do something 
+                     
+                     pstmt=conn.prepareStatement("SELECT * FROM Something");
+                 } catch (Exception ex){
+                     ex.printStackTrace();
+                 } finally {
+                     try{
+                    
+                         if(pstmt != null){pstmt.close();}
+                                 } catch (Exception ex){
+                         ex.printStackTrace();
+                     }
+                 }
+             }]
+             
+      </PRE>
+</TD>
+</TR>
+</TABLE>
+</DD>
+<P></P>
+</DL>
+<HR>
+<i>Hammurapi 3.18.4 Copyright &copy; 2004 Hammurapi Group. All Rights Reserved.</i>
+</BODY>
+</HTML>

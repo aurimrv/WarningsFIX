@@ -1,0 +1,57 @@
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<TITLE>Hammurapi 3.18.4 [Inspector]</TITLE>
+<STYLE>
+		                <!-- 
+		                    TABLE.standard { background:silver }
+		                    TH.standard { font:bold; background:white }
+		                    TR.standard { background:white }
+		                    .code-snippet { background-color:EEEEEE; color:blue }
+		                    .hidden { color:EEEEEE; } 
+				    span.problem { font:bold; color:red }
+				    span.fix { font:bold; color:green }
+		                 --> 
+		                </STYLE>
+</HEAD>
+<BODY>
+<DL>
+<DT>
+<a name="inspector_ER-015"><B style="color:blue">ER-015</B> </a>Duplicate import declaration</DT>
+<P></P>
+<DD>
+<TABLE class="standard" cellpadding="3" cellspacing="1">
+<TR class="standard">
+<TH valign="top" align="left">Severity</TH><TD>3</TD>
+</TR>
+<TR class="standard">
+<TH valign="top" align="left">Enabled</TH><TD>yes</TD>
+</TR>
+<TR class="standard">
+<TH valign="top" align="left">Waivable</TH><TD></TD>
+</TR>
+<TR class="standard">
+<TH valign="top" align="left">Violation</TH><TD>
+<PRE class="code-snippet">import java.io.FileInputStream;
+import java.io.InputStream;
+import java.io.IOException;
+import org.hammurapi.inspectors.testcases.HammurapiTestCasesException;
+import java.io.FileInputStream;</PRE>
+</TD>
+</TR>
+<TR class="standard">
+<TH valign="top" align="left">Fix</TH><TD>
+<PRE class="code-snippet">import java.io.FileInputStream;
+import java.io.InputStream;
+import java.io.IOException;
+import org.hammurapi.inspectors.testcases.HammurapiTestCasesException;</PRE>
+</TD>
+</TR>
+</TABLE>
+</DD>
+<P></P>
+</DL>
+<HR>
+<i>Hammurapi 3.18.4 Copyright &copy; 2004 Hammurapi Group. All Rights Reserved.</i>
+</BODY>
+</HTML>

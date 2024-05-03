@@ -1,0 +1,140 @@
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<TITLE>tableentry</TITLE>
+<STYLE>
+                    <!-- 
+                        TABLE.standard { background:silver }
+                        TH.standard { font:bold; background:gray; color:white }
+                        TR.standard { background:white }
+                        .code-snippet { background-color:EEEEEE; color:blue }
+                        .hidden { color:EEEEEE; }
+                     --> 
+                    </STYLE>
+</HEAD>
+<BODY>
+<H1>tableentry</H1>
+<H2>Description</H2>
+            
+<P>
+            
+</P>
+            
+<H2>Implementing Class</H2>
+                
+<P>com.pavelvlasov.sqlc.TableEntry</P>
+            
+            
+<H2>Attributes</H2>
+                
+<TABLE cellpadding="3" cellspacing="1" class="standard">
+                    
+<TR class="standard">
+                        
+<TH class="standard">Attribute</TH>
+                        <TH class="standard">Description</TH>
+                        <TH class="standard">Required</TH>
+                    
+</TR>
+                    
+<TR class="standard">
+                        
+<TD class="standard">catalog</TD>
+                        <TD class="standard">Catalog. Any catalog matches if not set
+</TD>
+                        <TD class="standard">No.</TD>
+                    
+</TR>
+                    
+<TR class="standard">
+                        
+<TD class="standard">schema</TD>
+                        <TD class="standard">Schema. Any schema matches if not set
+</TD>
+                        <TD class="standard">No.</TD>
+                    
+</TR>
+                    
+<TR class="standard">
+                        
+<TD class="standard">table</TD>
+                        <TD class="standard">Table. Any table matches if not set
+</TD>
+                        <TD class="standard">No.</TD>
+                    
+</TR>
+                    
+<TR class="standard">
+                        
+<TD class="standard">qualifiedName</TD>
+                        <TD class="standard">Indicate where to qualify table name with schema name. Valid values are - 'none', 'table', 'method', and 'both'
+</TD>
+                        <TD class="standard">No.</TD>
+                    
+</TR>
+                    
+<TR class="standard">
+                        
+<TD class="standard">generateMutators</TD>
+                        <TD class="standard">If 'true' (default) then mutators (setters) are generated along with accessors (getters) in row interfaces.
+</TD>
+                        <TD class="standard">No.</TD>
+                    
+</TR>
+                    
+<TR class="standard">
+                        
+<TD class="standard">paramPerColumnInsert</TD>
+                        <TD class="standard">If 'true' (default) insert() method is generated for table with all columns listed as method parameters. For tables with big number of columns it is better off to set this attribute to false and use insert(&lt;RowInterface&gt;) method.
+</TD>
+                        <TD class="standard">No.</TD>
+                    
+</TR>
+                    
+<TR class="standard">
+                        
+<TD class="standard">useSqlTypes</TD>
+                        <TD class="standard">If true then generated classes will use setObject(int, Object, int) method instead of setObject(int, Object) to set parameters of object type. Inherits value from task. Default value is true.
+</TD>
+                        <TD class="standard">No.</TD>
+                    
+</TR>
+                    
+<TR class="standard">
+                        
+<TD class="standard">smartBase</TD>
+                        <TD class="standard">Base class (fully qualified name) for generated smart implementation. Default is com.pavelvlasov.sql.DatabaseObject The base class is supposed to have same constructors and methods as DatabaseObject. The idea is to subclass DatabaseObject to introduce additional qualities like audit, metrics, security, ... whithout changing class' contract. If this value is not set explicitly it gets inherited from the task.
+</TD>
+                        <TD class="standard">No.</TD>
+                    
+</TR>
+                
+</TABLE>
+            
+
+            
+<H2>Nested Elements</H2>
+                
+<TABLE cellpadding="3" cellspacing="1" class="standard">
+                    
+<TR class="standard">
+                        
+<TH class="standard">Element</TH>
+                        <TH class="standard">Description</TH>
+                    
+</TR>
+                    
+<TR class="standard">
+                        
+<TD class="standard"><a href="../../../com/pavelvlasov/sqlc/ColumnType.html">column</a></TD>
+                        <TD class="standard">Column type. Overrides type reported by database.</TD>
+                    
+</TR>
+                
+</TABLE>
+            
+        
+<HR>
+<I>Hammurapi 3.18.4 Copyright &copy;2004 Hammurapi Group. All Rights Reserved.</I>
+</BODY>
+</HTML>

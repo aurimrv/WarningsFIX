@@ -1,0 +1,3 @@
+Triangulo/source/paper/Triangulo.java
+Triangulo/outputs/05-jlint-Triangulo/05-jlint-source-paper-Triangulo.java
+Triangulo/outputs/07-esc-java-Triangulo/07-esc-java-source-paper-Triangulo.java

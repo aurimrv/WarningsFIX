@@ -1,0 +1,18 @@
+ <jcsc version="__0.95__" date="2003-06-18 09:01:13">
+    <rules>
+      <rule name="CFProRegExp" category="Field" enabled="true">
+        <type>regexp</type>
+        <value>s[A-Z0-9][\w\d]*</value>
+        <severity>3</severity>
+      </rule>
+      <rule name="NestedTypeBlockPlaceRule" category="General" enabled="true">
+         <type>multichoice</type>
+         <choices>
+           <choice>Beginning of Class</choice>
+           <choice>End of Class</choice>
+         </choices>
+         <value>End of Class</value>
+        <severity>3</severity>
+      </rule>
+    </rules>
+ </jcsc>

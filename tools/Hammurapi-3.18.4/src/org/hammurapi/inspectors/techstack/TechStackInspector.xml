@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tech-stack>
+    <license key="public domain">
+		<name>Public domain</name>
+        <description>Public domain software</description>
+    </license>
+	
+    <license key="GPL">
+		<name>GPL</name>
+        <description>GNU General Public License</description>
+		<url>http://www.opensource.org/licenses/gpl-license.php</url>
+    </license>
+	
+    <license key="LGPL">
+		<name>LGPL</name>
+        <description>GNU Lesser General Public License</description>
+		<url>http://www.opensource.org/licenses/lgpl-license.php</url>
+    </license>
+	
+    <license key="CPL">
+		<name>CPL</name>
+        <description>Common Public License</description>
+		<url>http://www.eclipse.org/legal/cpl-v10.html</url>
+    </license>
+	
+    <license key="Apache">
+        <name>Apache license</name>
+        <url>http://www.opensource.org/licenses/apache2.0.php</url>
+    </license>
+	
+    <publisher>
+        <name>Apache foundation</name>
+        <url>http://www.apache.org</url>
+		<license-ref>Apache</license-ref>
+		<package>org.apache</package>
+    </publisher>
+	
+    <publisher>
+        <name>Pavel Vlasov</name>
+        <url>http://www.pavelvlasov.com</url>
+        <product>
+            <name>Jsel</name>
+			<description>Parses Java source files and represents them as a graph of Java objects (repository)</description>
+			<category>Parsers</category>
+            <url>http://www.pavelvlasov.com/pv/content/Products/Jsel/products.jsel.html</url>
+            <license-ref>GPL</license-ref>
+            <package>com.pavelvlasov.jsel</package>
+        </product>
+        <product>
+            <name>Hammurapi</name>
+			<description>Code review tool</description>
+			<category>Code review</category>
+            <url>http://www.hammurapi.org</url>
+            <license-ref>GPL</license-ref>
+            <package>org.hammurapi</package>
+        </product>
+		
+        <product>
+            <name>Common library</name>
+			<description>Collection of utility classes</description>
+			<category>Misc. library</category>
+            <url>http://www.pavelvlasov.com/pv/content/Products/Common/products.common.html</url>
+            <license-ref>LGPL</license-ref>
+			<package>com.pavelvlasov</package>
+        </product>
+    </publisher>
+	
+    <publisher>
+        <name>Eclipse contributors</name>
+        <url>http://www.eclipse.org</url>
+        <product>
+            <name>Eclipse platform</name>
+			<description>Java IDE</description>
+			<category>IDE</category>
+            <url>http://www.eclipse.org/platform</url>
+            <license-ref>CPL</license-ref>
+            <package>org.eclipse</package>
+        </product>
+    </publisher>
+	
+    <publisher>
+        <name>Terence Parr</name>
+        <url>mailto:parrt@antlr.org</url>
+        <product>
+            <name>Antlr</name>
+			<description>Parser generator</description>
+			<category>Parsers</category>
+            <url>http://www.antlr.org</url>
+            <license-ref>public domain</license-ref>
+            <package>antlr</package>
+        </product>
+    </publisher>
+	
+    <publisher>
+        <name>JUnit contributors</name>
+        <url>http://www.junit.org</url>
+        <product>
+            <name>JUnit</name>
+			<description>Unit testing framwork</description>
+			<category>Testing</category>
+            <url>http://www.junit.org</url>
+            <license-ref>CPL</license-ref>
+            <package>junit</package>
+        </product>
+    </publisher>
+	
+    <publisher>
+        <name>Sun Microsystems</name>
+        <url>http://www.sun.com</url>
+        <product ignore="yes">
+            <name>Java/JDBC</name>
+            <url>http://java.sun.com</url>
+            <package>java.sql</package>
+            <package>javax.sql</package>
+        </product>
+		
+        <product ignore="yes">
+            <name>Java platform</name>
+            <url>http://java.sun.com</url>
+            <package>(default)</package>
+            <package>java</package>
+            <package>javax</package>
+        </product>
+    </publisher>
+</tech-stack>

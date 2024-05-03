@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+
+<!--
+    DTD pour un TreeMap.
+-->
+
+<!ELEMENT root (label,(branch |item)*)>
+
+<!ELEMENT branch (label,(branch|item)*)>
+
+<!ELEMENT item (label,weight,value) >
+
+<!ELEMENT label (#PCDATA) >
+
+<!ELEMENT weight (#PCDATA) >
+
+<!ELEMENT value (#PCDATA) >

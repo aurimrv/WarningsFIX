@@ -1,0 +1,103 @@
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<TITLE>Hammurapi 3.18.4 [Inspector]</TITLE>
+<STYLE>
+		                <!-- 
+		                    TABLE.standard { background:silver }
+		                    TH.standard { font:bold; background:white }
+		                    TR.standard { background:white }
+		                    .code-snippet { background-color:EEEEEE; color:blue }
+		                    .hidden { color:EEEEEE; } 
+				    span.problem { font:bold; color:red }
+				    span.fix { font:bold; color:green }
+		                 --> 
+		                </STYLE>
+</HEAD>
+<BODY>
+<DL>
+<DT>
+<a name="inspector_ER-204"><B style="color:blue">ER-204</B> </a>Allocation of the resource should follow try/finally pattern to ensure proper de-allocation.</DT>
+<P></P>
+<DD>
+<TABLE class="standard" cellpadding="3" cellspacing="1">
+<TR class="standard">
+<TH valign="top" align="left">Severity</TH><TD>2</TD>
+</TR>
+<TR class="standard">
+<TH valign="top" align="left">Enabled</TH><TD>yes</TD>
+</TR>
+<TR class="standard">
+<TH valign="top" align="left">Waivable</TH><TD></TD>
+</TR>
+<TR class="standard">
+<TH valign="top" align="left">Rationale</TH><TD>Allocating resource and not properly disposing it is a common problem in applications (JDBC/JNDI/Sockets).
+		Usually this happens due to not using try/finally pattern.</TD>
+</TR>
+<TR class="standard">
+<TH valign="top" align="left">Violation</TH><TD>
+<PRE class="code-snippet">
+void problemCode1(DataSource ds)
+{
+  Connection <span class="problem">conn</span> = ds.getConnection();
+  PreparedStatement stmt = conn.prepareStatement("SELECT * FROM MY_TABLE");
+  //...
+  <span class="problem">conn.close();</span>
+}
+		
+void problemCode2(DataSource ds)
+{
+  Connection conn = null;
+  <span class="problem">try</span>
+  {
+    Connection conn = ds.getConnection();
+    PreparedStatement stmt = conn.prepareStatement("SELECT * FROM MY_TABLE");
+    //...
+  }
+  finally
+  {
+    conn.close();
+  }
+}
+
+void problemCode3(DataSource ds)
+{
+  Connection conn = ds.getConnection();;
+  try
+  {
+    //...
+  }
+  finally
+  {
+    <span class="problem">
+    conn.getAutoCommit(); // can throw an exeption and next line never execute
+    conn.close();
+    </span>
+  }
+}
+</PRE>
+</TD>
+</TR>
+<TR class="standard">
+<TH valign="top" align="left">Fix</TH><TD>
+<PRE class="code-snippet">
+Connection conn = ds.getConnection();
+<span class="fix">try</span>
+{
+  PreparedStatement stmt = conn.prepareStatement("SELECT * FROM MY_TABLE");
+	//...
+}
+<span class="fix">finally</span>
+{
+  conn.close();
+}</PRE>
+</TD>
+</TR>
+</TABLE>
+</DD>
+<P></P>
+</DL>
+<HR>
+<i>Hammurapi 3.18.4 Copyright &copy; 2004 Hammurapi Group. All Rights Reserved.</i>
+</BODY>
+</HTML>

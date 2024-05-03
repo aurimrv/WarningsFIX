@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><waivers><!--Source: a/B.java
+Line: 19
+Col: 19
+Description: Empty catch block
+Messsage: Empty catch block--><waiver><inspector-name>ER-002</inspector-name><signature>a/B.java:an[B]:ai[getAA()]:en[1]:er[java.lang.NumberFormatException]</signature><reason>*** Put reason here ***</reason><expiration-date>2013/04/27</expiration-date></waiver><!--Source: a/B.java
+Line: 31
+Col: 19
+Description: Empty catch block
+Messsage: Empty catch block--><waiver><inspector-name>ER-002</inspector-name><signature>a/B.java:an[B]:ai[kala()]:en[1]:er[java.lang.NumberFormatException]</signature><reason>*** Put reason here ***</reason><expiration-date>2013/04/27</expiration-date></waiver></waivers>

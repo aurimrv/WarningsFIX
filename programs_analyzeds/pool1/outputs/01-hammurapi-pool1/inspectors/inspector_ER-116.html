@@ -1,0 +1,62 @@
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<TITLE>Hammurapi 3.18.4 [Inspector]</TITLE>
+<STYLE>
+		                <!-- 
+		                    TABLE.standard { background:silver }
+		                    TH.standard { font:bold; background:white }
+		                    TR.standard { background:white }
+		                    .code-snippet { background-color:EEEEEE; color:blue }
+		                    .hidden { color:EEEEEE; } 
+				    span.problem { font:bold; color:red }
+				    span.fix { font:bold; color:green }
+		                 --> 
+		                </STYLE>
+</HEAD>
+<BODY>
+<DL>
+<DT>
+<a name="inspector_ER-116"><B style="color:blue">ER-116</B> </a>Use StringBuffer for excessive String concatenation. This inspector skips 
+		static fields initializers, single concatenations (one +) and concatenations of constants like
+		"a"+"b"+"c" because they are calculated at compile time.</DT>
+<P></P>
+<DD>
+<TABLE cellspacing="1" cellpadding="3" class="standard">
+<TR class="standard">
+<TH align="left" valign="top">Severity</TH><TD>3</TD>
+</TR>
+<TR class="standard">
+<TH align="left" valign="top">Enabled</TH><TD>yes</TD>
+</TR>
+<TR class="standard">
+<TH align="left" valign="top">Waivable</TH><TD></TD>
+</TR>
+<TR class="standard">
+<TH align="left" valign="top">Rationale</TH><TD>StringBuffer with reserved capacity more than default can yield as much 
+		as 50% performance improvement in string concatenation operations</TD>
+</TR>
+<TR class="standard">
+<TH align="left" valign="top">Violation</TH><TD>
+<PRE class="code-snippet">public String concat(String a, String b, String c) {
+	// VIOLATION
+	return a+b+c;
+}</PRE>
+</TD>
+</TR>
+<TR class="standard">
+<TH align="left" valign="top">Fix</TH><TD>
+<PRE class="code-snippet">public String concat(String a, String b, String c) {
+	// FIX
+	return new StringBuffer(100).append(a).append(b).append(c).toString();
+}</PRE>
+</TD>
+</TR>
+</TABLE>
+</DD>
+<P></P>
+</DL>
+<HR>
+<i>Hammurapi 3.18.4 Copyright &copy; 2004 Hammurapi Group. All Rights Reserved.</i>
+</BODY>
+</HTML>

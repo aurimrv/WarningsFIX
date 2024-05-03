@@ -1,0 +1,480 @@
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<TITLE>Hammurapi 3.18.4 [Inspector set]</TITLE>
+<STYLE>
+                <!-- 
+                    TABLE.standard { background:silver }
+                    TH.standard { font:bold; background:white }
+                    TR.standard { background:white }
+                    .code-snippet { background-color:EEEEEE; color:blue }
+                    .hidden { color:EEEEEE; } 
+                 --> 
+                </STYLE>
+</HEAD>
+<BODY>
+<DL>
+<DT>
+<B>Coding Guidelines</B>
+</DT>
+<DD>1. <a href="inspectors/inspector_ER-054.html"><B style="color:blue">ER-054</B></a>
+				            (1)
+				            Avoid calling an "abstract" method from a constructor in an "abstract" class</DD>
+<DD>2. <a href="inspectors/inspector_ER-033.html"><B style="color:blue">ER-033</B></a>
+					            (2)
+					            Source file is too long</DD>
+<DD>3. <a href="inspectors/inspector_ER-104.html"><B style="color:blue">ER-104</B></a>
+					            (2)
+					            Use a Collection instead of arrays Object[]</DD>
+<DD>4. <a href="inspectors/inspector_ER-031.html"><B style="color:blue">ER-031</B></a>
+					            (3)
+					            More than one statement per line</DD>
+<DD>5. <a href="inspectors/inspector_ER-032.html"><B style="color:blue">ER-032</B></a>
+					            (3)
+					            Array declarators should be placed next to the type, not the variable name</DD>
+<DD>6. <a href="inspectors/inspector_ER-034.html"><B style="color:blue">ER-034</B></a>
+					            (3)
+					            Variables should be declared in individual statements.</DD>
+<DD>7. <a href="inspectors/inspector_ER-036.html"><B style="color:blue">ER-036</B></a>
+					            (3)
+					            Line is too long</DD>
+<DD>8. <a href="inspectors/inspector_ER-096.html"><B style="color:blue">ER-096</B></a>
+					            (3)
+					            Empty statements</DD>
+<DD>9. <a href="inspectors/inspector_ER-098.html"><B style="color:blue">ER-098</B></a>
+					            (3)
+					            No need to provide (public, abstract, ) modifiers for interface methods</DD>
+<DD>10. <a href="inspectors/inspector_ER-107.html"><B style="color:blue">ER-107</B></a>
+					            (3)
+					            Instance variables and method names shouldn't have same name</DD>
+<DD>11. <a href="inspectors/inspector_ER-200.html"><B style="color:blue">ER-200</B></a>
+					            (3)
+					            Instance variables and the declaring type shouldn't have same name</DD>
+<DD>12. <a href="inspectors/inspector_ER-201.html"><B style="color:blue">ER-201</B></a>
+					            (3)
+					            Discourage usage of instance variables like a, j by enforcing minimal variable name length.</DD>
+<P></P>
+<DT>
+<B>Coding standards</B>
+</DT>
+<DD>13. <a href="inspectors/inspector_ER-211.html"><B style="color:blue">ER-211</B></a>
+					            (2)
+					            Dot chain (e.g. a().b.c.d().e().g().toString()) is too long.</DD>
+<DD>14. <a href="inspectors/inspector_ER-114.html"><B style="color:blue">ER-114</B></a>
+					            (3)
+					            Use object.equals(anotherObject) instead of 
+		object.compareTo(anotherObject)==0</DD>
+<DD>15. <a href="inspectors/inspector_ER-210.html"><B style="color:blue">ER-210</B></a>
+					            (3)
+					            StringTokenizer is deprecated, use String.split() instead.</DD>
+<P></P>
+<DT>
+<B>Database Connection Pool</B>
+</DT>
+<DD>16. <a href="inspectors/inspector_ER-207.html"><B style="color:blue">ER-207</B></a>
+					            (1)
+					             SQL Resource Management - Create Statement Without Close Rule: You have to close each created SQL Statement on method level. Use the finally block, but check for null  value. If you use a operation in the finally block for closing your SQL resource, please define the operation name in the inspector.xml. Hammurapi will search for this method call and check the parameter list. This rule is only applicable in a connection-pooled environment.</DD>
+<DD>17. <a href="inspectors/inspector_ER-208.html"><B style="color:blue">ER-208</B></a>
+					            (1)
+					             SQL Resource Management - Create Statement Within a Loop: Never create Statements inside loops. This rule is only applicable in a connection-pooled environment.</DD>
+<DD>18. <a href="inspectors/inspector_ER-206.html"><B style="color:blue">ER-206</B></a>
+					            (2)
+					             Wrong declaration of SQL Resources Management: Do not declare Statements and ResultSets on Instance Level but use local variables on method level only. You may run in leakage problems if you do not close these resources in a connection-pooled environment. </DD>
+<P></P>
+<DT>
+<B>EJB</B>
+</DT>
+<DD>19. <a href="inspectors/inspector_ER-055.html"><B style="color:blue">ER-055</B></a>
+					            (1)
+					            Declare bean classes "public", but not "final"</DD>
+<DD>20. <a href="inspectors/inspector_ER-056.html"><B style="color:blue">ER-056</B></a>
+					            (1)
+					            Declare 'ejbCreate ()' methods  "public", but neither "static" nor "final"</DD>
+<DD>21. <a href="inspectors/inspector_ER-057.html"><B style="color:blue">ER-057</B></a>
+					            (1)
+					            Declare finder methods "public" and neither "final" nor "static"</DD>
+<DD>22. <a href="inspectors/inspector_ER-058.html"><B style="color:blue">ER-058</B></a>
+					            (1)
+					            Implement one or more 'ejbCreate ()' methods in bean classes</DD>
+<DD>23. <a href="inspectors/inspector_ER-059.html"><B style="color:blue">ER-059</B></a>
+					            (1)
+					            Implement matching 'ejbPostCreate ()' methods for every 'ejbCreate()' in EntityBean classes</DD>
+<DD>24. <a href="inspectors/inspector_ER-061.html"><B style="color:blue">ER-061</B></a>
+					            (1)
+					            Do not define 'finalize ()' method in bean classes</DD>
+<DD>25. <a href="inspectors/inspector_ER-063.html"><B style="color:blue">ER-063</B></a>
+					            (1)
+					            Declare 'ejbPostCreate ()' "public" and neither "static" nor "final"</DD>
+<DD>26. <a href="inspectors/inspector_ER-064.html"><B style="color:blue">ER-064</B></a>
+					            (1)
+					            Make the return type "void" for SessionBeans' 'ejbCreate ()' methods</DD>
+<DD>27. <a href="inspectors/inspector_ER-065.html"><B style="color:blue">ER-065</B></a>
+					            (1)
+					            Make the return type "void" for the 'ejbPostCreate ()' method</DD>
+<DD>28. <a href="inspectors/inspector_ER-066.html"><B style="color:blue">ER-066</B></a>
+					            (1)
+					            Avoid passing the "this" reference as an argument</DD>
+<DD>29. <a href="inspectors/inspector_ER-067.html"><B style="color:blue">ER-067</B></a>
+					            (1)
+					            Avoid returning "this"</DD>
+<DD>30. <a href="inspectors/inspector_ER-068.html"><B style="color:blue">ER-068</B></a>
+					            (1)
+					            Avoid starting, stopping, or managing threads in any way</DD>
+<DD>31. <a href="inspectors/inspector_ER-060.html"><B style="color:blue">ER-060</B></a>
+					            (2)
+					            Avoid loading native libraries in a Bean class</DD>
+<DD>32. <a href="inspectors/inspector_ER-062.html"><B style="color:blue">ER-062</B></a>
+					            (2)
+					            Declare all "static" fields in the EJB component "final"</DD>
+<P></P>
+<DT>
+<B>EJB, Clustring, or Load Balancing Architecture</B>
+</DT>
+<DD>33. <a href="inspectors/inspector_ER-212.html"><B style="color:blue">ER-212</B></a>
+					            (2)
+					            Statefull Singleton could cause problems in an environment of EJB, Clustering, or Load Balancing Architecture. Make sure that all you class and instance variables are final. This inspector found non-final variable(s), beside the variable referenzing the singleton.</DD>
+<P></P>
+<DT>
+<B>Exception handling</B>
+</DT>
+<DD>34. <a href="inspectors/inspector_ER-039.html"><B style="color:blue">ER-039</B></a>
+					            (2)
+					            Catching too general exception type.</DD>
+<DD>35. <a href="inspectors/inspector_ER-045.html"><B style="color:blue">ER-045</B></a>
+					            (2)
+					            Throw too general exception type (Exception, Throwable, RuntimeException)</DD>
+<DD>36. <a href="inspectors/inspector_ER-046.html"><B style="color:blue">ER-046</B></a>
+					            (2)
+					            Method declares too general exception types (Exception, Throwable) in throws clause</DD>
+<DD>37. <a href="inspectors/inspector_ER-047.html"><B style="color:blue">ER-047</B></a>
+					            (2)
+					            Operation (method or constructor) declares subclasses of RuntimeException in throws clause</DD>
+<DD>38. <a href="inspectors/inspector_ER-095.html"><B style="color:blue">ER-095</B></a>
+					            (2)
+					            Too many exceptions listed in throws clause</DD>
+<P></P>
+<DT>
+<B>Garbage Collection</B>
+</DT>
+<DD>39. <a href="inspectors/inspector_ER-069.html"><B style="color:blue">ER-069</B></a>
+					            (1)
+					            Avoid calling 'finalize ()' explicitly</DD>
+<DD>40. <a href="inspectors/inspector_ER-070.html"><B style="color:blue">ER-070</B></a>
+					            (2)
+					            Avoid "static" collections; they can grow without bounds</DD>
+<P></P>
+<DT>
+<B>General</B>
+</DT>
+<DD>41. <a href="inspectors/inspector_ER-214.html"><B style="color:blue">ER-214</B></a>
+					            (1)
+					            Heterogenous Collection detected: The code adds objects of different types in a collection. This can cause serious mainteance issues. 
+   	   The creator and consumer of the collection have to have implicit knowledge about the index of a specific object inside of the collection.
+   
+   
+   	   Go with a dedicated parameter or Data Transfer Object instead.
+   
+   	   There is only one exception for using Heterogenous Collection: If all objects in the collection implement a  specific interface, this is acceptable.
+   	   </DD>
+<P></P>
+<DT>
+<B>JavaDoc</B>
+</DT>
+<DD>42. <a href="inspectors/inspector_ER-105.html"><B style="color:blue">ER-105</B></a>
+					            (3)
+					            Document all Interfaces and public methods. Use a Class header. Provide Javadoc</DD>
+<P></P>
+<DT>
+<B>Logging</B>
+</DT>
+<DD>43. <a href="inspectors/inspector_ER-052.html"><B style="color:blue">ER-052</B></a>
+					            (1)
+					            Do not use printStackTrace(), use logger(<Message>, <exception>) instead.</DD>
+<DD>44. <a href="inspectors/inspector_ER-049.html"><B style="color:blue">ER-049</B></a>
+					            (2)
+					            Unify logging strategy - define individual logger for class</DD>
+<DD>45. <a href="inspectors/inspector_ER-103.html"><B style="color:blue">ER-103</B></a>
+					            (2)
+					            Catch-blocks should log the exeption with Log4J.error("Context String"  , exception )</DD>
+<P></P>
+<DT>
+<B>Miscellaneous</B>
+</DT>
+<DD>46. <a href="inspectors/inspector_ER-002.html"><B style="color:blue">ER-002</B></a>
+					            (1)
+					            Empty catch block</DD>
+<DD>47. <a href="inspectors/inspector_ER-006.html"><B style="color:blue">ER-006</B></a>
+					            (1)
+					            Missing default case for switch statement</DD>
+<DD>48. <a href="inspectors/inspector_ER-011.html"><B style="color:blue">ER-011</B></a>
+					            (1)
+					            Cyclomatic complexity exceeds specified limit</DD>
+<DD>49. <a href="inspectors/inspector_ER-019.html"><B style="color:blue">ER-019</B></a>
+					            (1)
+					            Avoid 'return' in finally block - meaning of this is not always obvious to the maintainer</DD>
+<DD>50. <a href="inspectors/inspector_ER-024.html"><B style="color:blue">ER-024</B></a>
+					            (1)
+					            Directory structure should match package structure</DD>
+<DD>51. <a href="inspectors/inspector_ER-027.html"><B style="color:blue">ER-027</B></a>
+					            (1)
+					            Avoid using "new" keyword when creating String objects to hold string literals.</DD>
+<DD>52. <a href="inspectors/inspector_ER-053.html"><B style="color:blue">ER-053</B></a>
+					            (1)
+					            ResultSetMetaData is banned. The disclosure of DB internals (here Column Names) on Business/Service layer is bad design</DD>
+<DD>53. <a href="inspectors/inspector_ER-072.html"><B style="color:blue">ER-072</B></a>
+					            (1)
+					            Avoid using constructors in the 'clone ()' method</DD>
+<DD>54. <a href="inspectors/inspector_ER-073.html"><B style="color:blue">ER-073</B></a>
+					            (1)
+					            Call 'super.clone ()' in all 'clone ()' methods</DD>
+<DD>55. <a href="inspectors/inspector_ER-108.html"><B style="color:blue">ER-108</B></a>
+					            (1)
+					            Application controlled garbage collection is banned in a J2EE environment and mostly indicates lack of design.</DD>
+<DD>56. <a href="inspectors/inspector_ER-111.html"><B style="color:blue">ER-111</B></a>
+					            (1)
+					            LOG4J is mandatory for all logging in ERC. System.out.println will be lost in a system console of our web/app server.</DD>
+<DD>57. <a href="inspectors/inspector_ER-004.html"><B style="color:blue">ER-004</B></a>
+					            (2)
+					            A class should have no public fields except 'final' or 'static final'"</DD>
+<DD>58. <a href="inspectors/inspector_ER-008.html"><B style="color:blue">ER-008</B></a>
+					            (2)
+					            Synchronize at the block level rather than the method level</DD>
+<DD>59. <a href="inspectors/inspector_ER-009.html"><B style="color:blue">ER-009</B></a>
+					            (2)
+					            For statement requires update clause</DD>
+<DD>60. <a href="inspectors/inspector_ER-010.html"><B style="color:blue">ER-010</B></a>
+					            (2)
+					            Assignment inside conditional</DD>
+<DD>61. <a href="inspectors/inspector_ER-012.html"><B style="color:blue">ER-012</B></a>
+					            (2)
+					            Too many parameters</DD>
+<DD>62. <a href="inspectors/inspector_ER-013.html"><B style="color:blue">ER-013</B></a>
+					            (2)
+					            For statement requires initialization clause (1st argument)</DD>
+<DD>63. <a href="inspectors/inspector_ER-014.html"><B style="color:blue">ER-014</B></a>
+					            (2)
+					            For statement requires condition clause (2nd argument)"</DD>
+<DD>64. <a href="inspectors/inspector_ER-016.html"><B style="color:blue">ER-016</B></a>
+					            (2)
+					            Missing package declaration - encourage structuring and avoid namesapace conflicts by using packages</DD>
+<DD>65. <a href="inspectors/inspector_ER-017-E.html"><B style="color:blue">ER-017-E</B></a>
+					            (2)
+					            Do not assign new value to a parameter. For comprehensibility, formal parameters should be final</DD>
+<DD>66. <a href="inspectors/inspector_ER-020.html"><B style="color:blue">ER-020</B></a>
+					            (2)
+					            Avoid empty finally block</DD>
+<DD>67. <a href="inspectors/inspector_ER-021.html"><B style="color:blue">ER-021</B></a>
+					            (2)
+					            One class/interface per file.</DD>
+<DD>68. <a href="inspectors/inspector_ER-026.html"><B style="color:blue">ER-026</B></a>
+					            (2)
+					            Avoid expressions like <expression> ? true : false</DD>
+<DD>69. <a href="inspectors/inspector_ER-037.html"><B style="color:blue">ER-037</B></a>
+					            (2)
+					            Logical nesting limit exceeded</DD>
+<DD>70. <a href="inspectors/inspector_ER-038.html"><B style="color:blue">ER-038</B></a>
+					            (2)
+					            Non-sequential logic - 'continue' statement</DD>
+<DD>71. <a href="inspectors/inspector_ER-040.html"><B style="color:blue">ER-040</B></a>
+					            (2)
+					            Avoid equality operations on 'true' and 'false' boolean literals.</DD>
+<DD>72. <a href="inspectors/inspector_ER-041.html"><B style="color:blue">ER-041</B></a>
+					            (2)
+					            Method is too long</DD>
+<DD>73. <a href="inspectors/inspector_ER-043.html"><B style="color:blue">ER-043</B></a>
+					            (2)
+					            Packages should be neither too lean nor too fat.</DD>
+<DD>74. <a href="inspectors/inspector_ER-071.html"><B style="color:blue">ER-071</B></a>
+					            (2)
+					            Avoid using an object to access "static" fields or methods</DD>
+<DD>75. <a href="inspectors/inspector_ER-074.html"><B style="color:blue">ER-074</B></a>
+					            (2)
+					            Avoid using "public static final" array fields</DD>
+<DD>76. <a href="inspectors/inspector_ER-112.html"><B style="color:blue">ER-112</B></a>
+					            (2)
+					            File doesn't contain classes or interfaces</DD>
+<DD>77. <a href="inspectors/inspector_ER-113.html"><B style="color:blue">ER-113</B></a>
+					            (2)
+					            Unused private/local variables</DD>
+<DD>78. <a href="inspectors/inspector_ER-202.html"><B style="color:blue">ER-202</B></a>
+					            (2)
+					            Disallows to use a particular type or package in a particular context.</DD>
+<DD>79. <a href="inspectors/inspector_ER-000.html"><B style="color:blue">ER-000</B></a>
+					            (3)
+					            No need to import classes from java.lang</DD>
+<DD>80. <a href="inspectors/inspector_ER-001.html"><B style="color:blue">ER-001</B></a>
+					            (3)
+					            <B>Imports</B> should be ordered according to the configuartion parameters and further for each parameter, imports should be arrange alphabetically </DD>
+<DD>81. <a href="inspectors/inspector_ER-003.html"><B style="color:blue">ER-003</B></a>
+					            (3)
+					            do, while, if, and for statements need a brace enclosed block</DD>
+<DD>82. <a href="inspectors/inspector_ER-005.html"><B style="color:blue">ER-005</B></a>
+					            (3)
+					            Classes, interfaces, methods, and variables should be named according to Sun's naming conventions.</DD>
+<DD>83. <a href="inspectors/inspector_ER-007.html"><B style="color:blue">ER-007</B></a>
+					            (3)
+					            Use upper case 'L' rather that lower case 'l' to qualify long literals</DD>
+<DD>84. <a href="inspectors/inspector_ER-015.html"><B style="color:blue">ER-015</B></a>
+					            (3)
+					            Duplicate import declaration</DD>
+<DD>85. <a href="inspectors/inspector_ER-018.html"><B style="color:blue">ER-018</B></a>
+					            (3)
+					            Sun coding standards - class modifiers should be in order (public protected private abstract static final strictfp)</DD>
+<DD>86. <a href="inspectors/inspector_ER-022.html"><B style="color:blue">ER-022</B></a>
+					            (3)
+					            No * imports.</DD>
+<DD>87. <a href="inspectors/inspector_ER-023.html"><B style="color:blue">ER-023</B></a>
+					            (3)
+					            Packages should begin with project or organization package prefix</DD>
+<DD>88. <a href="inspectors/inspector_ER-025.html"><B style="color:blue">ER-025</B></a>
+					            (3)
+					            Parenthesis are redundant</DD>
+<DD>89. <a href="inspectors/inspector_ER-109.html"><B style="color:blue">ER-109</B></a>
+					            (3)
+					            It is good practice to call in any case super() in a constructor. (see also: UnnecessaryConstructorRule )</DD>
+<DD>90. <a href="inspectors/inspector_ER-110.html"><B style="color:blue">ER-110</B></a>
+					            (3)
+					            Unnecessary constructor detects when a constructor is not necessary; i.e., when there's only one constructor, it's public, has an empty body, and takes no arguments. </DD>
+<P></P>
+<DT>
+<B>Object Oriented Programming</B>
+</DT>
+<DD>91. <a href="inspectors/inspector_ER-075.html"><B style="color:blue">ER-075</B></a>
+					            (1)
+					            Avoid hiding inherited instance fields</DD>
+<DD>92. <a href="inspectors/inspector_ER-077.html"><B style="color:blue">ER-077</B></a>
+					            (2)
+					            Avoid more than two levels of nested inner classes</DD>
+<P></P>
+<DT>
+<B>Performance</B>
+</DT>
+<DD>93. <a href="inspectors/inspector_ER-116.html"><B style="color:blue">ER-116</B></a>
+					            (3)
+					            Use StringBuffer for excessive String concatenation. This inspector skips 
+		static fields initializers, single concatenations (one +) and concatenations of constants like
+		"a"+"b"+"c" because they are calculated at compile time.</DD>
+<P></P>
+<DT>
+<B>Possible bugs</B>
+</DT>
+<DD>94. <a href="inspectors/inspector_ER-035.html"><B style="color:blue">ER-035</B></a>
+					            (1)
+					            Switch statement case without 'break'</DD>
+<DD>95. <a href="inspectors/inspector_ER-048.html"><B style="color:blue">ER-048</B></a>
+					            (1)
+					            Use BigDecimal instead of Float or Double for monetary values</DD>
+<DD>96. <a href="inspectors/inspector_ER-080.html"><B style="color:blue">ER-080</B></a>
+					            (1)
+					            Avoid "for", "do", "while", "if" and "if ... else" statements with empty bodies</DD>
+<DD>97. <a href="inspectors/inspector_ER-084.html"><B style="color:blue">ER-084</B></a>
+					            (1)
+					            Avoid using text labels in "switch" statements</DD>
+<DD>98. <a href="inspectors/inspector_ER-079.html"><B style="color:blue">ER-079</B></a>
+					            (2)
+					            Avoid casting primitive data types to lower precision</DD>
+<DD>99. <a href="inspectors/inspector_ER-081.html"><B style="color:blue">ER-081</B></a>
+					            (2)
+					            Do not assign loop control variables in the body of a "for" loop</DD>
+<DD>100. <a href="inspectors/inspector_ER-102.html"><B style="color:blue">ER-102</B></a>
+					            (2)
+					            String Arrays are deprecated and are ONLY allowed for final variables</DD>
+<DD>101. <a href="inspectors/inspector_ER-106.html"><B style="color:blue">ER-106</B></a>
+					            (2)
+					            If you have to compare with a string do not use  degree.equals("1"))  but "1".equals(degree)</DD>
+<DD>102. <a href="inspectors/inspector_ER-028.html"><B style="color:blue">ER-028</B></a>
+					            (3)
+					            Avoid hardwired character literals</DD>
+<DD>103. <a href="inspectors/inspector_ER-029.html"><B style="color:blue">ER-029</B></a>
+					            (3)
+					            Avoid hardwired numeric literals</DD>
+<DD>104. <a href="inspectors/inspector_ER-030.html"><B style="color:blue">ER-030</B></a>
+					            (3)
+					            Avoid hardwired string literals</DD>
+<DD>105. <a href="inspectors/inspector_ER-082.html"><B style="color:blue">ER-082</B></a>
+					            (3)
+					            Avoid using method parameter names that conflict with class member names</DD>
+<DD>106. <a href="inspectors/inspector_ER-083.html"><B style="color:blue">ER-083</B></a>
+					            (3)
+					            Avoid giving non-constructor methods the same name as the class</DD>
+<P></P>
+<DT>
+<B>Reports</B>
+</DT>
+<DD>107. <a href="inspectors/inspector_ER-History.html"><B style="color:blue">ER-History</B></a>
+					            (5)
+					            Generates history annotation.</DD>
+<DD>108. <a href="inspectors/inspector_Technology stack.html"><B style="color:blue">Technology stack</B></a>
+					            (5)
+					            Technology stack report</DD>
+<P></P>
+<DT>
+<B>Resource management</B>
+</DT>
+<DD>109. <a href="inspectors/inspector_ER-204.html"><B style="color:blue">ER-204</B></a>
+					            (2)
+					            Allocation of the resource should follow try/finally pattern to ensure proper de-allocation.</DD>
+<P></P>
+<DT>
+<B>Security</B>
+</DT>
+<DD>110. <a href="inspectors/inspector_ER-076.html"><B style="color:blue">ER-076</B></a>
+					            (1)
+					            Make inner classes "private"</DD>
+<P></P>
+<DT>
+<B>Servlet</B>
+</DT>
+<DD>111. <a href="inspectors/inspector_ER-086.html"><B style="color:blue">ER-086</B></a>
+					            (2)
+					            Minimize synchronization in Servlets</DD>
+<P></P>
+<DT>
+<B>Threads and Synchronization</B>
+</DT>
+<DD>112. <a href="inspectors/inspector_ER-088.html"><B style="color:blue">ER-088</B></a>
+					            (1)
+					            Avoid using variables of type 'java.lang.ThreadGroup'</DD>
+<DD>113. <a href="inspectors/inspector_ER-089.html"><B style="color:blue">ER-089</B></a>
+					            (2)
+					            Avoid using 'Thread.yield'</DD>
+<DD>114. <a href="inspectors/inspector_ER-091.html"><B style="color:blue">ER-091</B></a>
+					            (2)
+					            Give subclasses of Thread a 'run ()' method</DD>
+<DD>115. <a href="inspectors/inspector_ER-093.html"><B style="color:blue">ER-093</B></a>
+					            (2)
+					            Call 'wait ()' only inside a "while" loop</DD>
+<DD>116. <a href="inspectors/inspector_ER-094.html"><B style="color:blue">ER-094</B></a>
+					            (2)
+					            Use 'wait ()' and 'notifyAll ()' instead of polling loops</DD>
+<DD>117. <a href="inspectors/inspector_ER-099.html"><B style="color:blue">ER-099</B></a>
+					            (2)
+					            Use the "synchronized" modifier on methods that implement 'Runnable.run ()'</DD>
+<DD>118. <a href="inspectors/inspector_ER-087.html"><B style="color:blue">ER-087</B></a>
+					            (3)
+					            Do not use 'notify ()'; use 'notifyAll ()' instead</DD>
+<P></P>
+<DT>
+<B>Work prioritization</B>
+</DT>
+<DD>119. <a href="inspectors/inspector_Prioritizer.html"><B style="color:blue">Prioritizer</B></a>
+					            (5)
+					            Generates priority metric. This metric is calculated 
+		as 100/((ln(clients+1)+1)*violationLevel+1) where clients is a number 
+		of classes which depend on classes in this file and violationLevel is a weighed sum
+		of violations in the file. In a nutshell the worse the code in the file the lower
+		priority metric value and as such the higher its position in the list.</DD>
+</DL>
+<H2>Sources</H2>
+<table class="standard">
+<tr class="standard">
+<th class="standard">Name</th><th class="standard">Location</th><th class="standard">Revision</th>
+</tr>
+<tr class="standard">
+<td class="standard">Embedded inspectors</td><td class="standard">Hammurapi.jar</td><td class="standard">$Revision: 1.24 $</td>
+</tr>
+</table>
+<HR>
+<i>Hammurapi 3.18.4 Copyright &copy; 2004 Hammurapi Group. All Rights Reserved.</i>
+</BODY>
+</HTML>

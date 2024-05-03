@@ -1,0 +1,72 @@
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<TITLE>Hammurapi 3.18.4 [Inspector]</TITLE>
+<STYLE>
+		                <!-- 
+		                    TABLE.standard { background:silver }
+		                    TH.standard { font:bold; background:white }
+		                    TR.standard { background:white }
+		                    .code-snippet { background-color:EEEEEE; color:blue }
+		                    .hidden { color:EEEEEE; } 
+				    span.problem { font:bold; color:red }
+				    span.fix { font:bold; color:green }
+		                 --> 
+		                </STYLE>
+</HEAD>
+<BODY>
+<DL>
+<DT>
+<a name="inspector_ER-097"><B style="color:blue">ER-097</B> </a>Declare only predefined set of exceptions in throws clause (application layer specific)</DT>
+<P></P>
+<DD>
+<TABLE cellspacing="1" cellpadding="3" class="standard">
+<TR class="standard">
+<TH align="left" valign="top">Severity</TH><TD>2</TD>
+</TR>
+<TR class="standard">
+<TH align="left" valign="top">Enabled</TH><TD>no</TD>
+</TR>
+<TR class="standard">
+<TH align="left" valign="top">Waivable</TH><TD></TD>
+</TR>
+<TR class="standard">
+<TH align="left" valign="top">Configuration</TH><TD>
+<PRE>Allowed exceptions in the thorws clauses:
+allowed-throw: org.hammurapi.inspectors.testcases.HammurapiTestCasesException	
+</PRE>
+</TD>
+</TR>
+<TR class="standard">
+<TH align="left" valign="top">Violation</TH><TD>
+<PRE class="code-snippet">public void setFirstByte(final String fName)	throws IOException {
+	FileInputStream fin = null;
+	fin = new FileInputStream(fName);
+	firstByte = fin.read();
+	fin.close();
+}</PRE>
+</TD>
+</TR>
+<TR class="standard">
+<TH align="left" valign="top">Fix</TH><TD>
+<PRE class="code-snippet">public void setFirstByte(final String fName)throws HammurapiTestCasesException {
+	FileInputStream fin = null;
+	try {
+		fin = new FileInputStream(fName);
+		firstByte = fin.read();
+		fin.close();
+	} catch (IOException e) {
+		logger.error(FILE_ERROR_TXT, e);
+		throw new HammurapiTestCasesException(e);
+	}
+}</PRE>
+</TD>
+</TR>
+</TABLE>
+</DD>
+<P></P>
+</DL>
+<HR>
+<i>Hammurapi 3.18.4 Copyright &copy; 2004 Hammurapi Group. All Rights Reserved.</i>
+</BODY>
+</HTML>

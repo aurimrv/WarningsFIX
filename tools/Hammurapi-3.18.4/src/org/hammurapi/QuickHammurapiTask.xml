@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+<!DOCTYPE rule-set SYSTEM "rule-set.dtd">
+-->
+
+<inspector-set>
+	<inspector-descriptor>
+		<name>ER-024</name>
+		<enabled>no</enabled>
+	</inspector-descriptor>
+     
+	<inspector-descriptor>
+		<name>NCSS</name>
+		<enabled>no</enabled>
+	</inspector-descriptor>
+     
+    <inspector-descriptor>
+    	<name>CallerTrace</name>
+    	<enabled>no</enabled>
+	</inspector-descriptor>
+
+	<inspector-descriptor>
+		<name>Architecture</name>
+		<enabled>no</enabled>
+	</inspector-descriptor>
+</inspector-set>
+
+

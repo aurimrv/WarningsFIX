@@ -1,0 +1,14 @@
+<project name="jReview" default="replace" basedir=".">
+    <target name="replace">
+	<replace dir="." 
+		token=".getOperands().get("
+		value=".getOperand("
+	>
+	  <include name="**/*.java"/>
+	</replace>
+
+    </target>
+</project>
+
+
+

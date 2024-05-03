@@ -1,0 +1,97 @@
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<STYLE>
+                <!-- 
+                    .lineNum { width:40px; background:silver; text-align:right; padding-right:3px; color:maroon }
+                    .reserved_word { color:blue; font:bold }
+                    .comment { color:gray }
+                    .literal { color:maroon }
+                    TH.standard { font:bold; background:gray }
+                    TABLE.standard { background:silver }
+                    TR.standard { background:white }
+             --> 
+            </STYLE>
+<TITLE>Hammurapi 3.18.4 []</TITLE>
+</HEAD>
+<BODY>
+<H1>PoolableObjectFactory.java</H1>
+<BR>     
+            Package: org.apache.commons.pool<P></P>
+<P></P>
+<B style="color:blue">Results</B>
+<table cellspacing="0" cellpadding="5">
+<tr>
+<th align="left">Date</th><td align="right">2016/06/28</td>
+</tr>
+<tr>
+<th align="left">Codebase</th><td align="right">169</td>
+</tr>
+<tr>
+<th align="left">Reviews</th><td align="right">257</td>
+</tr>
+<tr title="Defects per million opportunities">
+<td align="left"><B>DPMO</B></td><td align="right">1595</td>
+</tr>
+<tr title="Sigma">
+<td align="left"><B>Sigma</B></td><td align="right">4,449</td>
+</tr>
+</table>
+<P></P>
+<B style="color:blue">Metrics</B>
+<table border="0" cellspacing="1" cellpadding="3" class="standard">
+<tr class="standard">
+<th class="standard">Name</th><th class="standard">Number</th><th class="standard">Min</th><th class="standard">Avg</th><th class="standard">Max</th><th class="standard">Total</th>
+</tr>
+<tr class="standard">
+<td>Code length</td><td align="right">5</td><td align="right">0.00</td><td align="right">0.00</td><td align="right">0.00</td><td align="right">0.00</td>
+</tr>
+<tr class="standard">
+<td>File length</td><td align="right">1</td><td align="right">139.00</td><td align="right">139.00</td><td align="right">139.00</td><td align="right">139.00</td>
+</tr>
+<tr class="standard">
+<td>Operation complexity</td><td align="right">5</td><td align="right">0.00</td><td align="right">0.00</td><td align="right">0.00</td><td align="right">0.00</td>
+</tr>
+<tr class="standard">
+<td>Work order</td><td align="right">1</td><td align="right">46.62</td><td align="right">46.62</td><td align="right">46.62</td><td align="right">46.62</td>
+</tr>
+</table>
+<P></P>
+<B style="color:blue">Violations</B>
+<table border="0" cellspacing="1" cellpadding="3" class="standard">
+<tr class="standard">
+<th class="standard">#</th><th class="standard">Line</th><th class="standard">Column</th><th class="standard">Name</th><th class="standard">Severity</th><th class="standard">Description</th>
+</tr>
+<tr class="standard">
+<td align="right">1</td><td align="right"><a href="#line_18">18</a></td><td align="right">1</td><td NOWRAP="yes"><a href="../../../../../inspectors/inspector_ER-023.html">ER-023</a></td><td align="right">3</td><td>Packages should begin with []</td>
+</tr>
+<tr class="standard">
+<td align="right">2</td><td align="right"><a href="#line_86">86</a></td><td align="right">32</td><td NOWRAP="yes"><a href="../../../../../inspectors/inspector_ER-046.html">ER-046</a></td><td align="right">2</td><td>Method declares too general exception types (Exception, Throwable) in throws clause</td>
+</tr>
+<tr class="standard">
+<td align="right">3</td><td align="right"><a href="#line_107">107</a></td><td align="right">43</td><td NOWRAP="yes"><a href="../../../../../inspectors/inspector_ER-046.html">ER-046</a></td><td align="right">2</td><td>Method declares too general exception types (Exception, Throwable) in throws clause</td>
+</tr>
+<tr class="standard">
+<td align="right">4</td><td align="right"><a href="#line_127">127</a></td><td align="right">44</td><td NOWRAP="yes"><a href="../../../../../inspectors/inspector_ER-046.html">ER-046</a></td><td align="right">2</td><td>Method declares too general exception types (Exception, Throwable) in throws clause</td>
+</tr>
+<tr class="standard">
+<td align="right">5</td><td align="right"><a href="#line_137">137</a></td><td align="right">45</td><td NOWRAP="yes"><a href="../../../../../inspectors/inspector_ER-046.html">ER-046</a></td><td align="right">2</td><td>Method declares too general exception types (Exception, Throwable) in throws clause</td>
+</tr>
+</table>
+<P></P>
+<DL>
+<DT>
+<B style="color:blue">JavaDoc</B>
+</DT>
+<DD>
+<a href="../../../../../../javadoc/org/apache/commons/pool/PoolableObjectFactory.html">PoolableObjectFactory</a>
+</DD>
+</DL>
+<HR>
+<PRE>
+<a name="line_1" class="lineNum">1</a><span class="comment">/*<BR/><A class="lineNum" name="line_2">2</A> * Licensed to the Apache Software Foundation (ASF) under one or more<BR/><A class="lineNum" name="line_3">3</A> * contributor license agreements.  See the NOTICE file distributed with<BR/><A class="lineNum" name="line_4">4</A> * this work for additional information regarding copyright ownership.<BR/><A class="lineNum" name="line_5">5</A> * The ASF licenses this file to You under the Apache License, Version 2.0<BR/><A class="lineNum" name="line_6">6</A> * (the "License"); you may not use this file except in compliance with<BR/><A class="lineNum" name="line_7">7</A> * the License.  You may obtain a copy of the License at<BR/><A class="lineNum" name="line_8">8</A> *<BR/><A class="lineNum" name="line_9">9</A> *      http://www.apache.org/licenses/LICENSE-2.0<BR/><A class="lineNum" name="line_10">10</A> *<BR/><A class="lineNum" name="line_11">11</A> * Unless required by applicable law or agreed to in writing, software<BR/><A class="lineNum" name="line_12">12</A> * distributed under the License is distributed on an "AS IS" BASIS,<BR/><A class="lineNum" name="line_13">13</A> * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.<BR/><A class="lineNum" name="line_14">14</A> * See the License for the specific language governing permissions and<BR/><A class="lineNum" name="line_15">15</A> * limitations under the License.<BR/><A class="lineNum" name="line_16">16</A> */</span><BR/><A class="lineNum" name="line_17">17</A><BR/><A class="lineNum" name="line_18">18</A><span class="reserved_word">package</span> org.apache.commons.pool;<BR/><A class="lineNum" name="line_19">19</A><BR/><A class="lineNum" name="line_20">20</A><span class="comment">/**<BR/><A class="lineNum" name="line_21">21</A> * An interface defining life-cycle methods for<BR/><A class="lineNum" name="line_22">22</A> * instances to be served by an {@link ObjectPool}.<BR/><A class="lineNum" name="line_23">23</A> * &lt;p&gt;<BR/><A class="lineNum" name="line_24">24</A> * By contract, when an {@link ObjectPool}<BR/><A class="lineNum" name="line_25">25</A> * delegates to a {@link PoolableObjectFactory},<BR/><A class="lineNum" name="line_26">26</A> * &lt;ol&gt;<BR/><A class="lineNum" name="line_27">27</A> *  &lt;li&gt;<BR/><A class="lineNum" name="line_28">28</A> *   {@link #makeObject makeObject}<BR/><A class="lineNum" name="line_29">29</A> *   is called whenever a new instance is needed.<BR/><A class="lineNum" name="line_30">30</A> *  &lt;/li&gt;<BR/><A class="lineNum" name="line_31">31</A> *  &lt;li&gt;<BR/><A class="lineNum" name="line_32">32</A> *   {@link #activateObject activateObject}<BR/><A class="lineNum" name="line_33">33</A> *   is invoked on every instance that has been<BR/><A class="lineNum" name="line_34">34</A> *   {@link #passivateObject passivated} before it is<BR/><A class="lineNum" name="line_35">35</A> *   {@link ObjectPool#borrowObject borrowed} from the pool.<BR/><A class="lineNum" name="line_36">36</A> *  &lt;/li&gt;<BR/><A class="lineNum" name="line_37">37</A> *  &lt;li&gt;<BR/><A class="lineNum" name="line_38">38</A> *   {@link #validateObject validateObject}<BR/><A class="lineNum" name="line_39">39</A> *   is invoked on {@link #activateObject activated} instances to make sure<BR/><A class="lineNum" name="line_40">40</A> *   they can be {@link ObjectPool#borrowObject borrowed} from the pool.<BR/><A class="lineNum" name="line_41">41</A> *   &lt;code&gt;validateObject&lt;/code&gt; &lt;strong&gt;may&lt;/strong&gt; also be used to test an<BR/><A class="lineNum" name="line_42">42</A> *   instance being {@link ObjectPool#returnObject returned} to the pool<BR/><A class="lineNum" name="line_43">43</A> *   before it is {@link #passivateObject passivated}. It will only be invoked<BR/><A class="lineNum" name="line_44">44</A> *   on an activated instance.<BR/><A class="lineNum" name="line_45">45</A> *  &lt;/li&gt;<BR/><A class="lineNum" name="line_46">46</A> *  &lt;li&gt;<BR/><A class="lineNum" name="line_47">47</A> *   {@link #passivateObject passivateObject}<BR/><A class="lineNum" name="line_48">48</A> *   is invoked on every instance when it is returned to the pool.<BR/><A class="lineNum" name="line_49">49</A> *  &lt;/li&gt;<BR/><A class="lineNum" name="line_50">50</A> *  &lt;li&gt;<BR/><A class="lineNum" name="line_51">51</A> *   {@link #destroyObject destroyObject}<BR/><A class="lineNum" name="line_52">52</A> *   is invoked on every instance when it is being "dropped" from the<BR/><A class="lineNum" name="line_53">53</A> *   pool (whether due to the response from &lt;code&gt;validateObject&lt;/code&gt;,<BR/><A class="lineNum" name="line_54">54</A> *   or for reasons specific to the pool implementation.) There is no<BR/><A class="lineNum" name="line_55">55</A> *   guarantee that the instance being destroyed will<BR/><A class="lineNum" name="line_56">56</A> *   be considered active, passive or in a generally consistent state.<BR/><A class="lineNum" name="line_57">57</A> *  &lt;/li&gt;<BR/><A class="lineNum" name="line_58">58</A> * &lt;/ol&gt;<BR/><A class="lineNum" name="line_59">59</A> * &lt;/p&gt;<BR/><A class="lineNum" name="line_60">60</A> * &lt;p&gt;<BR/><A class="lineNum" name="line_61">61</A> * {@link PoolableObjectFactory} must be thread-safe. The only promise<BR/><A class="lineNum" name="line_62">62</A> * an {@link ObjectPool} makes is that the same instance of an object will not<BR/><A class="lineNum" name="line_63">63</A> * be passed to more than one method of a &lt;code&gt;PoolableObjectFactory&lt;/code&gt;<BR/><A class="lineNum" name="line_64">64</A> * at a time.<BR/><A class="lineNum" name="line_65">65</A> * &lt;/p&gt;<BR/><A class="lineNum" name="line_66">66</A> *<BR/><A class="lineNum" name="line_67">67</A> * @see ObjectPool<BR/><A class="lineNum" name="line_68">68</A> *<BR/><A class="lineNum" name="line_69">69</A> * @author Rodney Waldhoff<BR/><A class="lineNum" name="line_70">70</A> * @author Sandy McArthur<BR/><A class="lineNum" name="line_71">71</A> * @version $Revision: 480413 $ $Date: 2006-11-29 00:16:05 -0500 (Wed, 29 Nov 2006) $<BR/><A class="lineNum" name="line_72">72</A> * @since Pool 1.0<BR/><A class="lineNum" name="line_73">73</A> */</span><BR/><A class="lineNum" name="line_74">74</A><span class="reserved_word">public</span> <span class="reserved_word">interface</span> PoolableObjectFactory {<BR/><A class="lineNum" name="line_75">75</A>    <span class="comment">/**<BR/><A class="lineNum" name="line_76">76</A>     * Creates an instance that can be served by the pool.<BR/><A class="lineNum" name="line_77">77</A>     * Instances returned from this method should be in the<BR/><A class="lineNum" name="line_78">78</A>     * same state as if they had been<BR/><A class="lineNum" name="line_79">79</A>     * {@link #activateObject activated}. They will not be<BR/><A class="lineNum" name="line_80">80</A>     * activated before being served by the pool.<BR/><A class="lineNum" name="line_81">81</A>     *<BR/><A class="lineNum" name="line_82">82</A>     * @return an instance that can be served by the pool.<BR/><A class="lineNum" name="line_83">83</A>     * @throws Exception if there is a problem creating a new instance,<BR/><A class="lineNum" name="line_84">84</A>     *    this will be propagated to the code requesting an object.<BR/><A class="lineNum" name="line_85">85</A>     */</span><BR/><A class="lineNum" name="line_86">86</A>    Object makeObject() <span class="reserved_word">throws</span> Exception;<BR/><A class="lineNum" name="line_87">87</A><BR/><A class="lineNum" name="line_88">88</A>    <span class="comment">/**<BR/><A class="lineNum" name="line_89">89</A>     * Destroys an instance no longer needed by the pool.<BR/><A class="lineNum" name="line_90">90</A>     * &lt;p&gt;<BR/><A class="lineNum" name="line_91">91</A>     * It is important for implementations of this method to be aware<BR/><A class="lineNum" name="line_92">92</A>     * that there is no guarantee about what state &lt;code&gt;obj&lt;/code&gt;<BR/><A class="lineNum" name="line_93">93</A>     * will be in and the implementation should be prepared to handle<BR/><A class="lineNum" name="line_94">94</A>     * unexpected errors.<BR/><A class="lineNum" name="line_95">95</A>     * &lt;/p&gt;<BR/><A class="lineNum" name="line_96">96</A>     * &lt;p&gt;<BR/><A class="lineNum" name="line_97">97</A>     * Also, an implementation must take in to consideration that<BR/><A class="lineNum" name="line_98">98</A>     * instances lost to the garbage collector may never be destroyed.<BR/><A class="lineNum" name="line_99">99</A>     * &lt;/p&gt;<BR/><A class="lineNum" name="line_100">100</A>     *<BR/><A class="lineNum" name="line_101">101</A>     * @param obj the instance to be destroyed<BR/><A class="lineNum" name="line_102">102</A>     * @throws Exception should be avoided as it may be swallowed by<BR/><A class="lineNum" name="line_103">103</A>     *    the pool implementation.<BR/><A class="lineNum" name="line_104">104</A>     * @see #validateObject<BR/><A class="lineNum" name="line_105">105</A>     * @see ObjectPool#invalidateObject<BR/><A class="lineNum" name="line_106">106</A>     */</span><BR/><A class="lineNum" name="line_107">107</A>    <span class="reserved_word">void</span> destroyObject(Object obj) <span class="reserved_word">throws</span> Exception;<BR/><A class="lineNum" name="line_108">108</A><BR/><A class="lineNum" name="line_109">109</A>    <span class="comment">/**<BR/><A class="lineNum" name="line_110">110</A>     * Ensures that the instance is safe to be returned by the pool.<BR/><A class="lineNum" name="line_111">111</A>     * Returns &lt;code&gt;false&lt;/code&gt; if &lt;code&gt;obj&lt;/code&gt; should be destroyed.<BR/><A class="lineNum" name="line_112">112</A>     *<BR/><A class="lineNum" name="line_113">113</A>     * @param obj the instance to be validated<BR/><A class="lineNum" name="line_114">114</A>     * @return &lt;code&gt;false&lt;/code&gt; if &lt;code&gt;obj&lt;/code&gt; is not valid and should<BR/><A class="lineNum" name="line_115">115</A>     *         be dropped from the pool, &lt;code&gt;true&lt;/code&gt; otherwise.<BR/><A class="lineNum" name="line_116">116</A>     */</span><BR/><A class="lineNum" name="line_117">117</A>    <span class="reserved_word">boolean</span> validateObject(Object obj);<BR/><A class="lineNum" name="line_118">118</A><BR/><A class="lineNum" name="line_119">119</A>    <span class="comment">/**<BR/><A class="lineNum" name="line_120">120</A>     * Reinitialize an instance to be returned by the pool.<BR/><A class="lineNum" name="line_121">121</A>     *<BR/><A class="lineNum" name="line_122">122</A>     * @param obj the instance to be activated<BR/><A class="lineNum" name="line_123">123</A>     * @throws Exception if there is a problem activating &lt;code&gt;obj&lt;/code&gt;,<BR/><A class="lineNum" name="line_124">124</A>     *    this exception may be swallowed by the pool.<BR/><A class="lineNum" name="line_125">125</A>     * @see #destroyObject<BR/><A class="lineNum" name="line_126">126</A>     */</span><BR/><A class="lineNum" name="line_127">127</A>    <span class="reserved_word">void</span> activateObject(Object obj) <span class="reserved_word">throws</span> Exception;<BR/><A class="lineNum" name="line_128">128</A><BR/><A class="lineNum" name="line_129">129</A>    <span class="comment">/**<BR/><A class="lineNum" name="line_130">130</A>     * Uninitialize an instance to be returned to the idle object pool.<BR/><A class="lineNum" name="line_131">131</A>     *<BR/><A class="lineNum" name="line_132">132</A>     * @param obj the instance to be passivated<BR/><A class="lineNum" name="line_133">133</A>     * @throws Exception if there is a problem passivating &lt;code&gt;obj&lt;/code&gt;,<BR/><A class="lineNum" name="line_134">134</A>     *    this exception may be swallowed by the pool.<BR/><A class="lineNum" name="line_135">135</A>     * @see #destroyObject<BR/><A class="lineNum" name="line_136">136</A>     */</span><BR/><A class="lineNum" name="line_137">137</A>    <span class="reserved_word">void</span> passivateObject(Object obj) <span class="reserved_word">throws</span> Exception;<BR/><A class="lineNum" name="line_138">138</A>}<BR/><A class="lineNum" name="line_139">139</A><BR/><A class="lineNum" name="line_140">140</A>
+</PRE>
+<HR>
+<i>Hammurapi 3.18.4 Copyright &copy; 2004 Hammurapi Group. All Rights Reserved.</i>
+</BODY>
+</HTML>

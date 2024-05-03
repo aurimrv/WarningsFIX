@@ -1,0 +1,57 @@
+<project name="Template hammurapi project" default="review" basedir=".">
+	<property name="projectName" value="Template" />
+
+	<target name="compile">
+		<mkdir dir="build/classes" />
+		<javac srcdir="src" destDir="build/classes">
+			<classpath>
+				<fileset dir="lib" />
+			</classpath>
+		</javac>
+	</target>
+
+	<target name="javadoc" depends="compile">
+		<mkdir dir="javadoc" />
+	</target>
+
+	<target name="review" depends="compile, javadoc">
+		<mkdir dir="DB" />
+
+		<taskdef name="hammurapi" classname="org.hammurapi.HammurapiTask">
+			<classpath>
+				<fileset dir="../../lib" includes="*.jar" />
+			</classpath>
+		</taskdef>
+
+		<hammurapi failOnWarnings="true" title="${projectName}" database="DB/${projectName}" reviewDescription="Sample review" waiverStubs="stubs.xml">
+			<waivers file="waivers.xml" failOnError="false" />
+			<src dir="src" />
+			<classpath>
+				<fileset dir="lib" />
+			</classpath>
+
+			<output dir="review" javaDocDir="javadoc">
+				<stylesheet name="summary">
+					<parameter name="newMarker">&lt;img src='http://www.hammurapi.org/new.gif' alt='NEW!'/&gt;</parameter>
+				</stylesheet>
+				<stylesheet name="left-panel">
+					<parameter name="newMarker">&lt;img src='http://www.hammurapi.org/new.gif' alt='NEW!'/&gt;</parameter>
+				</stylesheet>
+				<stylesheet name="package">
+					<parameter name="newMarker">&lt;img src='http://www.hammurapi.org/new.gif' alt='NEW!'/&gt;</parameter>
+				</stylesheet>
+			</output>
+		</hammurapi>
+	</target>
+
+	<target name="clean">
+		<delete dir="build" />
+		<delete dir="review" />
+		<delete dir="javadoc" />
+		<delete dir="DB" />
+		<delete dir="stubs.xml" />
+	</target>
+</project>
+
+
+

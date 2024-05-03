@@ -1,0 +1,87 @@
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<TITLE>Hammurapi 3.18.4 [Inspector]</TITLE>
+<STYLE>
+		                <!-- 
+		                    TABLE.standard { background:silver }
+		                    TH.standard { font:bold; background:white }
+		                    TR.standard { background:white }
+		                    .code-snippet { background-color:EEEEEE; color:blue }
+		                    .hidden { color:EEEEEE; } 
+				    span.problem { font:bold; color:red }
+				    span.fix { font:bold; color:green }
+		                 --> 
+		                </STYLE>
+</HEAD>
+<BODY>
+<DL>
+<DT>
+<a name="inspector_ER-003"><B style="color:blue">ER-003</B> </a>do, while, if, and for statements need a brace enclosed block</DT>
+<P></P>
+<DD>
+<TABLE cellspacing="1" cellpadding="3" class="standard">
+<TR class="standard">
+<TH align="left" valign="top">Severity</TH><TD>3</TD>
+</TR>
+<TR class="standard">
+<TH align="left" valign="top">Enabled</TH><TD>yes</TD>
+</TR>
+<TR class="standard">
+<TH align="left" valign="top">Waivable</TH><TD></TD>
+</TR>
+<TR class="standard">
+<TH align="left" valign="top">Violation</TH><TD>
+<PRE class="code-snippet">if (strToProc == null) {
+	int c = 0;
+	for (int i = 0; i < LOOP_CONST; i++)
+		c += i;
+	intVal = new Integer(c);
+}
+else if (strToProc.length() == 0)
+	intVal = new Integer(0);
+else {
+	int a = 0;
+	int c = 0;
+	while (a < strToProc.length())
+		if (strToProc.charAt(a)==CHAR_A) {
+			c++;
+		}
+	a++;
+	intVal = new Integer(c);
+}</PRE>
+</TD>
+</TR>
+<TR class="standard">
+<TH align="left" valign="top">Fix</TH><TD>
+<PRE class="code-snippet">if (strToProc == null) {
+	int c = 0;
+	for (int i = 0; i < LOOP_CONST; i++) {
+		c += i;
+	}
+	intVal = new Integer(c);
+}
+else if (strToProc.length() == 0) {
+	intVal = new Integer(0);
+}
+else {
+	int a = 0;
+	int c = 0;
+	while (a < strToProc.length()) {
+		if (strToProc.charAt(a)==CHAR_A) {
+			c++;
+		}
+		a++;
+	}
+	intVal = new Integer(c);
+}</PRE>
+</TD>
+</TR>
+</TABLE>
+</DD>
+<P></P>
+</DL>
+<HR>
+<i>Hammurapi 3.18.4 Copyright &copy; 2004 Hammurapi Group. All Rights Reserved.</i>
+</BODY>
+</HTML>

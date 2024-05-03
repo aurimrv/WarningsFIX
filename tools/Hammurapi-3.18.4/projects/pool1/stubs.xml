@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><waivers><!--Source: org/apache/commons/pool/impl/GenericObjectPool.java
+Line: 920
+Col: 19
+Description: Empty catch block
+Messsage: Empty catch block--><waiver><inspector-name>ER-002</inspector-name><signature>org/apache/commons/pool/impl/GenericObjectPool.java:an[GenericObjectPool]:ai[borrowObject()]:en[1]:ex[1]:en[1]:eu[1]:en[1]:er[java.util.NoSuchElementException]</signature><reason>*** Put reason here ***</reason><expiration-date>2016/06/28</expiration-date></waiver><!--Source: org/apache/commons/pool/impl/GenericObjectPool.java
+Line: 997
+Col: 19
+Description: Empty catch block
+Messsage: Empty catch block--><waiver><inspector-name>ER-002</inspector-name><signature>org/apache/commons/pool/impl/GenericObjectPool.java:an[GenericObjectPool]:ai[borrowObject()]:en[1]:ex[1]:en[1]:er[java.lang.Throwable]:en[1]:er[java.lang.Throwable]</signature><reason>*** Put reason here ***</reason><expiration-date>2016/06/28</expiration-date></waiver><!--Source: org/apache/commons/pool/impl/GenericObjectPool.java
+Line: 1033
+Col: 15
+Description: Empty catch block
+Messsage: Empty catch block--><waiver><inspector-name>ER-002</inspector-name><signature>org/apache/commons/pool/impl/GenericObjectPool.java:an[GenericObjectPool]:ai[clear()]:en[1]:ex[1]:en[1]:er[java.lang.Exception]</signature><reason>*** Put reason here ***</reason><expiration-date>2016/06/28</expiration-date></waiver><!--Source: org/apache/commons/pool/impl/GenericObjectPool.java
+Line: 1077
+Col: 19
+Description: Empty catch block
+Messsage: Empty catch block--><waiver><inspector-name>ER-002</inspector-name><signature>org/apache/commons/pool/impl/GenericObjectPool.java:an[GenericObjectPool]:ai[returnObject(java.lang.Object)]:en[1]:er[java.lang.Exception]:en[1]:fa[1]:en[1]:er[java.lang.Exception]</signature><reason>*** Put reason here ***</reason><expiration-date>2016/06/28</expiration-date></waiver><!--Source: org/apache/commons/pool/impl/GenericObjectPool.java
+Line: 1125
+Col: 15
+Description: Empty catch block
+Messsage: Empty catch block--><waiver><inspector-name>ER-002</inspector-name><signature>org/apache/commons/pool/impl/GenericObjectPool.java:an[GenericObjectPool]:ai[addObjectToPool(java.lang.Object,boolean)]:en[1]:fa[2]:en[1]:er[java.lang.Exception]</signature><reason>*** Put reason here ***</reason><expiration-date>2016/06/28</expiration-date></waiver><!--Source: org/apache/commons/pool/impl/GenericObjectPool.java
+Line: 1228
+Col: 23
+Description: Empty catch block
+Messsage: Empty catch block--><waiver><inspector-name>ER-002</inspector-name><signature>org/apache/commons/pool/impl/GenericObjectPool.java:an[GenericObjectPool]:ai[evict()]:en[1]:fa[1]:en[1]:ex[1]:en[1]:fa[4]:en[1]:er[java.lang.Exception]</signature><reason>*** Put reason here ***</reason><expiration-date>2016/06/28</expiration-date></waiver><!--Source: org/apache/commons/pool/impl/GenericObjectPool.java
+Line: 1279
+Col: 15
+Description: Empty catch block
+Messsage: Empty catch block--><waiver><inspector-name>ER-002</inspector-name><signature>org/apache/commons/pool/impl/GenericObjectPool.java:an[GenericObjectPool]:ai[addObject()]:en[1]:er[java.lang.IllegalStateException]:en[1]:er[java.lang.Exception]</signature><reason>*** Put reason here ***</reason><expiration-date>2016/06/28</expiration-date></waiver><!--Source: org/apache/commons/pool/impl/GenericObjectPool.java
+Line: 1324
+Col: 36
+Description: Use BigDecimal instead of Float or Double for monetary values
+Messsage: Use BigDecimal instead of Float or Double for monetary values--><waiver><inspector-name>ER-048</inspector-name><signature>org/apache/commons/pool/impl/GenericObjectPool.java:an[GenericObjectPool]:ai[getNumTests()]:en[1]:fa[1]:en[2]:fd[1]:cx[1]:ch[1]:ay[1]:cr[1]:bj[1]:cx[1]:eg[1]</signature><reason>*** Put reason here ***</reason><expiration-date>2016/06/28</expiration-date></waiver><!--Source: org/apache/commons/pool/impl/GenericObjectPool.java
+Line: 1324
+Col: 66
+Description: Use BigDecimal instead of Float or Double for monetary values
+Messsage: Use BigDecimal instead of Float or Double for monetary values--><waiver><inspector-name>ER-048</inspector-name><signature>org/apache/commons/pool/impl/GenericObjectPool.java:an[GenericObjectPool]:ai[getNumTests()]:en[1]:fa[1]:en[2]:fd[1]:cx[1]:ch[1]:ay[1]:cr[1]:bj[1]:ay[1]:cr[1]:cx[1]:eg[1]</signature><reason>*** Put reason here ***</reason><expiration-date>2016/06/28</expiration-date></waiver><!--Source: org/apache/commons/pool/impl/GenericObjectPool.java
+Line: 1338
+Col: 15
+Description: Empty catch block
+Messsage: Empty catch block--><waiver><inspector-name>ER-002</inspector-name><signature>org/apache/commons/pool/impl/GenericObjectPool.java:an[GenericObjectPool]:an[Evictor]:ai[run()]:en[1]:er[java.lang.Exception]</signature><reason>*** Put reason here ***</reason><expiration-date>2016/06/28</expiration-date></waiver><!--Source: org/apache/commons/pool/impl/GenericObjectPool.java
+Line: 1343
+Col: 15
+Description: Empty catch block
+Messsage: Empty catch block--><waiver><inspector-name>ER-002</inspector-name><signature>org/apache/commons/pool/impl/GenericObjectPool.java:an[GenericObjectPool]:an[Evictor]:ai[run()]:en[1]:er[java.lang.Exception]</signature><reason>*** Put reason here ***</reason><expiration-date>2016/06/28</expiration-date></waiver><!--Source: org/apache/commons/pool/impl/TestGenericObjectPool.java
+Line: 63
+Col: 19
+Description: Empty catch block
+Messsage: Empty catch block--><waiver><inspector-name>ER-002</inspector-name><signature>org/apache/commons/pool/impl/TestGenericObjectPool.java:an[TestGenericObjectPool]:ai[testEvictAddObjectsImproved()]:en[1]:aq[minIdleThread]:bu[1]:cr[1]:cu[1]:ai[run()]:en[1]:er[java.lang.Exception]</signature><reason>*** Put reason here ***</reason><expiration-date>2016/06/28</expiration-date></waiver><!--Source: org/apache/commons/pool/impl/TestGenericObjectPool.java
+Line: 68
+Col: 19
+Description: Empty catch block
+Messsage: Empty catch block--><waiver><inspector-name>ER-002</inspector-name><signature>org/apache/commons/pool/impl/TestGenericObjectPool.java:an[TestGenericObjectPool]:ai[testEvictAddObjectsImproved()]:en[1]:aq[minIdleThread]:bu[1]:cr[1]:cu[1]:ai[run()]:en[1]:er[java.lang.Exception]</signature><reason>*** Put reason here ***</reason><expiration-date>2016/06/28</expiration-date></waiver><!--Source: org/apache/commons/pool/impl/TestGenericObjectPool.java
+Line: 129
+Col: 19
+Description: Empty catch block
+Messsage: Empty catch block--><waiver><inspector-name>ER-002</inspector-name><signature>org/apache/commons/pool/impl/TestGenericObjectPool.java:an[TestGenericObjectPool]:an[TestThread]:ai[run()]:en[1]:ex[1]:en[1]:er[java.lang.Exception]</signature><reason>*** Put reason here ***</reason><expiration-date>2016/06/28</expiration-date></waiver><!--Source: org/apache/commons/pool/impl/TestGenericObjectPool.java
+Line: 144
+Col: 19
+Description: Empty catch block
+Messsage: Empty catch block--><waiver><inspector-name>ER-002</inspector-name><signature>org/apache/commons/pool/impl/TestGenericObjectPool.java:an[TestGenericObjectPool]:an[TestThread]:ai[run()]:en[1]:ex[1]:en[1]:er[java.lang.Exception]</signature><reason>*** Put reason here ***</reason><expiration-date>2016/06/28</expiration-date></waiver><!--Source: org/apache/commons/pool/impl/TestGenericObjectPool.java
+Line: 278
+Col: 15
+Description: Empty catch block
+Messsage: Empty catch block--><waiver><inspector-name>ER-002</inspector-name><signature>org/apache/commons/pool/impl/TestGenericObjectPool.java:an[TestGenericObjectPool]:an[SimpleFactory]:ai[doWait(long)]:en[1]:er[java.lang.InterruptedException]</signature><reason>*** Put reason here ***</reason><expiration-date>2016/06/28</expiration-date></waiver></waivers>

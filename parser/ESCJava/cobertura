@@ -1,0 +1,353 @@
+nMatchingTask.java:75: Error: No such type: org.apache.tools.ant.AntClassLoader
+import org.apache.tools.ant.AntClassLoader;
+       ^
+/home/teste/Documentos/cobertura-1.9.4.1/src/net/sourceforge/cobertura/ant/CommonMatchingTask.java:76: Error: No such type: org.apache.tools.ant.BuildException
+import org.apache.tools.ant.BuildException;
+       ^
+/home/teste/Documentos/cobertura-1.9.4.1/src/net/sourceforge/cobertura/ant/CommonMatchingTask.java:77: Error: No such type: org.apache.tools.ant.DirectoryScanner
+import org.apache.tools.ant.DirectoryScanner;
+       ^
+/home/teste/Documentos/cobertura-1.9.4.1/src/net/sourceforge/cobertura/ant/CommonMatchingTask.java:78: Error: No such type: org.apache.tools.ant.Project
+import org.apache.tools.ant.Project;
+       ^
+/home/teste/Documentos/cobertura-1.9.4.1/src/net/sourceforge/cobertura/ant/CommonMatchingTask.java:79: Error: No such type: org.apache.tools.ant.taskdefs.Java
+import org.apache.tools.ant.taskdefs.Java;
+       ^
+/home/teste/Documentos/cobertura-1.9.4.1/src/net/sourceforge/cobertura/ant/CommonMatchingTask.java:80: Error: No such type: org.apache.tools.ant.taskdefs.MatchingTask
+import org.apache.tools.ant.taskdefs.MatchingTask;
+       ^
+/home/teste/Documentos/cobertura-1.9.4.1/src/net/sourceforge/cobertura/ant/CommonMatchingTask.java:81: Error: No such type: org.apache.tools.ant.types.FileSet
+import org.apache.tools.ant.types.FileSet;
+       ^
+/home/teste/Documentos/cobertura-1.9.4.1/src/net/sourceforge/cobertura/ant/CommonMatchingTask.java:82: Error: No such type: org.apache.tools.ant.types.AbstractFileSet
+import org.apache.tools.ant.types.AbstractFileSet;
+       ^
+/home/teste/Documentos/cobertura-1.9.4.1/src/net/sourceforge/cobertura/ant/CommonMatchingTask.java:83: Error: No such type: org.apache.tools.ant.types.DirSet
+import org.apache.tools.ant.types.DirSet;
+       ^
+/home/teste/Documentos/cobertura-1.9.4.1/src/net/sourceforge/cobertura/ant/CommonMatchingTask.java:84: Error: No such type: org.apache.tools.ant.types.Path
+import org.apache.tools.ant.types.Path;
+       ^
+/home/teste/Documentos/cobertura-1.9.4.1/src/net/sourceforge/cobertura/ant/CommonMatchingTask.java:85: Error: No such type: org.apache.tools.ant.types.Reference
+import org.apache.tools.ant.types.Reference;
+       ^
+/home/teste/Documentos/cobertura-1.9.4.1/src/net/sourceforge/cobertura/ant/CommonMatchingTask.java:87: Fatal error: Can't find type named "MatchingTask"
+public abstract class CommonMatchingTask extends MatchingTask
+                                                 ^
+
+net.sourceforge.cobertura.ant.Regex ...
+/home/teste/Documentos/cobertura-1.9.4.1/src/net/sourceforge/cobertura/ant/Regex.java:81: Caution: The nullable annotation (explicit or implicit) is ignored because this method overrides a method declared non_null: 
+        public String toString()
+        ^
+/home/teste/Documentos/ESCJava-2.0.5-04-11-08-binary/./escspecs.jar:java/lang/Object.spec:166: Associated declaration: 
+    /*@   public normal_behavior
+    ^
+/home/teste/Documentos/ESCJava-2.0.5-04-11-08-binary/./escspecs.jar:java/lang/Character.jml:101: Caution: The nullable annotation (explicit or implicit) is ignored because this method overrides a method declared non_null: 
+        public final String toString();
+        ^
+/home/teste/Documentos/ESCJava-2.0.5-04-11-08-binary/./escspecs.jar:java/lang/Object.spec:166: Associated declaration: 
+    /*@   public normal_behavior
+    ^
+/home/teste/Documentos/ESCJava-2.0.5-04-11-08-binary/./escspecs.jar:java/lang/Character.jml:236: Caution: The nullable annotation (explicit or implicit) is ignored because this method overrides a method declared non_null: 
+    /*@ also
+    ^
+/home/teste/Documentos/ESCJava-2.0.5-04-11-08-binary/./escspecs.jar:java/lang/Object.spec:166: Associated declaration: 
+    /*@   public normal_behavior
+    ^
+/home/teste/Documentos/ESCJava-2.0.5-04-11-08-binary/./escspecs.jar:java/lang/StringBuffer.jml:282: Caution: JML requires a specification to begin with 'also' when the method overrides other methods
+    public synchronized void ensureCapacity(int minimumCapacity);
+                             ^
+/usr/lib/jvm/java-6-openjdk-i386/jre/lib/rt.jar:java/lang/AbstractStringBuilder.class: Associated declaration: 
+/home/teste/Documentos/ESCJava-2.0.5-04-11-08-binary/./escspecs.jar:java/lang/StringBuffer.jml:190: Caution: JML requires a specification to begin with 'also' when the method overrides other methods
+    public synchronized void getChars(int srcBegin, int srcEnd,
+                             ^
+/usr/lib/jvm/java-6-openjdk-i386/jre/lib/rt.jar:java/lang/AbstractStringBuilder.class: Associated declaration: 
+/home/teste/Documentos/ESCJava-2.0.5-04-11-08-binary/./escspecs.jar:java/lang/StringBuffer.jml:418: Caution: JML requires a specification to begin with 'also' when the method overrides other methods
+    public synchronized void setCharAt(int index, char c);
+                             ^
+/usr/lib/jvm/java-6-openjdk-i386/jre/lib/rt.jar:java/lang/AbstractStringBuilder.class: Associated declaration: 
+/home/teste/Documentos/ESCJava-2.0.5-04-11-08-binary/./escspecs.jar:java/lang/StringBuffer.jml:103: Caution: JML requires a specification to begin with 'also' when the method overrides other methods
+    public synchronized StringBuffer append(Object o);
+                                     ^
+/usr/lib/jvm/java-6-openjdk-i386/jre/lib/rt.jar:java/lang/AbstractStringBuilder.class: Associated declaration: 
+/home/teste/Documentos/ESCJava-2.0.5-04-11-08-binary/./escspecs.jar:java/lang/StringBuffer.jml:81: Caution: JML requires a specification to begin with 'also' when the method overrides other methods
+    public synchronized StringBuffer append(String s);
+                                     ^
+/usr/lib/jvm/java-6-openjdk-i386/jre/lib/rt.jar:java/lang/AbstractStringBuilder.class: Associated declaration: 
+/home/teste/Documentos/ESCJava-2.0.5-04-11-08-binary/./escspecs.jar:java/lang/StringBuffer.jml:119: Caution: JML requires a specification to begin with 'also' when the method overrides other methods
+    public synchronized StringBuffer append(StringBuffer s);
+                                     ^
+/usr/lib/jvm/java-6-openjdk-i386/jre/lib/rt.jar:java/lang/AbstractStringBuilder.class: Associated declaration: 
+/home/teste/Documentos/ESCJava-2.0.5-04-11-08-binary/./escspecs.jar:java/lang/StringBuffer.jml:164: Caution: JML requires a specification to begin with 'also' when the method overrides other methods
+    public synchronized StringBuffer append(char[] ca);
+                                     ^
+/usr/lib/jvm/java-6-openjdk-i386/jre/lib/rt.jar:java/lang/AbstractStringBuilder.class: Associated declaration: 
+/home/teste/Documentos/ESCJava-2.0.5-04-11-08-binary/./escspecs.jar:java/lang/StringBuffer.jml:129: Caution: JML requires a specification to begin with 'also' when the method overrides other methods
+    public synchronized StringBuffer append(char[] ca, int i, int j);
+                                     ^
+/usr/lib/jvm/java-6-openjdk-i386/jre/lib/rt.jar:java/lang/AbstractStringBuilder.class: Associated declaration: 
+/home/teste/Documentos/ESCJava-2.0.5-04-11-08-binary/./escspecs.jar:java/lang/StringBuffer.jml:65: Caution: JML requires a specification to begin with 'also' when the method overrides other methods
+    public synchronized StringBuffer append(boolean b);
+                                     ^
+/usr/lib/jvm/java-6-openjdk-i386/jre/lib/rt.jar:java/lang/AbstractStringBuilder.class: Associated declaration: 
+/home/teste/Documentos/ESCJava-2.0.5-04-11-08-binary/./escspecs.jar:java/lang/StringBuffer.jml:58: Caution: JML requires a specification to begin with 'also' when the method overrides other methods
+    public synchronized StringBuffer append(char c);
+                                     ^
+/usr/lib/jvm/java-6-openjdk-i386/jre/lib/rt.jar:java/lang/AbstractStringBuilder.class: Associated declaration: 
+/home/teste/Documentos/ESCJava-2.0.5-04-11-08-binary/./escspecs.jar:java/lang/StringBuffer.jml:136: Caution: JML requires a specification to begin with 'also' when the method overrides other methods
+    public synchronized StringBuffer append(int i);
+                                     ^
+/usr/lib/jvm/java-6-openjdk-i386/jre/lib/rt.jar:java/lang/AbstractStringBuilder.class: Associated declaration: 
+/home/teste/Documentos/ESCJava-2.0.5-04-11-08-binary/./escspecs.jar:java/lang/StringBuffer.jml:171: Caution: JML requires a specification to begin with 'also' when the method overrides other methods
+    public synchronized StringBuffer append(long l);
+                                     ^
+/usr/lib/jvm/java-6-openjdk-i386/jre/lib/rt.jar:java/lang/AbstractStringBuilder.class: Associated declaration: 
+/home/teste/Documentos/ESCJava-2.0.5-04-11-08-binary/./escspecs.jar:java/lang/StringBuffer.jml:143: Caution: JML requires a specification to begin with 'also' when the method overrides other methods
+    public synchronized StringBuffer append(float f);
+                                     ^
+/usr/lib/jvm/java-6-openjdk-i386/jre/lib/rt.jar:java/lang/AbstractStringBuilder.class: Associated declaration: 
+/home/teste/Documentos/ESCJava-2.0.5-04-11-08-binary/./escspecs.jar:java/lang/StringBuffer.jml:150: Caution: JML requires a specification to begin with 'also' when the method overrides other methods
+    public synchronized StringBuffer append(double d);
+                                     ^
+/usr/lib/jvm/java-6-openjdk-i386/jre/lib/rt.jar:java/lang/AbstractStringBuilder.class: Associated declaration: 
+/home/teste/Documentos/ESCJava-2.0.5-04-11-08-binary/./escspecs.jar:java/lang/StringBuffer.jml:295: Caution: JML requires a specification to begin with 'also' when the method overrides other methods
+    public synchronized StringBuffer deleteCharAt(int index);
+                                     ^
+/usr/lib/jvm/java-6-openjdk-i386/jre/lib/rt.jar:java/lang/AbstractStringBuilder.class: Associated declaration: 
+/home/teste/Documentos/ESCJava-2.0.5-04-11-08-binary/./escspecs.jar:java/lang/StringBuffer.jml:368: Caution: JML requires a specification to begin with 'also' when the method overrides other methods
+    public synchronized StringBuffer insert(int offset, Object o);
+                                     ^
+/usr/lib/jvm/java-6-openjdk-i386/jre/lib/rt.jar:java/lang/AbstractStringBuilder.class: Associated declaration: 
+/home/teste/Documentos/ESCJava-2.0.5-04-11-08-binary/./escspecs.jar:java/lang/StringBuffer.jml:378: Caution: JML requires a specification to begin with 'also' when the method overrides other methods
+    public synchronized StringBuffer insert(int offset, String s);
+                                     ^
+/usr/lib/jvm/java-6-openjdk-i386/jre/lib/rt.jar:java/lang/AbstractStringBuilder.class: Associated declaration: 
+/home/teste/Documentos/ESCJava-2.0.5-04-11-08-binary/./escspecs.jar:java/lang/StringBuffer.jml:348: Caution: JML requires a specification to begin with 'also' when the method overrides other methods
+    public synchronized StringBuffer insert(int offset, char[] ca);
+                                     ^
+/usr/lib/jvm/java-6-openjdk-i386/jre/lib/rt.jar:java/lang/AbstractStringBuilder.class: Associated declaration: 
+/home/teste/Documentos/ESCJava-2.0.5-04-11-08-binary/./escspecs.jar:java/lang/StringBuffer.jml:358: Caution: JML requires a specification to begin with 'also' when the method overrides other methods
+    public StringBuffer insert(int offset, boolean b);
+                        ^
+/usr/lib/jvm/java-6-openjdk-i386/jre/lib/rt.jar:java/lang/AbstractStringBuilder.class: Associated declaration: 
+/home/teste/Documentos/ESCJava-2.0.5-04-11-08-binary/./escspecs.jar:java/lang/StringBuffer.jml:327: Caution: JML requires a specification to begin with 'also' when the method overrides other methods
+    public synchronized StringBuffer insert(int offset, char c);
+                                     ^
+/usr/lib/jvm/java-6-openjdk-i386/jre/lib/rt.jar:java/lang/AbstractStringBuilder.class: Associated declaration: 
+/home/teste/Documentos/ESCJava-2.0.5-04-11-08-binary/./escspecs.jar:java/lang/StringBuffer.jml:337: Caution: JML requires a specification to begin with 'also' when the method overrides other methods
+    public StringBuffer insert(int offset, int i);
+                        ^
+/usr/lib/jvm/java-6-openjdk-i386/jre/lib/rt.jar:java/lang/AbstractStringBuilder.class: Associated declaration: 
+/home/teste/Documentos/ESCJava-2.0.5-04-11-08-binary/./escspecs.jar:java/lang/StringBuffer.jml:305: Caution: JML requires a specification to begin with 'also' when the method overrides other methods
+    public StringBuffer insert(int offset, long l);
+                        ^
+/usr/lib/jvm/java-6-openjdk-i386/jre/lib/rt.jar:java/lang/AbstractStringBuilder.class: Associated declaration: 
+/home/teste/Documentos/ESCJava-2.0.5-04-11-08-binary/./escspecs.jar:java/lang/StringBuffer.jml:388: Caution: JML requires a specification to begin with 'also' when the method overrides other methods
+    public StringBuffer insert(int offset, float f);
+                        ^
+/usr/lib/jvm/java-6-openjdk-i386/jre/lib/rt.jar:java/lang/AbstractStringBuilder.class: Associated declaration: 
+/home/teste/Documentos/ESCJava-2.0.5-04-11-08-binary/./escspecs.jar:java/lang/StringBuffer.jml:317: Caution: JML requires a specification to begin with 'also' when the method overrides other methods
+    public StringBuffer insert(int offset, double d);
+                        ^
+/usr/lib/jvm/java-6-openjdk-i386/jre/lib/rt.jar:java/lang/AbstractStringBuilder.class: Associated declaration: 
+/home/teste/Documentos/ESCJava-2.0.5-04-11-08-binary/./escspecs.jar:java/lang/StringBuffer.jml:207: Caution: JML requires a specification to begin with 'also' when the method overrides other methods
+    public /*@ pure @*/ int indexOf(String str);
+                            ^
+/usr/lib/jvm/java-6-openjdk-i386/jre/lib/rt.jar:java/lang/AbstractStringBuilder.class: Associated declaration: 
+/home/teste/Documentos/ESCJava-2.0.5-04-11-08-binary/./escspecs.jar:java/lang/StringBuffer.jml:227: Caution: JML requires a specification to begin with 'also' when the method overrides other methods
+    public /*@ pure @*/ synchronized int indexOf(String str, int fromI ...
+                                         ^
+/usr/lib/jvm/java-6-openjdk-i386/jre/lib/rt.jar:java/lang/AbstractStringBuilder.class: Associated declaration: 
+/home/teste/Documentos/ESCJava-2.0.5-04-11-08-binary/./escspecs.jar:java/lang/StringBuffer.jml:246: Caution: JML requires a specification to begin with 'also' when the method overrides other methods
+    public /*@ pure @*/ synchronized int lastIndexOf(String str);
+                                         ^
+/usr/lib/jvm/java-6-openjdk-i386/jre/lib/rt.jar:java/lang/AbstractStringBuilder.class: Associated declaration: 
+/home/teste/Documentos/ESCJava-2.0.5-04-11-08-binary/./escspecs.jar:java/lang/StringBuffer.jml:267: Caution: JML requires a specification to begin with 'also' when the method overrides other methods
+    public /*@ pure @*/ synchronized int lastIndexOf(String str, int f ...
+                                         ^
+/usr/lib/jvm/java-6-openjdk-i386/jre/lib/rt.jar:java/lang/AbstractStringBuilder.class: Associated declaration: 
+/home/teste/Documentos/ESCJava-2.0.5-04-11-08-binary/./escspecs.jar:java/lang/StringBuffer.jml:397: Caution: JML requires a specification to begin with 'also' when the method overrides other methods
+    public synchronized StringBuffer reverse();
+                                     ^
+/usr/lib/jvm/java-6-openjdk-i386/jre/lib/rt.jar:java/lang/AbstractStringBuilder.class: Associated declaration: 
+/home/teste/Documentos/ESCJava-2.0.5-04-11-08-binary/./escspecs.jar:java/lang/StringBuffer.jml:420: Caution: The nullable annotation (explicit or implicit) is ignored because this method overrides a method declared non_null: 
+    //@ also
+    ^
+/home/teste/Documentos/ESCJava-2.0.5-04-11-08-binary/./escspecs.jar:java/lang/Object.spec:166: Associated declaration: 
+    /*@   public normal_behavior
+    ^
+/usr/lib/jvm/java-6-openjdk-i386/jre/lib/rt.jar:java/lang/AbstractStringBuilder.class: Caution: The nullable annotation (explicit or implicit) is ignored because this method overrides a method declared non_null: 
+/home/teste/Documentos/ESCJava-2.0.5-04-11-08-binary/./escspecs.jar:java/lang/Object.spec:166: Associated declaration: 
+    /*@   public normal_behavior
+    ^
+  Prover started:0.142 s 22667648 bytes
+    [1.533 s 23554792 bytes]
+
+net.sourceforge.cobertura.ant.Regex: setPattern(java.lang.String) ...
+    [0.348 s 24525232 bytes]  passed
+
+net.sourceforge.cobertura.ant.Regex: setBranchRate(java.lang.String) ...
+    [0.092 s 25107496 bytes]  passed
+
+net.sourceforge.cobertura.ant.Regex: setLineRate(java.lang.String) ...
+    [0.115 s 25689760 bytes]  passed
+
+net.sourceforge.cobertura.ant.Regex: toString() ...
+Caution: Unable to check method toString() of type net.sourceforge.cobertura.ant.Regex because its VC is too large
+    [1.284 s 30209784 bytes]  VC too big
+
+net.sourceforge.cobertura.ant.Regex: Regex() ...
+    [0.054 s 30867496 bytes]  passed
+  [3.432 s 30867496 bytes total]
+
+net.sourceforge.cobertura.ant.ExcludeClasses ...
+    [0.013 s 30867496 bytes]
+
+net.sourceforge.cobertura.ant.ExcludeClasses: setRegex(java.lang.String) ...
+    [0.073 s 31525208 bytes]  passed
+
+net.sourceforge.cobertura.ant.ExcludeClasses: getRegex() ...
+    [0.029 s 31854064 bytes]  passed
+
+net.sourceforge.cobertura.ant.ExcludeClasses: ExcludeClasses() ...
+    [0.042 s 32511776 bytes]  passed
+  [0.158 s 32511776 bytes total]
+
+net.sourceforge.cobertura.ant.ReportTask ...
+/home/teste/Documentos/cobertura-1.9.4.1/src/net/sourceforge/cobertura/ant/ReportTask.java:64: Error: No such type: net.sourceforge.cobertura.util.CommandLineBuilder
+import net.sourceforge.cobertura.util.CommandLineBuilder;
+       ^
+/home/teste/Documentos/cobertura-1.9.4.1/src/net/sourceforge/cobertura/ant/ReportTask.java:66: Error: No such type: org.apache.tools.ant.BuildException
+import org.apache.tools.ant.BuildException;
+       ^
+/home/teste/Documentos/cobertura-1.9.4.1/src/net/sourceforge/cobertura/ant/ReportTask.java:67: Error: No such type: org.apache.tools.ant.Project
+import org.apache.tools.ant.Project;
+       ^
+/home/teste/Documentos/cobertura-1.9.4.1/src/net/sourceforge/cobertura/ant/ReportTask.java:64: Error: No such type: net.sourceforge.cobertura.util.CommandLineBuilder
+import net.sourceforge.cobertura.util.CommandLineBuilder;
+       ^
+/home/teste/Documentos/cobertura-1.9.4.1/src/net/sourceforge/cobertura/ant/ReportTask.java:66: Error: No such type: org.apache.tools.ant.BuildException
+import org.apache.tools.ant.BuildException;
+       ^
+/home/teste/Documentos/cobertura-1.9.4.1/src/net/sourceforge/cobertura/ant/ReportTask.java:67: Error: No such type: org.apache.tools.ant.Project
+import org.apache.tools.ant.Project;
+       ^
+/home/teste/Documentos/cobertura-1.9.4.1/src/net/sourceforge/cobertura/ant/CommonMatchingTask.java:87: Fatal error: Cycle in inheritance/enclosing hierarchy detected involving type net.sourceforge.cobertura.ant.CommonMatchingTask
+public abstract class CommonMatchingTask extends MatchingTask
+                      ^
+
+net.sourceforge.cobertura.ant.Ignore ...
+    [0.014 s 32840632 bytes]
+
+net.sourceforge.cobertura.ant.Ignore: setRegex(java.lang.String) ...
+    [0.064 s 33169488 bytes]  passed
+
+net.sourceforge.cobertura.ant.Ignore: getRegex() ...
+    [0.08 s 33498344 bytes]  passed
+
+net.sourceforge.cobertura.ant.Ignore: Ignore() ...
+    [0.053 s 34156056 bytes]  passed
+  [0.212 s 34156056 bytes total]
+
+net.sourceforge.cobertura.ant.InstrumentTask ...
+/home/teste/Documentos/cobertura-1.9.4.1/src/net/sourceforge/cobertura/ant/InstrumentTask.java:70: Error: No such type: net.sourceforge.cobertura.util.CommandLineBuilder
+import net.sourceforge.cobertura.util.CommandLineBuilder;
+       ^
+/home/teste/Documentos/cobertura-1.9.4.1/src/net/sourceforge/cobertura/ant/InstrumentTask.java:72: Error: No such type: org.apache.tools.ant.BuildException
+import org.apache.tools.ant.BuildException;
+       ^
+/home/teste/Documentos/cobertura-1.9.4.1/src/net/sourceforge/cobertura/ant/InstrumentTask.java:73: Error: No such type: org.apache.tools.ant.Project
+import org.apache.tools.ant.Project;
+       ^
+/home/teste/Documentos/cobertura-1.9.4.1/src/net/sourceforge/cobertura/ant/InstrumentTask.java:74: Error: No such type: org.apache.tools.ant.types.FileSet
+import org.apache.tools.ant.types.FileSet;
+       ^
+/home/teste/Documentos/cobertura-1.9.4.1/src/net/sourceforge/cobertura/ant/InstrumentTask.java:75: Error: No such type: org.apache.tools.ant.types.Path
+import org.apache.tools.ant.types.Path;
+       ^
+/home/teste/Documentos/cobertura-1.9.4.1/src/net/sourceforge/cobertura/ant/InstrumentTask.java:70: Error: No such type: net.sourceforge.cobertura.util.CommandLineBuilder
+import net.sourceforge.cobertura.util.CommandLineBuilder;
+       ^
+/home/teste/Documentos/cobertura-1.9.4.1/src/net/sourceforge/cobertura/ant/InstrumentTask.java:72: Error: No such type: org.apache.tools.ant.BuildException
+import org.apache.tools.ant.BuildException;
+       ^
+/home/teste/Documentos/cobertura-1.9.4.1/src/net/sourceforge/cobertura/ant/InstrumentTask.java:73: Error: No such type: org.apache.tools.ant.Project
+import org.apache.tools.ant.Project;
+       ^
+/home/teste/Documentos/cobertura-1.9.4.1/src/net/sourceforge/cobertura/ant/InstrumentTask.java:74: Error: No such type: org.apache.tools.ant.types.FileSet
+import org.apache.tools.ant.types.FileSet;
+       ^
+/home/teste/Documentos/cobertura-1.9.4.1/src/net/sourceforge/cobertura/ant/InstrumentTask.java:75: Error: No such type: org.apache.tools.ant.types.Path
+import org.apache.tools.ant.types.Path;
+       ^
+/home/teste/Documentos/cobertura-1.9.4.1/src/net/sourceforge/cobertura/ant/CommonMatchingTask.java:87: Fatal error: Cycle in inheritance/enclosing hierarchy detected involving type net.sourceforge.cobertura.ant.CommonMatchingTask
+public abstract class CommonMatchingTask extends MatchingTask
+                      ^
+
+net.sourceforge.cobertura.ant.AntUtil ...
+/home/teste/Documentos/cobertura-1.9.4.1/src/net/sourceforge/cobertura/ant/AntUtil.java:57: Error: No such type: org.apache.tools.ant.taskdefs.Java
+import org.apache.tools.ant.taskdefs.Java;
+       ^
+/home/teste/Documentos/cobertura-1.9.4.1/src/net/sourceforge/cobertura/ant/AntUtil.java:58: Error: No such type: org.apache.tools.ant.types.Environment.Variable
+import org.apache.tools.ant.types.Environment.Variable;
+       ^
+/home/teste/Documentos/cobertura-1.9.4.1/src/net/sourceforge/cobertura/ant/AntUtil.java:57: Error: No such type: org.apache.tools.ant.taskdefs.Java
+import org.apache.tools.ant.taskdefs.Java;
+       ^
+/home/teste/Documentos/cobertura-1.9.4.1/src/net/sourceforge/cobertura/ant/AntUtil.java:58: Error: No such type: org.apache.tools.ant.types.Environment.Variable
+import org.apache.tools.ant.types.Environment.Variable;
+       ^
+/home/teste/Documentos/cobertura-1.9.4.1/src/net/sourceforge/cobertura/ant/AntUtil.java:82: Fatal error: Can't find type named "Java"
+        static void transferCoberturaDataFileProperty(Java task)
+                                                      ^
+
+net.sourceforge.cobertura.ant.CheckTask ...
+/home/teste/Documentos/cobertura-1.9.4.1/src/net/sourceforge/cobertura/ant/CheckTask.java:65: Error: No such type: org.apache.tools.ant.BuildException
+import org.apache.tools.ant.BuildException;
+       ^
+/home/teste/Documentos/cobertura-1.9.4.1/src/net/sourceforge/cobertura/ant/CheckTask.java:65: Error: No such type: org.apache.tools.ant.BuildException
+import org.apache.tools.ant.BuildException;
+       ^
+/home/teste/Documentos/cobertura-1.9.4.1/src/net/sourceforge/cobertura/ant/CommonMatchingTask.java:87: Fatal error: Cycle in inheritance/enclosing hierarchy detected involving type net.sourceforge.cobertura.ant.CommonMatchingTask
+public abstract class CommonMatchingTask extends MatchingTask
+                      ^
+
+net.sourceforge.cobertura.ant.MergeTask ...
+/home/teste/Documentos/cobertura-1.9.4.1/src/net/sourceforge/cobertura/ant/MergeTask.java:63: Error: No such type: net.sourceforge.cobertura.util.CommandLineBuilder
+import net.sourceforge.cobertura.util.CommandLineBuilder;
+       ^
+/home/teste/Documentos/cobertura-1.9.4.1/src/net/sourceforge/cobertura/ant/MergeTask.java:65: Error: No such type: org.apache.tools.ant.BuildException
+import org.apache.tools.ant.BuildException;
+       ^
+/home/teste/Documentos/cobertura-1.9.4.1/src/net/sourceforge/cobertura/ant/MergeTask.java:66: Error: No such type: org.apache.tools.ant.Project
+import org.apache.tools.ant.Project;
+       ^
+/home/teste/Documentos/cobertura-1.9.4.1/src/net/sourceforge/cobertura/ant/MergeTask.java:63: Error: No such type: net.sourceforge.cobertura.util.CommandLineBuilder
+import net.sourceforge.cobertura.util.CommandLineBuilder;
+       ^
+/home/teste/Documentos/cobertura-1.9.4.1/src/net/sourceforge/cobertura/ant/MergeTask.java:65: Error: No such type: org.apache.tools.ant.BuildException
+import org.apache.tools.ant.BuildException;
+       ^
+/home/teste/Documentos/cobertura-1.9.4.1/src/net/sourceforge/cobertura/ant/MergeTask.java:66: Error: No such type: org.apache.tools.ant.Project
+import org.apache.tools.ant.Project;
+       ^
+/home/teste/Documentos/cobertura-1.9.4.1/src/net/sourceforge/cobertura/ant/CommonMatchingTask.java:87: Fatal error: Cycle in inheritance/enclosing hierarchy detected involving type net.sourceforge.cobertura.ant.CommonMatchingTask
+public abstract class CommonMatchingTask extends MatchingTask
+                      ^
+
+net.sourceforge.cobertura.ant.IgnoreBranches ...
+    [0.024 s 34813768 bytes]
+
+net.sourceforge.cobertura.ant.IgnoreBranches: setRegex(java.lang.String) ...
+    [0.076 s 35471480 bytes]  passed
+
+net.sourceforge.cobertura.ant.IgnoreBranches: getRegex() ...
+    [0.029 s 35800336 bytes]  passed
+
+net.sourceforge.cobertura.ant.IgnoreBranches: IgnoreBranches() ...
+    [0.07 s 36458048 bytes]  passed
+  [0.204 s 36458048 bytes total]
+46 cautions
+94 errors
+teste@debian:~/Documentos/ESCJava-2.0.5-04-11-08-binary$ 
+

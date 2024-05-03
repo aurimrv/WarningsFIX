@@ -1,0 +1,3 @@
+BubCorrecto/source/paper/BubCorrecto.java
+BubCorrecto/outputs/07-esc-java-BubCorrecto/07-esc-java-source-paper-BubCorrecto.java
+BubCorrecto/outputs/05-jlint-BubCorrecto/05-jlint-source-paper-BubCorrecto.java

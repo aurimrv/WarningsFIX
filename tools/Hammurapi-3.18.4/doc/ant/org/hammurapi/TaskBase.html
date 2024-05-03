@@ -1,0 +1,309 @@
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<TITLE>taskbase</TITLE>
+<STYLE>
+                    <!-- 
+                        TABLE.standard { background:silver }
+                        TH.standard { font:bold; background:gray; color:white }
+                        TR.standard { background:white }
+                        .code-snippet { background-color:EEEEEE; color:blue }
+                        .hidden { color:EEEEEE; }
+                     --> 
+                    </STYLE>
+</HEAD>
+<BODY>
+<H1>taskbase</H1>
+<H2>Description</H2>
+            
+<P>
+            
+</P>
+            
+<H2>Implementing Class</H2>
+                
+<P>org.hammurapi.TaskBase</P>
+            
+            
+<H2>Attributes</H2>
+                
+<TABLE cellpadding="3" cellspacing="1" class="standard">
+                    
+<TR class="standard">
+                        
+<TH class="standard">Attribute</TH>
+                        <TH class="standard">Description</TH>
+                        <TH class="standard">Required</TH>
+                    
+</TR>
+                    
+<TR class="standard">
+                        
+<TD class="standard">unpackDir</TD>
+                        <TD class="standard">If this attribute is set then HAR archive will be unpacked in the given directory instead of a temporary one.
+</TD>
+                        <TD class="standard">No.</TD>
+                    
+</TR>
+                    
+<TR class="standard">
+                        
+<TD class="standard">debugType</TD>
+                        <TD class="standard">Class name to debug
+</TD>
+                        <TD class="standard">No.</TD>
+                    
+</TR>
+                    
+<TR class="standard">
+                        
+<TD class="standard">embeddedInspectors</TD>
+                        <TD class="standard">Load embedded inspectors. Defaults to true.
+</TD>
+                        <TD class="standard">No.</TD>
+                    
+</TR>
+                    
+<TR class="standard">
+                        
+<TD class="standard">classPath</TD>
+                        <TD class="standard">
+</TD>
+                        <TD class="standard">No.</TD>
+                    
+</TR>
+                    
+<TR class="standard">
+                        
+<TD class="standard">archive</TD>
+                        <TD class="standard">Hammurapi archive to process.
+</TD>
+                        <TD class="standard">No.</TD>
+                    
+</TR>
+                    
+<TR class="standard">
+                        
+<TD class="standard">dpmoThreshold</TD>
+                        <TD class="standard">Fail build if project DPMO is above the threshold.
+</TD>
+                        <TD class="standard">No.</TD>
+                    
+</TR>
+                    
+<TR class="standard">
+                        
+<TD class="standard">sigmaThreshold</TD>
+                        <TD class="standard">Fail build if project Sigma is below the threshold.
+</TD>
+                        <TD class="standard">No.</TD>
+                    
+</TR>
+                    
+<TR class="standard">
+                        
+<TD class="standard">failOnFirstException</TD>
+                        <TD class="standard">Fail build as soon as there is an exception. Default is false.
+</TD>
+                        <TD class="standard">No.</TD>
+                    
+</TR>
+                    
+<TR class="standard">
+                        
+<TD class="standard">failOnWarnings</TD>
+                        <TD class="standard">Fail build if there have been warnings. Default is true.
+</TD>
+                        <TD class="standard">No.</TD>
+                    
+</TR>
+                    
+<TR class="standard">
+                        
+<TD class="standard">severityThreshold</TD>
+                        <TD class="standard">Fail build on violations with severity levels lower or equal to the threshold.
+</TD>
+                        <TD class="standard">No.</TD>
+                    
+</TR>
+                    
+<TR class="standard">
+                        
+<TD class="standard">title</TD>
+                        <TD class="standard">
+</TD>
+                        <TD class="standard">No.</TD>
+                    
+</TR>
+                    
+<TR class="standard">
+                        
+<TD class="standard">waiverStubs</TD>
+                        <TD class="standard">File to output waiver stubs for rejected waiver requests to. Selected waiver stubs can then be copied to waiver source. Simplifies waiver creation
+</TD>
+                        <TD class="standard">No.</TD>
+                    
+</TR>
+                    
+<TR class="standard">
+                        
+<TD class="standard">evictBadInspectors</TD>
+                        <TD class="standard">Remove inspector from inspector set if it throws an exception during review
+</TD>
+                        <TD class="standard">No.</TD>
+                    
+</TR>
+                    
+<TR class="standard">
+                        
+<TD class="standard">force</TD>
+                        <TD class="standard">Force review even if the file is not changed
+</TD>
+                        <TD class="standard">No.</TD>
+                    
+</TR>
+                    
+<TR class="standard">
+                        
+<TD class="standard">baselining</TD>
+                        <TD class="standard">Sets baselining mode. Possible values: off (default) - no baselining, on - do not report violations stored in the baseline table, set - all violations from current scan are saved to the baseline table. The idea is to filter out all violations in preexisting code and report only new violations. Not all violations can be filtered out, only thouse with signatures. Significant code modifications can surface some baselined violation.
+</TD>
+                        <TD class="standard">No.</TD>
+                    
+</TR>
+                    
+<TR class="standard">
+                        
+<TD class="standard">forceOnWarnings</TD>
+                        <TD class="standard">Force review of files with warnings, even if the file is not changed. Default is true
+</TD>
+                        <TD class="standard">No.</TD>
+                    
+</TR>
+                    
+<TR class="standard">
+                        
+<TD class="standard">reviewDescription</TD>
+                        <TD class="standard">Description of review, e.g. release number. Appears in history annotation.
+</TD>
+                        <TD class="standard">No.</TD>
+                    
+</TR>
+                    
+<TR class="standard">
+                        
+<TD class="standard">database</TD>
+                        <TD class="standard">If this parameter is set then Hypersonic standalone database will be used instead of temporary database. You must set database name if you want to run incremental reviews.
+</TD>
+                        <TD class="standard">No.</TD>
+                    
+</TR>
+                    
+<TR class="standard">
+                        
+<TD class="standard">tabSize</TD>
+                        <TD class="standard">Tab size in source files. Defaults to 8.
+</TD>
+                        <TD class="standard">No.</TD>
+                    
+</TR>
+                
+</TABLE>
+            
+
+            
+<H2>Nested Elements</H2>
+                
+<TABLE cellpadding="3" cellspacing="1" class="standard">
+                    
+<TR class="standard">
+                        
+<TH class="standard">Element</TH>
+                        <TH class="standard">Description</TH>
+                    
+</TR>
+                    
+<TR class="standard">
+                        
+<TD class="standard"><a href="http://ant.apache.org/manual/using.html#path">classpath</a></TD>
+                        <TD class="standard">Maybe creates a nested classpath element.</TD>
+                    
+</TR>
+                    
+<TR class="standard">
+                        
+<TD class="standard"><a href="../../com/pavelvlasov/ant/XmlSourceEntry.html">config</a></TD>
+                        <TD class="standard">Configuration source. Task can be configured from multiple sources.</TD>
+                    
+</TR>
+                    
+<TR class="standard">
+                        
+<TD class="standard"><a href="../../org/hammurapi/HistoryOutput.html">historyOutput</a></TD>
+                        <TD class="standard">Defines history output, which stores review summary into database.</TD>
+                    
+</TR>
+                    
+<TR class="standard">
+                        
+<TD class="standard"><a href="../../org/hammurapi/InspectorEntry.html">inspector</a></TD>
+                        <TD class="standard">Defines inspector</TD>
+                    
+</TR>
+                    
+<TR class="standard">
+                        
+<TD class="standard"><a href="../../org/hammurapi/InspectorSourceEntry.html">inspectors</a></TD>
+                        <TD class="standard">Defines inspector source</TD>
+                    
+</TR>
+                    
+<TR class="standard">
+                        
+<TD class="standard"><a href="../../org/hammurapi/ListenerEntry.html">listener</a></TD>
+                        <TD class="standard">Review listener</TD>
+                    
+</TR>
+                    
+<TR class="standard">
+                        
+<TD class="standard"><a href="../../org/hammurapi/Output.html">output</a></TD>
+                        <TD class="standard">Defines output</TD>
+                    
+</TR>
+                    
+<TR class="standard">
+                        
+<TD class="standard"><a href="../../org/hammurapi/ReviewAcceptorEntry.html">reviewAcceptor</a></TD>
+                        <TD class="standard">Review acceptor.</TD>
+                    
+</TR>
+                    
+<TR class="standard">
+                        
+<TD class="standard"><a href="../../com/pavelvlasov/ant/ObjectEntry.html">revisionMapper</a></TD>
+                        <TD class="standard">Revision mapper. Must implement com.pavelvlasov.jsel.RevisionMapper interface.</TD>
+                    
+</TR>
+                    
+<TR class="standard">
+                        
+<TD class="standard"><a href="http://jakarta.apache.org/ant/manual/CoreTypes/fileset.html">src</a></TD>
+                        <TD class="standard">Source files fileset.</TD>
+                    
+</TR>
+                    
+<TR class="standard">
+                        
+<TD class="standard"><a href="../../org/hammurapi/WaiverSourceEntry.html">waivers</a></TD>
+                        <TD class="standard">Defines waivers source</TD>
+                    
+</TR>
+                
+</TABLE>
+            
+        
+<HR>
+<I>Hammurapi 3.18.4 Copyright &copy;2004 Hammurapi Group. All Rights Reserved.</I>
+</BODY>
+</HTML>

@@ -1,0 +1,291 @@
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<TITLE>statementcompiler</TITLE>
+<STYLE>
+                    <!-- 
+                        TABLE.standard { background:silver }
+                        TH.standard { font:bold; background:gray; color:white }
+                        TR.standard { background:white }
+                        .code-snippet { background-color:EEEEEE; color:blue }
+                        .hidden { color:EEEEEE; }
+                     --> 
+                    </STYLE>
+</HEAD>
+<BODY>
+<H1>statementcompiler</H1>
+<H2>Description</H2>
+            
+<P>
+                Compiles SQL query to interface and engine classes using metadata obtained from the database. <H1>Example</H1> SQLC uses <a href="http://jakarta.apache.org/bcel/">BCEL</a> and <a href="http://www.antlr.org">ANTLR</a> for code generation. If you have pvcommons.jar, bcel-5.1.jar and antlr.jar in the system classpath or in Ant lib directory then SQLC task can be defined as <PRE>&lt;taskdef name="sqlc" classname="com.pavelvlasov.sqlc.StatementCompilerTask"/&gt;<BR>
+</PRE> Otherwise jars which are not in the classpath shall be specified in task definition classpath. SQLC connects to the target database during generation, therefore database driver shall also be present in the classpath<BR> 
+<PRE>&lt;taskdef name="sqlc" classname="com.pavelvlasov.sqlc.StatementCompilerTask"&gt;<BR> &lt;classpath&gt;<BR> &lt;fileset dir="${tools}/bcel-5.1" includes="bcel-5.1.jar"/&gt;<BR> &lt;fileset dir="${tools}/ANTLR" includes="antlr.jar"/&gt;<BR> &lt;fileset dir="${tools}/pvcommons/java-1.4" includes="pvcommons.jar"/&gt;<BR> &lt;fileset dir="${tools}/hsqldb/lib" includes="hsqldb.jar"/&gt;<BR> &lt;/classpath&gt;<BR>&lt;/taskdef&gt;<BR>
+</PRE> Usage: <PRE>&lt;sqlc <BR> script="src/com/pavelvlasov/jsel/impl/Hypersonic.sql"<BR> dir="sqlc_generated"<BR> docDir="sqlcDoc"<BR> package="com.pavelvlasov.jsel.impl.sql"<BR> masterEngine="Engine"<BR>&gt; <BR> &lt;query name="CompilationUnit" singleRow="yes"&gt;<BR> SELECT * FROM COMPILATION_UNIT WHERE ID=?<BR> &lt;/query&gt;<BR>
+<BR> &lt;query name="CompilationUnitByStoreLevel"&gt;<BR> SELECT * FROM COMPILATION_UNIT C<BR> WHERE REPOSITORY=? AND C.STORE_LEVEL=? AND<BR> EXISTS(SELECT * FROM COMPILATION_UNIT_SCAN S<BR> WHERE S.COMPILATION_UNIT_ID=C.ID AND<BR> S.REPOSITORY=C.REPOSITORY AND S.SCAN_ID=?)<BR> &lt;/query&gt;<BR> 
+<BR> &lt;update name="DeleteCompilationUnit"&gt;<BR> DELETE FROM COMPILATION_UNIT WHERE ID=?<BR> &lt;/update&gt; <BR>&lt;/sqlc&gt;<BR>
+</PRE> 
+            
+</P>
+            
+<H2>Implementing Class</H2>
+                
+<P>com.pavelvlasov.sqlc.StatementCompilerTask</P>
+            
+            
+<H2>Attributes</H2>
+                
+<TABLE cellpadding="3" cellspacing="1" class="standard">
+                    
+<TR class="standard">
+                        
+<TH class="standard">Attribute</TH>
+                        <TH class="standard">Description</TH>
+                        <TH class="standard">Required</TH>
+                    
+</TR>
+                    
+<TR class="standard">
+                        
+<TD class="standard">inheritMetadata</TD>
+                        <TD class="standard">Use parent's metadata file if any. Valid for nested tasks. Default is false.
+</TD>
+                        <TD class="standard">No.</TD>
+                    
+</TR>
+                    
+<TR class="standard">
+                        
+<TD class="standard">engineMethodsVisibility</TD>
+                        <TD class="standard">Visibility of engine methods. Valid values are "public" (default), "protected" and "" (empty string for default/package visibility).
+</TD>
+                        <TD class="standard">No.</TD>
+                    
+</TR>
+                    
+<TR class="standard">
+                        
+<TD class="standard">useSqlTypes</TD>
+                        <TD class="standard">If true then generated classes will use setObject(int, Object, int) method instead of setObject(int, Object) to set parameters of object type. Nested tasks inherit parent setting unless overriden.
+</TD>
+                        <TD class="standard">No.</TD>
+                    
+</TR>
+                    
+<TR class="standard">
+                        
+<TD class="standard">metadata</TD>
+                        <TD class="standard">Metadata file
+</TD>
+                        <TD class="standard">No.</TD>
+                    
+</TR>
+                    
+<TR class="standard">
+                        
+<TD class="standard">indexName</TD>
+                        <TD class="standard">Documentation index file name. Defaults to 'index.xml' for XML output and 'index.html' for HTML output.
+</TD>
+                        <TD class="standard">No.</TD>
+                    
+</TR>
+                    
+<TR class="standard">
+                        
+<TD class="standard">engineVisibility</TD>
+                        <TD class="standard">Visibility of engine class. Valid values are "public" (default), and "" (empty string for default/package visibility).
+</TD>
+                        <TD class="standard">No.</TD>
+                    
+</TR>
+                    
+<TR class="standard">
+                        
+<TD class="standard">interfaceImplVisibility</TD>
+                        <TD class="standard">Visibility of interface implementation classes. Valid values are "public" (default), and "" (empty string for default/package visibility).
+</TD>
+                        <TD class="standard">No.</TD>
+                    
+</TR>
+                    
+<TR class="standard">
+                        
+<TD class="standard">skipIndices</TD>
+                        <TD class="standard">Set it to true to avoid loading index metadata (e.g. if you don't have sufficient privileges)
+</TD>
+                        <TD class="standard">No.</TD>
+                    
+</TR>
+                    
+<TR class="standard">
+                        
+<TD class="standard">nameMap</TD>
+                        <TD class="standard">If this attribute is true then: 1) All queries and updates generated for tables will have table and schema name enclosed into ${ and } e.g. ${BANK}.${ACCOUNT} 2) SQLProcessor used to obtain This attribute creates blank name map, if you need a prepopulated name map use
+</TD>
+                        <TD class="standard">No.</TD>
+                    
+</TR>
+                    
+<TR class="standard">
+                        
+<TD class="standard">nameMapFile</TD>
+                        <TD class="standard">Reads name map from property file.
+</TD>
+                        <TD class="standard">No.</TD>
+                    
+</TR>
+                    
+<TR class="standard">
+                        
+<TD class="standard">xmlDoc</TD>
+                        <TD class="standard">If true documentation will be generated in XML format for further styling.
+</TD>
+                        <TD class="standard">No.</TD>
+                    
+</TR>
+                    
+<TR class="standard">
+                        
+<TD class="standard">script</TD>
+                        <TD class="standard">DDL script file. Statements shall be separated by semicolons. If this attribute is set then in-memory Hypersonic database is created, gets populated using script and query is compiled against this database. If neither connection nor script is specified the uninitialized Hypersonic in-memory database will be used. It can be useful if several sqlc tasks are executed in a row against the same database.
+</TD>
+                        <TD class="standard">No.</TD>
+                    
+</TR>
+                    
+<TR class="standard">
+                        
+<TD class="standard">dir</TD>
+                        <TD class="standard">Directory to output compiled classes
+</TD>
+                        <TD class="standard">Yes.</TD>
+                    
+</TR>
+                    
+<TR class="standard">
+                        
+<TD class="standard">package</TD>
+                        <TD class="standard">Package for generated classes
+</TD>
+                        <TD class="standard">Yes.</TD>
+                    
+</TR>
+                    
+<TR class="standard">
+                        
+<TD class="standard">docDir</TD>
+                        <TD class="standard">Directory to output HTML documentation.
+</TD>
+                        <TD class="standard">No.</TD>
+                    
+</TR>
+                    
+<TR class="standard">
+                        
+<TD class="standard">masterEngine</TD>
+                        <TD class="standard">Class name for master engine. Set this attribute if you want all engine methods be held in one class and avoid generation of an engine class per statement.
+</TD>
+                        <TD class="standard">No.</TD>
+                    
+</TR>
+                    
+<TR class="standard">
+                        
+<TD class="standard">smartBase</TD>
+                        <TD class="standard">Base class (fully qualified name) for generated smart implementations. Default is com.pavelvlasov.sql.DatabaseObject The base class is supposed to have same constructors and methods as DatabaseObject. The idea is to subclass DatabaseObject to introduce additional qualities like audit, metrics, security, ... whithout changing class' contract. This setting is not inherited from the parent task.
+</TD>
+                        <TD class="standard">No.</TD>
+                    
+</TR>
+                
+</TABLE>
+            
+
+            
+<H2>Nested Elements</H2>
+                
+<TABLE cellpadding="3" cellspacing="1" class="standard">
+                    
+<TR class="standard">
+                        
+<TH class="standard">Element</TH>
+                        <TH class="standard">Description</TH>
+                    
+</TR>
+                    
+<TR class="standard">
+                        
+<TD class="standard"><a href="../../../com/pavelvlasov/ant/ConnectionEntry.html">connection</a></TD>
+                        <TD class="standard">Database connection.</TD>
+                    
+</TR>
+                    
+<TR class="standard">
+                        
+<TD class="standard"><a href="../../../com/pavelvlasov/sqlc/DbStatementsEntry.html">dbStatements</a></TD>
+                        <TD class="standard">Statements from the database.</TD>
+                    
+</TR>
+                    
+<TR class="standard">
+                        
+<TD class="standard"><a href="../../../com/pavelvlasov/ant/ObjectEntry.html">generationPolicy</a></TD>
+                        <TD class="standard">Generation policy. Must implement com.pavelvlasov.sql.metadata.GenerationPolicy interface.</TD>
+                    
+</TR>
+                    
+<TR class="standard">
+                        
+<TD class="standard"><a href="../../../com/pavelvlasov/sqlc/InterfaceEntry.html">interface</a></TD>
+                        <TD class="standard">Interface which generated interfaces shall try to extend.</TD>
+                    
+</TR>
+                    
+<TR class="standard">
+                        
+<TD class="standard"><a href="../../../com/pavelvlasov/sqlc/QueryEntry.html">query</a></TD>
+                        <TD class="standard">Query to compile</TD>
+                    
+</TR>
+                    
+<TR class="standard">
+                        
+<TD class="standard"><a href="../../../com/pavelvlasov/sqlc/ScriptEntry.html">script</a></TD>
+                        <TD class="standard"></TD>
+                    
+</TR>
+                    
+<TR class="standard">
+                        
+<TD class="standard"><a href="../../../com/pavelvlasov/sqlc/StatementCompilerTask.html">sqlc</a></TD>
+                        <TD class="standard">Subtask. Inherits output directory, documentation directory, database connection, skipIndices attribute, outputXml attribute and injected/generated interfaces from the parent task.</TD>
+                    
+</TR>
+                    
+<TR class="standard">
+                        
+<TD class="standard"><a href="../../../com/pavelvlasov/sqlc/StatementsEntry.html">statements</a></TD>
+                        <TD class="standard">Statements xml file. Top element should be 'statements', containing 'query' and 'update' elements which have the same format as nested 'query' and 'update' elements.</TD>
+                    
+</TR>
+                    
+<TR class="standard">
+                        
+<TD class="standard"><a href="../../../com/pavelvlasov/sqlc/TableEntry.html">table</a></TD>
+                        <TD class="standard">Table entry to generate statements from table metadata and then compile them.</TD>
+                    
+</TR>
+                    
+<TR class="standard">
+                        
+<TD class="standard"><a href="../../../com/pavelvlasov/sqlc/UpdateEntry.html">update</a></TD>
+                        <TD class="standard">Query to compile</TD>
+                    
+</TR>
+                
+</TABLE>
+            
+        
+<HR>
+<I>Hammurapi 3.18.4 Copyright &copy;2004 Hammurapi Group. All Rights Reserved.</I>
+</BODY>
+</HTML>

@@ -1,0 +1,73 @@
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<TITLE>Hammurapi 3.18.4 [Inspector]</TITLE>
+<STYLE>
+		                <!-- 
+		                    TABLE.standard { background:silver }
+		                    TH.standard { font:bold; background:white }
+		                    TR.standard { background:white }
+		                    .code-snippet { background-color:EEEEEE; color:blue }
+		                    .hidden { color:EEEEEE; } 
+				    span.problem { font:bold; color:red }
+				    span.fix { font:bold; color:green }
+		                 --> 
+		                </STYLE>
+</HEAD>
+<BODY>
+<DL>
+<DT>
+<a name="inspector_ER-203"><B style="color:blue">ER-203</B> </a>Do not use instance or class non-final variables in Struts Action.</DT>
+<P></P>
+<DD>
+<TABLE cellspacing="1" cellpadding="3" class="standard">
+<TR class="standard">
+<TH align="left" valign="top">Severity</TH><TD>1</TD>
+</TR>
+<TR class="standard">
+<TH align="left" valign="top">Enabled</TH><TD>no</TD>
+</TR>
+<TR class="standard">
+<TH align="left" valign="top">Waivable</TH><TD></TD>
+</TR>
+<TR class="standard">
+<TH align="left" valign="top">Rationale</TH><TD>In multithreading environment value of instance/class variable can be changed from
+        one thread and the be read by another which will lead to data corruption.</TD>
+</TR>
+<TR class="standard">
+<TH align="left" valign="top">Violation</TH><TD>
+<PRE class="code-snippet">public  class EmployeeAction extends DispatchAction {
+		//-- violation
+		private String path = "";
+		
+		//-- OK	
+		private static Logger logger = Logger.getLogger(EmployeeAction.class.getName());
+	}	
+        </PRE>
+</TD>
+</TR>
+<TR class="standard">
+<TH align="left" valign="top">Fix</TH><TD>
+<PRE class="code-snippet">public  class EmployeeAction extends DispatchAction {
+		
+		//-- OK	
+		private static Logger logger = Logger.getLogger(EmployeeAction.class.getName());
+		
+		public void execute(){
+		 	//-- move instance variable to local variable
+			String path = "";
+			BusinessDelegate b = new BusinessDelegate();
+			b.insertEmployee();
+		}
+
+	}	 </PRE>
+</TD>
+</TR>
+</TABLE>
+</DD>
+<P></P>
+</DL>
+<HR>
+<i>Hammurapi 3.18.4 Copyright &copy; 2004 Hammurapi Group. All Rights Reserved.</i>
+</BODY>
+</HTML>

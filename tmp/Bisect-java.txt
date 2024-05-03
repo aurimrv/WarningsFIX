@@ -1,0 +1,4 @@
+Bisect/source/paper/Bisect.java
+Bisect/outputs/07-esc-java-Bisect/07-esc-java-source-paper-Bisect.java
+Bisect/outputs/05-jlint-Bisect/05-jlint-source-paper-Bisect.java
+Bisect/outputs/06-pmd-Bisect/06-pmd-source-paper-Bisect.java

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin
+   id="org.hammurapi.eclipse.plugin"
+   name="Hammurapi Plug-in"
+   version="1.0.0.2"
+   provider-name="Hammurapi Team"
+   class="org.hammurapi.eclipse.plugin.HammurapiPlugin">
+
+   <runtime> 
+      <library name="Hammurapi.jar"/> 
+      <library name="pvcommons.jar"/> 
+      <library name="commons-cli-1.0.jar"/> 
+      <library name="Jsel.jar"/> 
+      <library name="Jsel-db.jar"/>> 
+      <library name="ant.jar"/> 
+      <library name="antlr.jar"/> 
+      <library name="xalan.jar"/> 
+   </runtime> 
+   <requires> 
+      <import plugin="org.eclipse.core.resources"/> 
+      <import plugin="org.eclipse.ui"/> 
+      <import plugin="org.apache.xerces"/> 
+      <import plugin="org.eclipse.jface.text"/> 
+      <import plugin="org.eclipse.jdt.core"/> 
+   </requires> 
+
+
+   <extension
+         id="HammurapiBuilder"
+         name="HammurapiBuilder"
+         point="org.eclipse.core.resources.builders">
+      <builder>
+         <run
+               class="org.hammurapi.eclipse.plugin.HammurapiBuilder">
+         </run>
+      </builder>
+   </extension>
+   <extension
+         id="HammurapiNature"
+         name="HammurapiNature"
+         point="org.eclipse.core.resources.natures">
+      <runtime>
+         <run
+               class="org.hammurapi.eclipse.plugin.HammurapiNature">
+         </run>
+      </runtime>
+   </extension>
+   <extension
+         id="HammurapiMarker"
+         name="Hammurapi Marker"
+         point="org.eclipse.core.resources.markers">
+      <super
+            type="org.eclipse.core.resources.problemmarker">
+      </super>
+      <persistent
+            value="true">
+      </persistent>
+   </extension>
+   <extension
+         point="org.eclipse.ui.propertyPages">
+      <page
+            objectClass="org.eclipse.core.resources.IProject"
+            name="Hammurapi"
+            class="org.hammurapi.eclipse.plugin.HammurapiPropertyPage"
+            id="org.hammurapi.eclipse.plugin.HammurapiPropertyPage">
+      </page>
+   </extension>
+
+</plugin>

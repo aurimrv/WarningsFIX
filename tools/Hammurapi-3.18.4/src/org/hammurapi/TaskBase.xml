@@ -1,0 +1,3313 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+<!DOCTYPE rule-set SYSTEM "rule-set.dtd">
+-->
+
+<inspector-set name="Embedded inspectors" revision="$Revision: 1.24 $">
+    <inspector-descriptor>
+    	<name>ER-000</name>
+    	<enabled>yes</enabled>
+    	<severity>3</severity>
+    	<inspector type="org.hammurapi.inspectors.JavaLangImportRule"/>
+    	<description>No need to import classes from java.lang</description>
+        <violation-sample><![CDATA[<span class="problem">import java.lang.Long;</span>]]></violation-sample>
+		<after>ER-001</after>
+    </inspector-descriptor>
+    
+    <inspector-descriptor>
+    	<name>ER-001</name>
+    	<enabled>yes</enabled>
+    	<severity>3</severity> 
+    	<inspector type="org.hammurapi.inspectors.AlphabeticalImportRule"/>
+        	<description><![CDATA[<B>Imports</B> should be ordered according to the configuartion parameters and further for each parameter, imports should be arrange alphabetically ]]></description>
+            <rationale>Alphabetically ordered imports improve code readability.</rationale>
+            <parameter name="import-order">java,javax,org,com</parameter>
+        <violation-sample><![CDATA[import x.y.Z;
+import a.b.C;]]></violation-sample>
+        <fix-sample><![CDATA[import a.b.C;
+import x.y.Z;]]></fix-sample>
+
+        <resource>Common sense :-)</resource>
+    </inspector-descriptor>
+    
+    <inspector-descriptor>
+    	<name>ER-002</name>
+    	<enabled>yes</enabled>
+    	<severity>1</severity>
+    	<inspector type="org.hammurapi.inspectors.EmptyCatchBlockRule"/>
+    	<description>Empty catch block</description>
+		<waivable>yes</waivable>
+		<waive-case>
+			In some situations exception is excepted and shall be ignored.
+			Example: 
+				int i=0;
+				if (str!=null) {
+					try {
+						i=Integer.parseInt("hello");
+					} catch (NumberFormatException e) {}		
+				}
+		</waive-case>
+        
+        <violation-sample><![CDATA[try {
+	Reader r = new FileReader(fName);
+	return r.read();
+	} catch (java.io.FileNotFoundException e) <span class="problem">{
+}</span>]]>
+        </violation-sample>
+
+        <fix-sample><![CDATA[try {
+	Reader r = new FileReader(fName);
+	return r.read();
+} catch (java.io.FileNotFoundException e) <span class="fix">{
+	logger.error(FILE_ERROR2_TXT, e);
+	throw new HammurapiTestCasesException(e);
+}</span>]]></fix-sample>
+   </inspector-descriptor>
+    	 
+    
+    <inspector-descriptor>
+    	<name>ER-003</name>
+    	<enabled>yes</enabled>
+    	<severity>3</severity>
+    	<inspector type="org.hammurapi.inspectors.BraceRule"/>
+    	<description>do, while, if, and for statements need a brace enclosed block</description>
+        <violation-sample><![CDATA[if (strToProc == null) {
+	int c = 0;
+	for (int i = 0; i < LOOP_CONST; i++)
+		c += i;
+	intVal = new Integer(c);
+}
+else if (strToProc.length() == 0)
+	intVal = new Integer(0);
+else {
+	int a = 0;
+	int c = 0;
+	while (a < strToProc.length())
+		if (strToProc.charAt(a)==CHAR_A) {
+			c++;
+		}
+	a++;
+	intVal = new Integer(c);
+}]]></violation-sample>
+        <fix-sample><![CDATA[if (strToProc == null) {
+	int c = 0;
+	for (int i = 0; i < LOOP_CONST; i++) {
+		c += i;
+	}
+	intVal = new Integer(c);
+}
+else if (strToProc.length() == 0) {
+	intVal = new Integer(0);
+}
+else {
+	int a = 0;
+	int c = 0;
+	while (a < strToProc.length()) {
+		if (strToProc.charAt(a)==CHAR_A) {
+			c++;
+		}
+		a++;
+	}
+	intVal = new Integer(c);
+}]]></fix-sample>
+    </inspector-descriptor>
+    
+    <inspector-descriptor>
+    	<name>ER-004</name>
+    	<enabled>yes</enabled>
+    	<severity>2</severity>
+    	<inspector type="org.hammurapi.inspectors.NoPublicFieldsRule"/>
+    	<description>A class should have no public fields except 'final' or 'static final'"</description>
+        <parameter name="static-final-allowed">yes</parameter>
+        <parameter name="final-allowed">yes</parameter>
+        <violation-sample><![CDATA[public int amount;]]></violation-sample>
+        <fix-sample><![CDATA[private int amount;]]></fix-sample>
+    </inspector-descriptor>
+
+    <inspector-descriptor>
+    	<name>ER-005</name>
+    	<enabled>yes</enabled>
+    	<severity>3</severity>
+    	<inspector type="org.hammurapi.inspectors.NamingStandardRule"/>
+    	<description>Classes, interfaces, methods, and variables should be named according to Sun's naming conventions.</description>
+        <violation-sample><![CDATA[protected java.util.Date FromDate2;]]></violation-sample>
+        <fix-sample><![CDATA[protected java.util.Date fromDate2;]]></fix-sample>
+    </inspector-descriptor>
+    
+    <inspector-descriptor>
+    	<name>ER-006</name>
+    	<enabled>yes</enabled>
+    	<severity>1</severity>
+    	<inspector type="org.hammurapi.inspectors.SwitchDefaultRule"/>
+    	<description>Missing default case for switch statement</description>
+        <violation-sample><![CDATA[switch (baseVal) {
+	case INT_1 :
+		retVal = INT_2;
+		break;
+	case INT_2 :
+		retVal = INT_7;
+		break;
+	default :
+}]]></violation-sample>
+        <fix-sample><![CDATA[switch (baseVal) {
+	case INT_1 :
+		retVal = INT_2;
+			break;
+	case INT_2 :
+		retVal = INT_7;
+		break;
+	default :
+		retVal = INT_1;
+		break;
+}]]></fix-sample>
+    </inspector-descriptor>
+    
+    <inspector-descriptor> 
+        <name>ER-007</name>
+        <enabled>yes</enabled>
+        <severity>3</severity> 
+        <inspector type="org.hammurapi.inspectors.UpperLRule"/>
+        <description>Use upper case 'L' rather that lower case 'l' to qualify long literals</description>
+        <violation-sample><![CDATA[protected long amount = 125<span class="problem">l</span>;
+return 345<span class="problem">l</span>;]]></violation-sample>
+        <fix-sample><![CDATA[protected long amount = 125<span class="fix">L</span>;
+return 345<span class="fix">L</span>;]]></fix-sample>
+    </inspector-descriptor>
+    
+    <inspector-descriptor>
+    	<name>ER-008</name>
+    	<enabled>yes</enabled>
+    	<severity>2</severity>
+    	<inspector type="org.hammurapi.inspectors.SynchronizedRule"/>
+    	<description>Synchronize at the block level rather than the method level</description>
+        <violation-sample><![CDATA[public synchronized void updateState(final int newVal) {
+	objState += newVal;
+}]]></violation-sample>
+        <fix-sample><![CDATA[public void updateState(final int newVal) {
+	synchronized (this) {
+		objState += newVal;
+	}
+}]]></fix-sample>
+    </inspector-descriptor>
+    
+    <inspector-descriptor> 
+    	<name>ER-009</name>
+    	<enabled>yes</enabled>
+    	<severity>2</severity>
+    	<inspector type="org.hammurapi.inspectors.ForIteratorRule"/>
+    	<description>For statement requires update clause</description>
+        <violation-sample><![CDATA[for (Object obj = iter.next(); iter.hasNext();) {
+	if (obj.equals(anObj)) {
+		throw new HammurapiTestCasesException(obj.toString());
+	}
+}]]></violation-sample>
+        <fix-sample><![CDATA[for (Object obj = iter.next(); iter.hasNext(); obj = iter.next()) {
+	if (obj.equals(anObj)) {
+		throw new HammurapiTestCasesException(obj.toString());
+	}
+}]]></fix-sample>
+	</inspector-descriptor>    	
+
+    <inspector-descriptor>
+    	<name>ER-010</name>
+    	<enabled>yes</enabled>
+    	<severity>2</severity>
+    	<inspector type="org.hammurapi.inspectors.AssignmentInsideConditionalRule"/>
+    	<description>Assignment inside conditional</description>
+        <violation-sample><![CDATA[if ((a = fromString.length()) < MAX_LEN)]]></violation-sample>
+        <fix-sample><![CDATA[int a = fromString.length();
+if (a < MAX_LEN)]]></fix-sample>
+    </inspector-descriptor>
+
+    <inspector-descriptor>
+    	<name>ER-011</name>
+    	<enabled>yes</enabled>
+    	<severity>1</severity>
+    	<inspector type="org.hammurapi.inspectors.CyclomaticComplexityRule"/>
+    	<description>Cyclomatic complexity exceeds specified limit</description>
+    	<message>Cyclomatic complexity ({1}) exceeds {0}</message>
+        <parameter type="java.lang.Integer" name="operation-max-complexity">12</parameter>
+        <parameter type="java.lang.Integer" name="class-max-complexity">100</parameter>
+        <violation-sample><![CDATA[public int complexMethod(final String strToProc, final boolean firstType)]]></violation-sample>
+        <fix-sample><![CDATA[HREF=YES]]></fix-sample>
+    </inspector-descriptor>
+
+    <inspector-descriptor> 
+    	<name>ER-012</name>
+    	<enabled>yes</enabled>
+    	<severity>2</severity>
+    	<inspector type="org.hammurapi.inspectors.TooManyParametersRule"/>
+   		<parameter type="java.lang.Integer" name="max-parameters">7</parameter>
+    	<description>Too many parameters</description>
+    	<message>Too many parameters ({0}, {1} allowed), use parameter object if you need to pass more.</message>
+        <violation-sample><![CDATA[private String toString(final String name, 
+	final int amount, final int price, 
+	final boolean available, final java.util.Date dateOfOrder, 
+	final java.util.Date dateOfDelivery)]]></violation-sample>
+        <fix-sample><![CDATA[private String toString(final TooManyParametersRuleParamClass objToStr)]]></fix-sample>
+    </inspector-descriptor>
+
+    <inspector-descriptor> 
+    	<name>ER-013</name>
+    	<enabled>yes</enabled>
+    	<severity>2</severity>
+    	<inspector type="org.hammurapi.inspectors.ForInitRule"/>
+    	<description>For statement requires initialization clause (1st argument)</description>
+        <violation-sample><![CDATA[for (; iter.hasNext(); obj = iter.next()) {
+	if (obj.equals(anObj)) {
+		throw new HammurapiTestCasesException(obj.toString());
+	}
+}]]></violation-sample>
+        <fix-sample><![CDATA[for (Object obj = iter.next(); iter.hasNext(); obj = iter.next()) {
+	if (obj.equals(anObj)) {
+		throw new HammurapiTestCasesException(obj.toString());
+	}
+}]]></fix-sample>
+    </inspector-descriptor>
+    
+    <inspector-descriptor>
+    	<name>ER-014</name>
+    	<enabled>yes</enabled>
+    	<severity>2</severity>
+    	<inspector type="org.hammurapi.inspectors.ForConditionRule"/>
+    	<description>For statement requires condition clause (2nd argument)"</description>
+        <violation-sample><![CDATA[for (Object obj = iter.next(); ; obj = iter.next()) {
+	if (obj.equals(anObj)) {
+		throw new HammurapiTestCasesException(obj.toString());
+}}]]>  </violation-sample>
+        <fix-sample><![CDATA[for (Object obj = iter.next(); iter.hasNext(); obj = iter.next()) {
+	if (obj.equals(anObj)) {
+		throw new HammurapiTestCasesException(obj.toString());
+	}
+}]]></fix-sample>
+    </inspector-descriptor>
+    
+    <inspector-descriptor> 
+    	<name>ER-015</name>
+    	<enabled>yes</enabled>
+    	<severity>3</severity>
+    	<inspector type="org.hammurapi.inspectors.DuplicateImportRule"/>
+    	<description>Duplicate import declaration</description>
+    	<message>Duplicate import declaration ({0})</message>
+        <violation-sample><![CDATA[import java.io.FileInputStream;
+import java.io.InputStream;
+import java.io.IOException;
+import org.hammurapi.inspectors.testcases.HammurapiTestCasesException;
+import java.io.FileInputStream;]]></violation-sample>
+        <fix-sample><![CDATA[import java.io.FileInputStream;
+import java.io.InputStream;
+import java.io.IOException;
+import org.hammurapi.inspectors.testcases.HammurapiTestCasesException;]]></fix-sample>
+    </inspector-descriptor>
+    
+    <inspector-descriptor>
+    	<name>ER-016</name>
+    	<enabled>yes</enabled>
+    	<severity>2</severity>
+    	<inspector type="org.hammurapi.inspectors.MissingPackageDeclarationRule"/>
+    	<description>Missing package declaration - encourage structuring and avoid namesapace conflicts by using packages</description>
+        <violation-sample><![CDATA[]]></violation-sample>
+        <fix-sample><![CDATA[package org.hammurapi.inspectors.testcases.fixes;]]></fix-sample>
+    </inspector-descriptor>
+    
+    <inspector-descriptor> 
+    	<name>ER-017</name>
+    	<enabled>no</enabled>
+    	<severity>2</severity>
+    	<inspector type="org.hammurapi.inspectors.FinalParametersRule"/> 
+    	<description>For comprehensibility, formal parameters should be final</description>
+        <violation-sample><![CDATA[private int incInt(int intToInc) {
+	return intToInc + INC_VAL;
+}]]></violation-sample>
+        <fix-sample><![CDATA[private int incInt(final int intToInc) {
+	return intToInc + INC_VAL;
+}]]></fix-sample>
+    </inspector-descriptor>
+        
+    <inspector-descriptor> 
+    	<name>ER-017-E</name>
+    	<enabled>yes</enabled>
+    	<severity>2</severity>
+    	<inspector type="org.hammurapi.inspectors.ParameterAssignmentInspector"/> 
+    	<description>Do not assign new value to a parameter. For comprehensibility, formal parameters should be final</description>
+        <violation-sample><![CDATA[private int incInt(int intToInc) {
+	// ... some calculations ...
+    intToInc+=INC_VAL;		
+	// ... some calculations ...
+	return intToInc;
+}]]></violation-sample>
+        <fix-sample><![CDATA[private int incInt(final int intToInc) {
+	// ... some calculations ...
+	return intToInc + INC_VAL;
+}]]></fix-sample>
+    </inspector-descriptor>
+        
+    <inspector-descriptor>
+    	<name>ER-018</name>
+    	<enabled>yes</enabled>
+    	<severity>3</severity>
+    	<inspector type="org.hammurapi.inspectors.ModifiersOrderRule"/>
+    	<description>Sun coding standards - class modifiers should be in order (public protected private abstract static final strictfp)</description>
+        <violation-sample><![CDATA[static public Object searchObject(final java.util.Iterator iter,final Object anObj)]]></violation-sample>
+        <fix-sample><![CDATA[public static Object searchObject(final java.util.Iterator iter,final Object anObj)]]></fix-sample>
+    </inspector-descriptor>
+    
+    <inspector-descriptor>
+    	<name>ER-019</name>
+    	<enabled>yes</enabled>
+	<severity>1</severity>
+    	<inspector type="org.hammurapi.inspectors.ReturnFromFinallyRule"/>
+    	<description>Avoid 'return' in finally block - meaning of this is not always obvious to the maintainer</description>
+        <violation-sample><![CDATA[finally {
+	try {
+		r.close();
+	} catch (IOException e) {
+		logger.error(FILE_ERROR_TXT, e);
+		throw new HammurapiTestCasesException(e);
+	}
+	return 0;
+}]]></violation-sample>
+	<fix-sample><![CDATA[finally {
+	try {
+		r.close();
+	} catch (IOException e) {
+		logger.error(FILE_ERROR_TXT, e);
+		throw new HammurapiTestCasesException(e);
+	}
+}]]></fix-sample>
+	</inspector-descriptor>    	
+    
+    <inspector-descriptor>
+    	<name>ER-020</name>
+    	<enabled>yes</enabled>
+    	<severity>2</severity>
+    	<inspector type="org.hammurapi.inspectors.EmptyFinallyBlockRule"/>
+    	<description>Avoid empty finally block</description>
+        <violation-sample><![CDATA[finally {
+}]]></violation-sample>
+        <fix-sample><![CDATA[finally {
+	try {
+		fin.close();
+	} catch (IOException e) {
+		logger.error(FILE_ERROR2_TXT, e);
+	}
+}]]></fix-sample>
+    </inspector-descriptor>
+    
+    <inspector-descriptor>
+    	<name>ER-021</name>
+    	<enabled>yes</enabled>
+    	<severity>2</severity>
+    	<inspector type="org.hammurapi.inspectors.OneTypePerFileRule"/>
+    	<description>One class/interface per file.</description>
+    	<rationale>Keeping several classes in one file and/or
+    	keeping class in a file with name different from class' name makes it difficult for
+    	maintainer to find needed source.</rationale>
+        <violation-sample><![CDATA[]]></violation-sample>
+        <fix-sample><![CDATA[]]></fix-sample>
+    </inspector-descriptor>
+    
+    <inspector-descriptor>
+    	<name>ER-022</name>
+    	<enabled>yes</enabled>
+    	<severity>3</severity>
+    	<inspector type="org.hammurapi.inspectors.NoStarImportsRule"/>
+    	<description>No * imports.</description>    
+        <violation-sample><![CDATA[import java.util.*;]]></violation-sample>
+        <fix-sample><![CDATA[import java.util.Vector;]]></fix-sample>
+    </inspector-descriptor>
+    
+    <inspector-descriptor>
+    	<name>ER-023</name>
+    	<enabled>yes</enabled>
+    	<severity>3</severity>
+    	<inspector type="org.hammurapi.inspectors.RootPackageRule"/>
+    	<description>Packages should begin with project or organization package prefix</description>
+    	<message>Packages should begin with {0}</message>        
+        <!-- <parameter name="root-package">Put your package name here</parameter> -->
+        <violation-sample><![CDATA[]]></violation-sample>
+        <fix-sample><![CDATA[]]></fix-sample>
+    </inspector-descriptor>
+    
+    <inspector-descriptor>
+    	<name>ER-024</name>
+    	<enabled>yes</enabled>
+    	<severity>1</severity>
+    	<inspector type="org.hammurapi.inspectors.DirectoryStructureRule"/>
+    	<description>Directory structure should match package structure</description>
+        <violation-sample><![CDATA[package org.hammurapi.inspectors.testcases.violations.badpackage;]]></violation-sample>
+        <fix-sample><![CDATA[package org.hammurapi.inspectors.testcases.violations;]]></fix-sample>
+    </inspector-descriptor>        
+    
+    <inspector-descriptor>
+    	<name>ER-025</name>
+    	<enabled>yes</enabled>
+    	<severity>3</severity>
+    	<inspector type="org.hammurapi.inspectors.RedundantParenthesisRule"/>
+    	<description>Parenthesis are redundant</description>
+    	<rationale>Parenthesis should be used to override precedence rules. 
+    	Unnecessary parenthesis may confuse maintainer.</rationale> 
+        <violation-sample><![CDATA[if ((i >= UPPER_BOUND && obj != null)) {
+	billItems.setElementAt(obj, i);
+}]]></violation-sample>
+        <fix-sample><![CDATA[if (i >= UPPER_BOUND && obj != null) {
+	billItems.setElementAt(obj, i);
+}]]></fix-sample>
+    </inspector-descriptor>        
+    
+    <inspector-descriptor>
+    	<name>ER-026</name>
+    	<enabled>yes</enabled>
+    	<severity>2</severity>
+    	<inspector type="org.hammurapi.inspectors.ConditionalExpressionRule"/>
+    	<description>Avoid expressions like &lt;expression&gt; ? true : false</description>
+    	<rationale>Such an expression is equivalent to &lt;expression&gt; itself and only clatters code 
+    	and confuses maintainer</rationale>
+        <violation-sample><![CDATA[boolean b = i < RND_CHS_VAL ? true : false;
+return b;
+]]></violation-sample>
+        <fix-sample><![CDATA[return i < RND_CHS_VAL;]]></fix-sample>
+    </inspector-descriptor>               
+    
+    <inspector-descriptor>
+    	<name>ER-027</name>
+    	<enabled>yes</enabled>
+    	<severity>1</severity>
+    	<inspector type="org.hammurapi.inspectors.DoNotUseNewForStringsRule"/>
+    	<description>Avoid using "new" keyword when creating String objects to hold string literals.</description>
+        <violation-sample><![CDATA[String s = new String(strIn.substring(1, UPPER_BOUND));]]></violation-sample>
+        <fix-sample><![CDATA[String s = strIn.substring(1, UPPER_BOUND);]]></fix-sample>
+    </inspector-descriptor>               
+    
+    <inspector-descriptor>
+    	<name>ER-028</name>
+    	<enabled>yes</enabled>
+    	<severity>3</severity> 
+    	<inspector type="org.hammurapi.inspectors.HardcodedCharacterLiteralsRule"/>
+    	<description>Avoid hardwired character literals</description>
+	<category>Possible bugs</category>
+    	<!--
+        <rationale></rationale>
+        <resource></resource>
+        -->
+        <violation-sample><![CDATA[public char[] getFilledCharArr() {
+	char[] arr = new char[DIM];
+	arr[0] = 'a';
+	arr[DIM - 1] = 'a';
+	return arr;
+}]]></violation-sample>
+        <fix-sample><![CDATA[public char[] getFilledCharArr() {
+	char[] arr = new char[DIM];
+	arr[0] = CONTENT;
+	arr[DIM - 1] = CONTENT;
+	return arr;
+}]]></fix-sample>
+    </inspector-descriptor>
+    
+    <inspector-descriptor>
+    	<name>ER-029</name>
+    	<enabled>yes</enabled>
+    	<severity>3</severity> 
+    	<inspector type="org.hammurapi.inspectors.HardcodedNumericLiteralsRule"/>
+    	<description>Avoid hardwired numeric literals</description>
+		<category>Possible bugs</category>
+    	<!--
+        <rationale></rationale>
+        <resource></resource>
+        -->
+        <parameter type="java.lang.Double" name="allowed-literal">0</parameter>
+        <parameter type="java.lang.Double" name="allowed-literal">1</parameter>
+        <parameter type="java.lang.Double" name="allowed-literal">-1</parameter>
+        <violation-sample><![CDATA[ if (parInt<BASE_VAL) {
+	return BASE_VAL;
+}
+else {
+	return 4;
+}]]></violation-sample>
+        <fix-sample><![CDATA[if (parInt<BASE_VAL) {
+	return BASE_VAL;
+}
+else {
+	return RET_VAL;
+}]]></fix-sample>
+    </inspector-descriptor>
+    
+    <inspector-descriptor>
+    	<name>ER-030</name>
+    	<enabled>yes</enabled>
+    	<severity>3</severity> 
+    	<inspector type="org.hammurapi.inspectors.HardcodedStringLiteralsRule"/>
+    	<description>Avoid hardwired string literals</description>
+	<category>Possible bugs</category>
+    	<!--
+        <rationale></rationale>
+        <resource></resource>
+        -->
+        <violation-sample><![CDATA[arr[0] = "Hello World!";
+arr[DIM - 1] = "Hello World!";]]></violation-sample>
+        <fix-sample><![CDATA[arr[0] = CONTENT;
+arr[DIM - 1] = CONTENT;]]></fix-sample>
+    </inspector-descriptor>
+    
+    <inspector-descriptor>
+    	<name>ER-031</name>
+    	<enabled>yes</enabled>
+    	<severity>3</severity> 
+    	<inspector type="org.hammurapi.inspectors.OneStatementPerLineRule"/>
+    	<description>More than one statement per line</description>
+	<category>Coding Guidelines</category>
+    	<!--
+        <rationale></rationale>
+        <resource></resource>
+        -->
+        <violation-sample><![CDATA[arr[0] = ITEM; arr[DIM - 1] = ITEM;]]></violation-sample>
+        <fix-sample><![CDATA[arr[0] = ITEM;
+arr[DIM - 1] = ITEM;]]></fix-sample>
+    </inspector-descriptor>
+    
+    <inspector-descriptor>
+    	<name>ER-032</name>
+    	<enabled>yes</enabled>
+    	<severity>3</severity> 
+    	<inspector type="org.hammurapi.inspectors.ArrayDeclarationRule"/>
+    	<description>Array declarators should be placed next to the type, not the variable name</description>
+	<category>Coding Guidelines</category>
+    	<!--
+        <rationale></rationale>
+        <resource></resource>
+        -->
+        <violation-sample><![CDATA[char arr[] = new char[DIM];]]></violation-sample>
+        <fix-sample><![CDATA[char[] arr = new char[DIM];]]></fix-sample>
+    </inspector-descriptor>
+    
+    <inspector-descriptor>
+    	<name>ER-033</name>
+    	<enabled>yes</enabled>
+    	<severity>2</severity> 
+    	<inspector type="org.hammurapi.inspectors.MaxLinesInFileRule"/>
+    	<parameter type="java.lang.Integer" name="max-lines">1000</parameter>
+    	<description>Source file is too long</description>
+    	<message>Source file is longer than {0} lines ({1}).</message>
+	<category>Coding Guidelines</category>
+    	<!--
+        <rationale></rationale>
+        <violation-sample></violation-sample>
+        <fix-sample></fix-sample>
+        <resource></resource>
+        -->
+        <violation-sample><![CDATA[HREF=YES]]></violation-sample>
+        <fix-sample><![CDATA[HREF=YES]]></fix-sample>
+    </inspector-descriptor>
+    
+    <inspector-descriptor>
+    	<name>ER-034</name>
+    	<enabled>yes</enabled>
+    	<severity>3</severity> 
+    	<inspector type="org.hammurapi.inspectors.VariablesRule"/>
+    	<description>Variables should be declared in individual statements.</description>
+	<category>Coding Guidelines</category>
+    	<!--
+        <rationale></rationale>
+        <violation-sample></violation-sample>
+        <fix-sample></fix-sample>
+        <resource></resource>
+        -->
+        <violation-sample><![CDATA[	private static final char CHAR_A = 'a', CHAR_B = 'b';]]></violation-sample>
+        <fix-sample><![CDATA[private static final char CHAR_A = 'a';
+private static final char CHAR_B = 'b';]]></fix-sample>
+    </inspector-descriptor>
+    
+    <inspector-descriptor>
+    	<name>ER-035</name>
+    	<enabled>yes</enabled>
+    	<severity>1</severity> 
+    	<inspector type="org.hammurapi.inspectors.SwitchCaseBreakRule"/>
+    	<description>Switch statement case without 'break'</description>
+ 	    <category>Possible bugs</category>
+    	<!--
+        <rationale></rationale>
+        <violation-sample></violation-sample>
+        <fix-sample></fix-sample>
+        <resource></resource>
+        -->
+        <violation-sample><![CDATA[switch (baseVal) {
+	case INT_1 :
+		retVal = INT_2;
+		break;
+	case INT_2 :
+		retVal = INT_7;
+	default :
+		retVal = INT_1;
+		break;
+}]]></violation-sample>
+        <fix-sample><![CDATA[switch (baseVal) {
+	case INT_1 :
+		retVal = INT_2;
+		break;
+	case INT_2 :
+		retVal = INT_7;
+		break;
+	default :
+		retVal = INT_1;
+		break;
+}]]></fix-sample>
+    </inspector-descriptor>
+    
+    <inspector-descriptor>
+    	<name>ER-036</name>
+    	<enabled>yes</enabled>
+    	<severity>3</severity> 
+    	<inspector type="org.hammurapi.inspectors.LineLengthRule"/>
+    	<description>Line is too long</description>
+	    <category>Coding Guidelines</category>
+    	<!--
+        <rationale></rationale>
+        <violation-sample></violation-sample>
+        <fix-sample></fix-sample>
+        <resource></resource>
+        -->
+        <parameter type="java.lang.Integer" name="line-max-length">80</parameter>
+        <violation-sample><![CDATA[java.io.BufferedInputStream inputStream =new java.io.BufferedInputStream(new java.io.FileInputStream(fName));]]></violation-sample>
+        <fix-sample><![CDATA[java.io.BufferedInputStream inputStream = 
+	new java.io.BufferedInputStream(new java.io.FileInputStream(fName));]]></fix-sample>
+    </inspector-descriptor>
+    
+    <inspector-descriptor>
+    	<name>ER-037</name>
+    	<enabled>yes</enabled>
+    	<severity>2</severity> 
+    	<inspector type="org.hammurapi.inspectors.LogicalNestingRule"/>
+        <parameter type="java.lang.Integer" name="max-nesting">7</parameter>
+    	<description>Logical nesting limit exceeded</description>
+    	<message>Logical nesting limit exceeded ({0}, {1})</message>
+	<category>Miscellaneous</category>
+    	<!--
+        <rationale></rationale>
+        <violation-sample></violation-sample>
+        <fix-sample></fix-sample>
+        <resource></resource>
+        -->
+        <violation-sample><![CDATA[if ( amount>GAP_1 && amount<GAP_5) {
+	if (amount>GAP_4) {
+		retVal = PRICE_2;
+	}
+	else {
+		if (amount>GAP_3) {
+			retVal = PRICE_3;
+		}
+		else {
+			if (amount>GAP_2) {
+				retVal = PRICE_4;
+			}
+			else {
+				retVal = PRICE_5;
+			}
+		}
+	}
+}]]></violation-sample>
+        <fix-sample><![CDATA[if ( amount>GAP_1 && amount<GAP_5) {
+	if (amount>GAP_4) {
+		retVal = PRICE_2;
+	}
+	else if (amount>GAP_3) {
+		retVal = PRICE_3;
+	}
+	else if (amount>GAP_2) {
+		retVal = PRICE_4;
+	}
+	else {
+		retVal = PRICE_5;
+	}
+}]]></fix-sample>
+    </inspector-descriptor>
+    
+    <inspector-descriptor>
+    	<name>ER-038</name>
+    	<enabled>yes</enabled>
+    	<severity>2</severity> 
+    	<inspector type="org.hammurapi.inspectors.ContinueRule"/>
+    	<description>Non-sequential logic - 'continue' statement</description>
+	<category>Miscellaneous</category>
+    	<!--
+        <rationale></rationale>
+        <violation-sample></violation-sample>
+        <fix-sample></fix-sample>
+        <resource></resource>
+        -->
+        <violation-sample><![CDATA[while (iter.hasNext()) {
+	Object item = iter.next();
+	if (item.getClass() != Date.class) {
+		continue;
+	}
+	retVal = (Date) item;
+}]]></violation-sample>
+        <fix-sample><![CDATA[while (iter.hasNext()) {
+	Object item = iter.next();
+	if (item.getClass() == Date.class) {
+		retVal = (Date) item;
+	}
+}]]></fix-sample>
+    </inspector-descriptor>
+    
+    <inspector-descriptor>
+    	<name>ER-039</name>
+    	<enabled>yes</enabled>
+    	<severity>2</severity> 
+    	<inspector type="org.hammurapi.inspectors.CatchTooGeneralExceptionTypeRule"/>
+    	<description>Catching too general exception type.</description>
+    	<rationale>Application shall define exception hierarchy and exception handling strategy, 
+    	catching of Throwable, Exception or RuntimeException shall not be a common practice, but 
+    	be concentrated in a few classes, for which waivers shall be given.</rationale>
+	<category>Exception handling</category>
+    	<!--
+        <rationale></rationale>
+        <resource></resource>
+        -->
+        <violation-sample><![CDATA[try {
+	InputStream is = new FileInputStream(fName);
+	return is.read();
+} catch (Exception e) {
+	logger.error(FILE_ERROR_TXT, e);
+	throw new HammurapiTestCasesException(e);
+}]]></violation-sample>
+        <fix-sample><![CDATA[try {
+	InputStream is = new FileInputStream(fName);
+	return is.read();
+} catch (java.io.IOException e) {
+	logger.error(FILE_ERROR_TXT, e);
+	throw new HammurapiTestCasesException(e);
+}]]></fix-sample>
+    </inspector-descriptor>
+    
+    <inspector-descriptor>
+    	<name>ER-040</name>
+    	<enabled>yes</enabled>
+    	<severity>2</severity> 
+    	<inspector type="org.hammurapi.inspectors.BooleanEqualityRule"/>
+    	<description>Avoid equality operations on 'true' and 'false' boolean literals.</description>
+	<category>Miscellaneous</category>
+    	<!--
+        <rationale></rationale>
+        <violation-sample></violation-sample>
+        <fix-sample></fix-sample>
+        <resource></resource>
+        -->
+        <violation-sample><![CDATA[if (strToCheck.equalsIgnoreCase(TXT1) == true) {
+	return RETVAL1;
+} else if (strToCheck.equalsIgnoreCase(TXT2) == false) {
+	return RETVAL2;
+} else {
+	return RETVAL3;
+}]]></violation-sample>
+        <fix-sample><![CDATA[if (strToCheck.equalsIgnoreCase(TXT1)) {
+	return RETVAL1;
+} else if (strToCheck.equalsIgnoreCase(TXT2)) {
+	return RETVAL2;
+} else {
+	return RETVAL3;
+}]]></fix-sample>
+    </inspector-descriptor>
+    
+    <inspector-descriptor>
+    	<name>ER-041</name>
+    	<enabled>yes</enabled>
+    	<severity>2</severity> 
+    	<inspector type="org.hammurapi.inspectors.CodeTooLongRule"/>
+    	<description>Method is too long</description>
+    	<parameter type="java.lang.Integer" name="max-lines">100</parameter>
+	<category>Miscellaneous</category>
+    	<!--
+        <rationale></rationale>
+        <violation-sample></violation-sample>
+        <fix-sample></fix-sample>
+        <resource></resource>
+        -->
+        <violation-sample><![CDATA[public int getByte(final String fName,  final String which)throws HammurapiTestCasesException {
+	if (CASE_TXT1.compareTo(which)==0) {
+		try {
+			InputStream is = new FileInputStream(fName);
+			return is.read();
+		} catch (IOException e) {
+			logger.error(FILE_ERROR_TXT, e);
+			throw new HammurapiTestCasesException(e);
+		}
+	} else if (CASE_TXT2.compareTo(which)==0) {
+		try {
+			InputStream is = new FileInputStream(fName);
+			is.read();
+			return is.read();
+		} catch (IOException e) {
+			logger.error(FILE_ERROR_TXT, e);
+			throw new HammurapiTestCasesException(e);
+		}
+	} else if (CASE_TXT3.compareTo(which)==0) {
+		try {
+			InputStream is = new FileInputStream(fName);
+			is.read();
+			is.read();
+			return is.read();
+		} catch (IOException e) {
+			logger.error(FILE_ERROR_TXT, e);
+			throw new HammurapiTestCasesException(e);
+		}
+	} else {
+		try {
+			InputStream is = new FileInputStream(fName);
+			is.read();
+			is.read();
+			is.read();
+			return is.read();
+		} catch (IOException e) {
+			logger.error(FILE_ERROR_TXT, e);
+			throw new HammurapiTestCasesException(e);
+		}
+	}
+}]]></violation-sample>
+        <fix-sample><![CDATA[public int getByte(final String fName,  final String which) throws HammurapiTestCasesException {
+	if (CASE_TXT1.compareTo(which)==0) {
+		return getByte(fName, CASE_NBR1);
+	} else if (CASE_TXT2.compareTo(which)==0) {
+		return getByte(fName, CASE_NBR2);
+	} else if (CASE_TXT3.compareTo(which)==0) {
+		return getByte(fName, CASE_NBR3);
+	} else {
+		return getByte(fName, CASE_NBR4);
+	}
+}
+public int getByte(final String fName,  final int nbr)throws HammurapiTestCasesException {
+	try {
+		InputStream is = new FileInputStream(fName);
+		int c = 0;
+		int retVal = 0;
+		while (c<nbr) {
+			retVal = is.read();
+		}
+		return retVal;
+	} catch (java.io.IOException e) {
+		logger.error(FILE_ERROR_TXT, e);
+		throw new HammurapiTestCasesException(e);
+	}
+}]]></fix-sample>
+    </inspector-descriptor>
+    
+    <inspector-descriptor>
+    	<name>ER-042</name>
+    	<enabled>no</enabled>
+    	<severity>3</severity> 
+    	<inspector type="org.hammurapi.inspectors.IndentationRule"/>
+    	<description>Inconsistent indentation</description>
+    	<parameter type="java.lang.Integer" name="standard-indentation-level">2</parameter>
+ 	<parameter type="java.lang.Integer" name="expression-indentation-level">4</parameter>
+    	<category>Coding standards</category>
+    	<!--
+        <rationale></rationale>
+        <violation-sample></violation-sample>
+        <fix-sample></fix-sample>
+        <resource></resource>
+        -->
+        <violation-sample><![CDATA[]]></violation-sample>
+        <fix-sample><![CDATA[]]></fix-sample>
+    </inspector-descriptor>
+    
+    <inspector-descriptor>
+    	<name>ER-043</name>
+    	<enabled>yes</enabled>
+    	<severity>2</severity> 
+    	<inspector type="org.hammurapi.inspectors.FilesPerPackage"/>
+    	<description>Packages should be neither too lean nor too fat.</description>
+    	<message key="MAX">Package contains more than {0} files ({1}).</message>
+    	<message key="MIN">Package contains less than {0} files ({1}).</message>
+    	<parameter type="java.lang.Integer" name="max-files">50</parameter>
+    	<parameter type="java.lang.Integer" name="min-files">5</parameter>
+	<category>Miscellaneous</category>
+    	<!--
+        <rationale></rationale>
+        <violation-sample></violation-sample>
+        <fix-sample></fix-sample>
+        <resource></resource>
+        -->
+        <violation-sample><![CDATA[]]></violation-sample>
+        <fix-sample><![CDATA[]]></fix-sample>
+    </inspector-descriptor>
+    
+<!--
+    <inspector-descriptor>
+    	<name>ER-044</name>
+    	<enabled>yes</enabled>
+    	<severity>2</severity> 
+    	<inspector type="org.hammurapi.inspectors.DeprecatedRule"/>
+    	<description>Do not use deprecated API.</description>
+	<category>Miscellaneous</category>
+        <rationale></rationale>
+        <violation-sample></violation-sample>
+        <fix-sample></fix-sample>
+        <resource></resource>
+    </inspector-descriptor>
+-->
+    
+    <inspector-descriptor>
+    	<name>ER-045</name>
+    	<enabled>yes</enabled>
+    	<severity>2</severity> 
+    	<inspector type="org.hammurapi.inspectors.ThrowTooGeneralExceptionTypeRule"/>
+    	<description>Throw too general exception type (Exception, Throwable, RuntimeException)</description>
+    	<rationale>Application shall define exception handling strategy and own exception classes to throw,</rationale>
+	<category>Exception handling</category>
+    	<!--
+        <rationale></rationale>
+        <resource></resource>
+        -->
+        <violation-sample><![CDATA[public int getFirstByte(final String fName)throws Exception]]></violation-sample>
+        <fix-sample><![CDATA[public int getFirstByte(final String fName)throws HammurapiTestCasesException]]></fix-sample>
+    </inspector-descriptor>
+    
+    <inspector-descriptor>
+    	<name>ER-046</name>
+    	<enabled>yes</enabled>
+    	<severity>2</severity> 
+    	<inspector type="org.hammurapi.inspectors.OperationWithTooGeneralExceptonTypeInThrowsRule"/>
+    	<description>Method declares too general exception types (Exception, Throwable) in throws clause</description>
+    	<rationale>Application shall define exception handling strategy and own exception classes to throw,</rationale>
+        <parameter name="exception">java.lang.Exception</parameter>
+        <parameter name="exception">java.lang.Throwable</parameter>
+        <parameter name="exception">java.lang.RuntimeException</parameter>
+	<category>Exception handling</category>
+    	<!--
+        <rationale></rationale>
+        <resource></resource>
+        -->
+        <violation-sample><![CDATA[public int getFirstByte(final String fName)throws Exception {
+	InputStream is = new FileInputStream(fName);
+	return is.read();
+}]]></violation-sample>
+        <fix-sample><![CDATA[public int getFirstByte(final String fName)throws HammurapiTestCasesException {
+	try {
+		InputStream is = new FileInputStream(fName);
+		return is.read();
+	} catch (java.io.IOException e) {
+		logger.error(FILE_ERROR_TXT, e);
+		throw new HammurapiTestCasesException(e);
+   	}
+}]]></fix-sample>
+    </inspector-descriptor>
+    
+    <inspector-descriptor>
+    	<name>ER-047</name>
+    	<enabled>yes</enabled>
+    	<severity>2</severity> 
+    	<inspector type="org.hammurapi.inspectors.OperationWithRuntimeExceptionInThrowsRule"/>
+    	<description>Operation (method or constructor) declares subclasses of RuntimeException in throws clause</description>
+    	<rationale>It is not required to list subclasses of RuntimeException in throws clause. If you listed them
+    	for documentation purposes then use @throws JavaDoc tag instead.</rationale>
+	<category>Exception handling</category>
+    	<!--
+        <rationale></rationale>
+        <resource></resource>
+        -->
+        <violation-sample><![CDATA[public void searchObject(final java.util.Iterator iter, final Object anObj) throws IllegalArgumentException {
+	if (iter.hasNext()) {
+		for (Object obj = iter.next(); iter.hasNext(); obj = iter.next()) {
+			if (obj.equals(anObj)) {
+				throw new IllegalArgumentException(obj.toString());
+			}
+		}
+	}
+}]]></violation-sample>
+        <fix-sample><![CDATA[public void searchObject(final java.util.Iterator iter,Final Object anObj) {
+	if (iter.hasNext()) {
+		for (Object obj = iter.next(); iter.hasNext(); obj = iter.next()) {
+			if (obj.equals(anObj)) {
+				throw new IllegalArgumentException(obj.toString());
+			}
+		}
+	}
+}]]></fix-sample>
+    </inspector-descriptor>
+    
+    <inspector-descriptor>
+    	<name>ER-048</name>
+    	<enabled>yes</enabled>
+    	<severity>1</severity> 
+    	<inspector type="org.hammurapi.inspectors.UseBigDecimalInsteadOfFloatAndDoubleRule"/>
+    	<description>Use BigDecimal instead of Float or Double for monetary values</description>
+    	<waivable>yes</waivable>
+	<category>Possible bugs</category>
+    	<!--
+        <rationale></rationale>
+        <resource></resource>
+        -->
+        <violation-sample><![CDATA[private static final float SPEC_PRICE = 43.9F;
+private static final double PRICE = 100.5D;
+public float getSpecPrice(final float weight) {
+	return weight * SPEC_PRICE;
+}
+public double getPrice(final double weight) {
+	return weight * PRICE;
+}]]></violation-sample>
+        <fix-sample><![CDATA[private static final BigDecimal SPEC_PRICE = new BigDecimal(43.9F);
+private static final BigDecimal PRICE = new BigDecimal(100.5D);
+public BigDecimal getSpecPrice(final BigDecimal weight) {
+	return weight.multiply(SPEC_PRICE);
+}
+public BigDecimal getPrice(final BigDecimal weight) {
+	return weight.multiply(PRICE);
+}]]></fix-sample>
+    </inspector-descriptor>
+    
+    <inspector-descriptor>
+    	<name>ER-049</name>
+    	<enabled>yes</enabled>
+    	<severity>2</severity> 
+    	<inspector type="org.hammurapi.inspectors.DefineLoggerForClassRule"/>
+    	<description>Unify logging strategy - define individual logger for class</description>
+	<category>Logging</category>
+        <parameter name="logger-class-name">org.apache.log4j.Logger</parameter>
+        <rationale>Logger shall be private because only declaring class shall use it. 
+Logger shall be static because it doesn't access any instance variables/methods. 
+Logger should be final as it should not change. Typical logger declaration: private static final Logger logger=Logger.getInstance(MyClass.class);</rationale>
+        <resource></resource>
+        -->
+        <violation-sample><![CDATA[public class DefineLoggerForClassRuleViolationTestCase {
+	private java.util.Date dateOfBegin = null;
+	public static final int MAX_RETR = 1;
+}]]></violation-sample>
+        <fix-sample><![CDATA[public class DefineLoggerForClassRuleFixTestCase {
+	private static final org.apache.log4j.Logger logger =	org.apache.log4j.Logger.getRootLogger();
+	private java.util.Date dateOfBegin = null;
+	public static final int MAX_RETR = 1;
+}]]></fix-sample>
+	<waives key="AvoidHidingInheritedInstanceFields">
+		<name>ER-075</name>
+		<reason>Logger is intended to hide superclass logger</reason>
+	</waives>
+    </inspector-descriptor>
+    
+<!--
+    <inspector-descriptor>
+    	<name>ER-051</name>
+    	<enabled>yes</enabled>
+    	<severity>2</severity> 
+    	<inspector type="org.hammurapi.inspectors.TooMuchLoggingRule"/>
+    	<description>Amount of logging code is comparable to the amount of business code.</description>
+	<category>Logging</category>
+        <rationale></rationale>
+        <violation-sample></violation-sample>
+        <fix-sample></fix-sample>
+        <resource></resource>
+    </inspector-descriptor>
+-->
+    
+    <inspector-descriptor>
+    	<name>ER-052</name>
+    	<enabled>yes</enabled>
+    	<severity>1</severity> 
+    	<inspector type="org.hammurapi.inspectors.PrintStackTraceRule"/>
+    	<description>Do not use printStackTrace(), use logger(&lt;Message&gt;, &lt;exception&gt;) instead.</description>
+	<category>Logging</category>
+    	<!--
+        <rationale></rationale>
+        <resource></resource>
+        -->
+        <violation-sample><![CDATA[public int getFirstByte(final String fName) { 
+	try {
+		InputStream is = new FileInputStream(fName);
+		return is.read();
+	} catch (IOException e) {
+		e.printStackTrace();
+		return 0;
+	}
+}]]></violation-sample>
+        <fix-sample><![CDATA[public int getFirstByte(final String fName)throws HammurapiTestCasesException {
+	try {
+		InputStream is = new FileInputStream(fName);
+		return is.read();
+	} catch (IOException e) {
+		logger.error(FILE_ERROR_TXT, e);
+		throw new HammurapiTestCasesException(e);
+	}
+}]]></fix-sample>
+    </inspector-descriptor>
+    
+    <inspector-descriptor>
+    	<name>ER-053</name>
+    	<enabled>yes</enabled>
+    	<severity>1</severity> 
+    	<inspector type="org.hammurapi.inspectors.ResultSetMetaData"/>
+    	<description>ResultSetMetaData is banned. The disclosure of DB internals (here Column Names) on Business/Service layer is bad design</description>
+	<category>Miscellaneous</category>
+        <rationale></rationale>
+        <violation-sample>![CDATA[private java.sql.ResultSetMetaData metaData;]]</violation-sample>
+        <fix-sample>![CDATA[]]</fix-sample>
+        <resource></resource>
+    </inspector-descriptor>
+    
+    <inspector-descriptor>
+    	<name>ER-054</name>
+    	<enabled>yes</enabled>
+    	<severity>1</severity> 
+    	<inspector type="org.hammurapi.inspectors.AbstractMethodFromConstructorRule"/>
+    	<description>Avoid calling an "abstract" method from a constructor in an "abstract" class</description>
+	<category>Coding Guidelines</category>
+        <rationale></rationale>
+        <violation-sample>![CDATA[public AbstractMethodFromConstructorRuleViolationTestCase() {
+	super();
+	notYetImplemented();	
+}
+public abstract void notYetImplemented();]]</violation-sample>
+        <fix-sample></fix-sample>
+        <resource></resource>
+    </inspector-descriptor>
+    
+    <inspector-descriptor>
+    	<name>ER-055</name>
+    	<enabled>yes</enabled>
+    	<severity>1</severity> 
+    	<inspector type="org.hammurapi.inspectors.EjbClassModifiersRule"/>
+    	<description>Declare bean classes "public", but not "final"</description>
+	<category>EJB</category>
+    	<!--
+        <rationale></rationale>
+        <violation-sample></violation-sample>
+        <fix-sample></fix-sample>
+        <resource></resource>
+        -->
+        <violation-sample><![CDATA[public final class EjbClassModifiersRuleViolationTestCase implements SessionBean ]]></violation-sample>
+        <fix-sample><![CDATA[public class EjbClassModifiersRuleViolationTestCase implements SessionBean]]></fix-sample>
+    </inspector-descriptor>
+    
+    <inspector-descriptor>
+    	<name>ER-056</name>
+    	<enabled>yes</enabled>
+    	<severity>1</severity> 
+    	<inspector type="org.hammurapi.inspectors.EjbCreateModifiersRule"/>
+    	<description>Declare 'ejbCreate ()' methods  "public", but neither "static" nor "final"</description>
+	<category>EJB</category>
+    	<!--
+        <rationale></rationale>
+        <resource></resource>
+        -->
+        <violation-sample><![CDATA[Integer ejbCreate() throws CreateException, RemoteException {
+	this.mProdSubmissionID = new Integer(0);
+	return this.mProdSubmissionID;
+}
+public void ejbPostCreate() {
+}
+static Integer ejbCreate(final int pProdSubmissionID) throws CreateException, RemoteException {
+	return new Integer(pProdSubmissionID);
+}
+public void ejbPostCreate(final int pProdSubmissionID) {
+}
+public final Integer ejbCreate(final Integer pProdSubmissionID) throws CreateException, RemoteException {
+	this.mProdSubmissionID = pProdSubmissionID;
+	return this.mProdSubmissionID;
+}
+public void ejbPostCreate(final Integer pProdSubmissionID) {
+}]]></violation-sample>
+        <fix-sample><![CDATA[public Integer ejbCreate() throws CreateException, RemoteException {
+	this.mProdSubmissionID = new Integer(0);
+	return this.mProdSubmissionID;
+}
+public void ejbPostCreate() {
+}
+public Integer ejbCreate(final int pProdSubmissionID) throws CreateException, RemoteException {
+	return new Integer(pProdSubmissionID);
+}
+public void ejbPostCreate(final int pProdSubmissionID) {
+}
+public Integer ejbCreate(final Integer pProdSubmissionID) throws CreateException, RemoteException {
+	this.mProdSubmissionID = pProdSubmissionID;
+	return this.mProdSubmissionID;
+}
+public void ejbPostCreate(final Integer pProdSubmissionID) {
+}]]></fix-sample>
+    </inspector-descriptor>
+    
+    <inspector-descriptor>
+    	<name>ER-057</name>
+    	<enabled>yes</enabled>
+    	<severity>1</severity> 
+    	<inspector type="org.hammurapi.inspectors.FinderModifiersRule"/>
+    	<description>Declare finder methods "public" and neither "final" nor "static"</description>
+	<category>EJB</category>
+    	<!--
+        <rationale></rationale>
+        <resource></resource>
+        -->
+        <violation-sample><![CDATA[public final Integer ejbFindByPrimaryKey(final Integer key)throws javax.ejb.FinderException {
+	throw new javax.ejb.FinderException(ERROR_TXT);
+}]]></violation-sample>
+        <fix-sample><![CDATA[public Integer ejbFindByPrimaryKey(final Integer key)throws javax.ejb.FinderException {
+	throw new javax.ejb.FinderException(ERROR_TXT);
+}]]></fix-sample>
+    </inspector-descriptor>
+    
+    <inspector-descriptor>
+    	<name>ER-058</name>
+    	<enabled>yes</enabled>
+    	<severity>1</severity> 
+    	<inspector type="org.hammurapi.inspectors.EnsureEjbCreateRule"/>
+    	<description>Implement one or more 'ejbCreate ()' methods in bean classes</description>
+	<category>EJB</category>
+    	<!--
+        <rationale></rationale>
+        <resource></resource>
+        -->
+        <violation-sample><![CDATA[public class EnsureEjbCreateRuleViolationTestCase implements EntityBean {
+	private static org.apache.log4j.Logger logger =	org.apache.log4j.Logger.getRootLogger();
+	private transient EntityContext objcContext;
+	private Integer mProdSubmissionID = null;
+	public void setEntityContext(final EntityContext objaContext) {
+		this.objcContext = objaContext;
+	}
+	public void unsetEntityContext() {
+		objcContext = null;
+	}
+	public void ejbActivate() {
+	}
+	public void ejbPassivate() {
+	}
+	public void ejbLoad() {
+	}
+	public void ejbStore() {
+	}
+	public void ejbRemove() {
+	}
+}]]></violation-sample>
+        <fix-sample><![CDATA[public class EnsureEjbCreateRuleFixTestCase implements EntityBean {
+	private static org.apache.log4j.Logger logger =	org.apache.log4j.Logger.getRootLogger();
+	private transient EntityContext objcContext;
+	private Integer mProdSubmissionID = null;
+	public void setEntityContext(final EntityContext objaContext) {
+		this.objcContext = objaContext;
+	}
+	public void unsetEntityContext() {
+		objcContext = null;
+	}
+	public void ejbActivate() {
+	}
+	public void ejbPassivate() {
+	}
+	public void ejbLoad() {
+	}
+	public void ejbStore() {
+	}
+	public void ejbRemove() {
+	}
+	public Integer ejbCreate() throws CreateException, RemoteException {
+		this.mProdSubmissionID = new Integer(0);
+		return this.mProdSubmissionID;
+	}
+	public void ejbPostCreate() {
+}]]></fix-sample>
+    </inspector-descriptor>
+    
+    <inspector-descriptor>
+    	<name>ER-059</name>
+    	<enabled>yes</enabled>
+    	<severity>1</severity> 
+    	<inspector type="org.hammurapi.inspectors.EnsureEjbPostCreateRule"/>
+    	<description>Implement matching 'ejbPostCreate ()' methods for every 'ejbCreate()' in EntityBean classes</description>
+	<category>EJB</category>
+    	<!--
+        <rationale></rationale>
+        <resource></resource>
+        -->
+        <violation-sample><![CDATA[public class EnsureEjbPostCreateRuleViolationTestCase implements EntityBean {
+	private static org.apache.log4j.Logger logger =	org.apache.log4j.Logger.getRootLogger();
+	private transient EntityContext objcContext;
+	private Integer mProdSubmissionID = null;
+	public void setEntityContext(final EntityContext objaContext) {
+		this.objcContext = objaContext;
+	}
+	public void unsetEntityContext() {
+		objcContext = null;
+	}
+	public void ejbActivate() {
+	}
+	public void ejbPassivate() {
+	}
+	public void ejbLoad() {
+	}
+	public void ejbStore() {
+	}
+	public void ejbRemove() {
+	}
+	public Integer ejbCreate() throws CreateException, RemoteException {
+		this.mProdSubmissionID = new Integer(0);
+		return this.mProdSubmissionID;
+	}
+}]]></violation-sample>
+        <fix-sample><![CDATA[public class EnsureEjbPostCreateRuleFixTestCase implements EntityBean {
+	private static org.apache.log4j.Logger logger =org.apache.log4j.Logger.getRootLogger();
+	private transient EntityContext objcContext;
+	private Integer mProdSubmissionID = null;
+	public void setEntityContext(final EntityContext objaContext) {
+		this.objcContext = objaContext;
+	}
+	public void unsetEntityContext() {
+		objcContext = null;
+	}
+	public void ejbActivate() {
+	}
+	public void ejbPassivate() {
+	}
+	public void ejbLoad() {
+	}
+	public void ejbStore() {
+	}
+	public void ejbRemove() {
+	}
+	public Integer ejbCreate() throws CreateException, RemoteException {
+		this.mProdSubmissionID = new Integer(0);
+		return this.mProdSubmissionID;
+	}
+	public void ejbPostCreate() {
+	}
+}]]></fix-sample>
+    </inspector-descriptor>
+    
+    <inspector-descriptor>
+    	<name>ER-060</name>
+    	<enabled>yes</enabled>
+    	<severity>2</severity> 
+    	<inspector type="org.hammurapi.inspectors.LoadNativeLibrariesInEjbRule"/>
+    	<description>Avoid loading native libraries in a Bean class</description>
+	<category>EJB</category>
+    	<!--
+        <rationale></rationale>
+        <resource></resource>
+        -->
+        <violation-sample><![CDATA[public class LoadNativeLibrariesInEjbRuleViolationTestCase implements SessionBean {
+	private static org.apache.log4j.Logger logger =	org.apache.log4j.Logger.getRootLogger();
+	private SessionContext context;
+	public void ejbCreate() {
+	}
+	public void setSessionContext(final SessionContext pContext){
+		this.context = pContext;
+	}
+	public void ejbActivate() {
+	}
+	public void ejbPassivate() {
+	}
+	public void ejbRemove() {
+	}
+	public native void businessMethod();
+}]]></violation-sample>
+        <fix-sample><![CDATA[public class LoadNativeLibrariesInEjbRuleFixTestCase implements SessionBean {
+	private static org.apache.log4j.Logger logger =	org.apache.log4j.Logger.getRootLogger();
+	private SessionContext context;
+	public void ejbCreate() {
+	}
+	public void setSessionContext(final SessionContext pContext){
+		this.context = pContext;
+	}
+	public void ejbActivate() {
+	}
+	public void ejbPassivate() {
+	}
+	public void ejbRemove() {
+	}
+	public void businessMethod() {
+	}
+}]]></fix-sample>
+    </inspector-descriptor>
+    
+    <inspector-descriptor>
+    	<name>ER-061</name>
+    	<enabled>yes</enabled>
+    	<severity>1</severity> 
+    	<inspector type="org.hammurapi.inspectors.DefineFinalizeInEjbRule"/>
+    	<description>Do not define 'finalize ()' method in bean classes</description>
+		<category>EJB</category>
+    	<!--
+        <rationale></rationale>
+        <resource></resource>
+        -->
+        <violation-sample><![CDATA[public void finalize() {	
+	this.context = null;
+}]]></violation-sample>
+        <fix-sample><![CDATA[public void ejbRemove() {
+	this.context = null;
+}]]></fix-sample>
+    </inspector-descriptor>
+    
+    <inspector-descriptor>
+    	<name>ER-062</name>
+    	<enabled>yes</enabled>
+    	<severity>2</severity> 
+    	<inspector type="org.hammurapi.inspectors.DeclareStaticFieldsFinalInEjbRule"/>
+    	<description>Declare all "static" fields in the EJB component "final"</description>
+	<category>EJB</category>
+    	<!--
+        <rationale></rationale>
+        <resource></resource>
+        -->
+        <violation-sample><![CDATA[public class DeclareStaticFieldsFinalInEjbRuleViolationTestCase implements SessionBean {
+	private static org.apache.log4j.Logger logger =	org.apache.log4j.Logger.getRootLogger();
+	private static int currWait = 0;]]></violation-sample>
+        <fix-sample><![CDATA[public class DeclareStaticFieldsFinalInEjbRuleFixTestCase implements SessionBean {
+	private static org.apache.log4j.Logger logger =	org.apache.log4j.Logger.getRootLogger();
+	private static final int MAX_WAIT = 10;]]></fix-sample>
+    </inspector-descriptor>
+    
+    <inspector-descriptor>
+    	<name>ER-063</name>
+    	<enabled>yes</enabled>
+    	<severity>1</severity> 
+    	<inspector type="org.hammurapi.inspectors.EjbPostCreateModifiersRule"/>
+    	<description>Declare 'ejbPostCreate ()' "public" and neither "static" nor "final"</description>
+	<category>EJB</category>
+    	<!--
+        <rationale></rationale>
+        <resource></resource>
+        -->
+        <violation-sample><![CDATA[void ejbPostCreate() {
+}
+static void ejbPostCreate(final int pProdSubmissionID) {
+}
+public final void ejbPostCreate(final Integer pProdSubmissionID) {
+}]]></violation-sample>
+        <fix-sample><![CDATA[public void ejbPostCreate() {
+}
+public void ejbPostCreate(final int pProdSubmissionID) {
+}
+public void ejbPostCreate(final Integer pProdSubmissionID) {
+}]]></fix-sample>
+    </inspector-descriptor>
+    
+    <inspector-descriptor>
+    	<name>ER-064</name>
+    	<enabled>yes</enabled>
+    	<severity>1</severity> 
+    	<inspector type="org.hammurapi.inspectors.EnsureVoidReturnTypeForSessionBeanEjbCreateRule"/>
+    	<description>Make the return type "void" for SessionBeans' 'ejbCreate ()' methods</description>
+	<category>EJB</category>
+    	<!--
+        <rationale></rationale>
+        <resource></resource>
+        -->
+        <violation-sample><![CDATA[public class EnsureVoidReturnTypeForSessionBeanEjbCreateRuleViolationTestCase implements SessionBean {
+	private static org.apache.log4j.Logger logger =	org.apache.log4j.Logger.getRootLogger();
+	private SessionContext context;
+	public int ejbCreate() {
+		return 0;
+	}]]></violation-sample>
+        <fix-sample><![CDATA[public class EnsureVoidReturnTypeForSessionBeanEjbCreateRuleFixTestCase implements SessionBean {
+	private static org.apache.log4j.Logger logger =	org.apache.log4j.Logger.getRootLogger();
+	private SessionContext context;
+	public void ejbCreate() {
+	}]]></fix-sample>
+    </inspector-descriptor>
+    
+    <inspector-descriptor>
+    	<name>ER-065</name>
+    	<enabled>yes</enabled>
+    	<severity>1</severity> 
+    	<inspector type="org.hammurapi.inspectors.EnsureVoidReturnTypeForEjbPostCreateRule"/>
+    	<description>Make the return type "void" for the 'ejbPostCreate ()' method</description>
+	<category>EJB</category>
+    	<!--
+        <rationale></rationale>
+        <resource></resource>
+        -->
+        <violation-sample><![CDATA[public Integer ejbPostCreate() {
+	return null;
+}]]></violation-sample>
+        <fix-sample><![CDATA[public void ejbPostCreate() {
+}]]></fix-sample>
+    </inspector-descriptor>
+    
+    <inspector-descriptor>
+    	<name>ER-066</name>
+    	<enabled>yes</enabled>
+    	<severity>1</severity> 
+    	<inspector type="org.hammurapi.inspectors.ThisReferenceAsArgumentInEjbRule"/>
+    	<description>Avoid passing the "this" reference as an argument</description>
+	<category>EJB</category>
+    	<!--
+        <rationale></rationale>
+        <resource></resource>
+        -->
+        <violation-sample><![CDATA[public void ejbActivate() {
+	touch(this);
+}]]></violation-sample>
+        <fix-sample><![CDATA[public void ejbActivate() {
+	touch(context.getEJBObject());
+}]]></fix-sample>
+    </inspector-descriptor>
+    
+    <inspector-descriptor>
+    	<name>ER-067</name>
+    	<enabled>yes</enabled>
+    	<severity>1</severity> 
+    	<inspector type="org.hammurapi.inspectors.ReturnThisFromEjbRule"/>
+    	<description>Avoid returning "this"</description>
+	<category>EJB</category>
+    	<!--
+        <rationale></rationale>
+        <resource></resource>
+        -->
+        <violation-sample><![CDATA[public Object getObject() {
+	return this;
+}]]></violation-sample>
+        <fix-sample><![CDATA[ublic Object getObject() {
+	return context.getEJBObject();
+}]]></fix-sample>
+    </inspector-descriptor>
+    
+    <inspector-descriptor>
+    	<name>ER-068</name>
+    	<enabled>yes</enabled>
+    	<severity>1</severity> 
+    	<inspector type="org.hammurapi.inspectors.ManageThreadsFromEjbRule"/>
+    	<description>Avoid starting, stopping, or managing threads in any way</description>
+	<category>EJB</category>
+        <rationale></rationale>
+        <violation-sample>![CDATA[public void businessMethod1() {
+	Thread myThread = new Thread(){
+		public void run() {
+			while (true) {
+				businessMethod2();
+			}
+		}
+	};
+	myThread.start();
+}]]</violation-sample>
+        <fix-sample></fix-sample>
+        <resource></resource>
+    </inspector-descriptor>
+    
+    <inspector-descriptor>
+    	<name>ER-069</name>
+    	<enabled>yes</enabled>
+    	<severity>1</severity> 
+    	<inspector type="org.hammurapi.inspectors.InvokeFinalizeRule"/>
+    	<description>Avoid calling 'finalize ()' explicitly</description>
+	<category>Garbage Collection</category>
+    	<!--
+        <rationale></rationale>
+        <resource></resource>
+        -->
+        <violation-sample><![CDATA[public void close()throws HammurapiTestCasesException {
+	logger = null;
+	try {
+		this.finalize();
+	} catch (Throwable e) {
+		throw new HammurapiTestCasesException(e);
+	}
+}]]></violation-sample>
+        <fix-sample><![CDATA[public void close() { 
+	logger = null;
+}]]></fix-sample>
+    </inspector-descriptor>
+    
+    <inspector-descriptor>
+    	<name>ER-070</name>
+    	<enabled>yes</enabled>
+    	<severity>2</severity> 
+    	<inspector type="org.hammurapi.inspectors.StaticCollectionsRule"/>
+    	<description>Avoid "static" collections; they can grow without bounds</description>
+	<category>Garbage Collection</category>
+    	<!--
+        <rationale></rationale>
+        <resource></resource>
+        -->
+        <violation-sample><![CDATA[private static java.util.Collection adresses = new java.util.Vector();]]></violation-sample>
+        <fix-sample><![CDATA[private java.util.Collection adresses = new java.util.Vector();]]></fix-sample>
+    </inspector-descriptor>
+    
+    <inspector-descriptor>
+    	<name>ER-071</name>
+    	<enabled>yes</enabled>
+    	<severity>2</severity> 
+    	<inspector type="org.hammurapi.inspectors.AccessToStaticMembersRule"/>
+    	<description>Avoid using an object to access "static" fields or methods</description>
+	<category>Miscellaneous</category>
+        <rationale></rationale>
+        <violation-sample>![CDATA[private static int amountSum;
+public void setAmount(final int newAmount) {
+	logger.debug(new Integer(newAmount));
+	amount = newAmount;
+	this.amountSum += newAmount;
+}]]</violation-sample>
+        <fix-sample>![CDATA[private static int amountSum;
+public void setAmount(final int newAmount) {
+	logger.debug(new Integer(newAmount));
+	amount = newAmount;
+	amountSum += newAmount;
+}]]</fix-sample>
+        <resource></resource>
+    </inspector-descriptor>
+    
+    <inspector-descriptor>
+    	<name>ER-072</name>
+    	<enabled>yes</enabled>
+    	<severity>1</severity> 
+    	<inspector type="org.hammurapi.inspectors.ConstructorsInCloneRule"/>
+    	<description>Avoid using constructors in the 'clone ()' method</description>
+	<category>Miscellaneous</category>
+    	<!--
+        <rationale></rationale>
+        <resource></resource>
+        -->
+        <violation-sample><![CDATA[public Object clone() {
+	ConstructorsInCloneRuleViolationTestCase other =New ConstructorsInCloneRuleViolationTestCase();
+	other.name = name;
+	return other;
+}]]></violation-sample>
+        <fix-sample><![CDATA[public Object clone() {
+	ConstructorsInCloneRuleFixTestCase other = null;
+	try {
+		other = (ConstructorsInCloneRuleFixTestCase) super.clone();
+		other.name = name;
+		} catch (CloneNotSupportedException e) {
+			logger.error(CLONE_ERROR_TXT, e);
+		}
+		return other;
+}]]></fix-sample>
+    </inspector-descriptor>
+    
+    <inspector-descriptor>
+    	<name>ER-073</name>
+    	<enabled>yes</enabled>
+    	<severity>1</severity> 
+    	<inspector type="org.hammurapi.inspectors.SuperCloneRule"/>
+    	<description>Call 'super.clone ()' in all 'clone ()' methods</description>
+	<category>Miscellaneous</category>
+    	<!--
+        <rationale></rationale>
+        <resource></resource>
+        -->
+        <violation-sample><![CDATA[public Object clone() {
+	return new Object();
+}]]></violation-sample>
+        <fix-sample><![CDATA[public Object clone() {
+	return super.clone(); 		
+}]]></fix-sample>
+    </inspector-descriptor>
+    
+    <inspector-descriptor>
+    	<name>ER-074</name>
+    	<enabled>yes</enabled>
+    	<severity>2</severity> 
+    	<inspector type="org.hammurapi.inspectors.PublicStaticArrayFieldsRule"/>
+    	<description>Avoid using "public static final" array fields</description>
+	<category>Miscellaneous</category>
+    	<!--
+        <rationale></rationale>
+        <resource></resource>
+        -->
+        <violation-sample><![CDATA[public static final char[] CHAR_ARRAY = new char[DIM];]]></violation-sample>
+        <fix-sample><![CDATA[private static final char[] CHAR_ARRAY = new char[DIM];]]></fix-sample>
+    </inspector-descriptor>
+    
+    <inspector-descriptor>
+    	<name>ER-075</name>
+    	<enabled>yes</enabled>
+    	<severity>1</severity> 
+    	<inspector type="org.hammurapi.inspectors.HidingInheritedFieldsRule"/>
+    	<description>Avoid hiding inherited instance fields</description>
+	<category>Object Oriented Programming</category>
+    	<!--
+        <rationale></rationale>
+        <resource></resource>
+        -->
+        <violation-sample><![CDATA[private Integer amount;]]></violation-sample>
+        <fix-sample><![CDATA[private Integer amountObj;]]></fix-sample>
+		<waivable>yes</waivable>
+		<waive-case>Can be autowaived by ER-049</waive-case>
+    </inspector-descriptor>
+    
+    <inspector-descriptor>
+    	<name>ER-076</name>
+    	<enabled>yes</enabled>
+    	<severity>1</severity> 
+    	<inspector type="org.hammurapi.inspectors.InnerClassVisibilityRule"/>
+    	<description>Make inner classes "private"</description>
+	<category>Security</category>
+    	<!--
+        <rationale></rationale>
+        <resource></resource>
+        -->
+        <violation-sample><![CDATA[public class InnerClass {
+}]]></violation-sample>
+        <fix-sample><![CDATA[private class InnerClass {
+}]]></fix-sample>
+    </inspector-descriptor>
+    
+    <inspector-descriptor>
+    	<name>ER-077</name>
+    	<enabled>yes</enabled>
+    	<severity>2</severity> 
+    	<inspector type="org.hammurapi.inspectors.InnerClassNestingRule"/>
+    	<description>Avoid more than two levels of nested inner classes</description>
+ 		<category>Object Oriented Programming</category>
+    	<!--
+        <rationale></rationale>
+        <resource></resource>
+        -->
+        <parameter type="java.lang.Integer" name="max-nesting">2</parameter>
+        <violation-sample><![CDATA[private class InnerClassFirst {
+	private class InnerClassSecond {
+		private class InnerClassThird {
+		}
+	}
+}]]></violation-sample>
+        <fix-sample><![CDATA[private class InnerClassFirst {
+	private class InnerClassSecond {
+	}
+	private class InnerClassThird {
+	}
+}]]></fix-sample>
+    </inspector-descriptor>
+    
+<!--
+    <inspector-descriptor>
+    	<name>ER-078</name>
+    	<enabled>yes</enabled>
+    	<severity>1</severity> 
+    	<inspector type="org.hammurapi.inspectors.CloseStreamsInFinallyBlockRule"/>
+    	<description>Close streams in "finally" blocks</description>
+	<category>Optimization</category>
+        <rationale></rationale>
+        <violation-sample><![CDATA[]]></violation-sample>
+        <fix-sample><![CDATA[]]></fix-sample>
+        <resource></resource>
+    </inspector-descriptor>
+-->
+    
+    <inspector-descriptor>
+    	<name>ER-079</name>
+    	<enabled>yes</enabled>
+    	<severity>2</severity> 
+    	<inspector type="org.hammurapi.inspectors.CastingPrimitiveTypesRule"/>
+    	<description>Avoid casting primitive data types to lower precision</description>
+		<category>Possible bugs</category>
+    	<!--
+        <rationale></rationale>
+        <resource></resource>
+        -->
+        <violation-sample><![CDATA[public long deliver(final int amount) {
+	return stock - (long) amount;
+}]]></violation-sample>
+        <fix-sample><![CDATA[private long stock = 0L;
+public long deliver(final long amount) {
+	return stock - amount;
+}]]></fix-sample>
+    </inspector-descriptor>
+    
+    <inspector-descriptor>
+    	<name>ER-080</name>
+    	<enabled>yes</enabled>
+    	<severity>1</severity> 
+    	<inspector type="org.hammurapi.inspectors.EmptyBodiesRule"/>
+    	<description>Avoid "for", "do", "while", "if" and "if ... else" statements with empty bodies</description>
+		<category>Possible bugs</category>
+    	<!--
+        <rationale></rationale>
+        <resource></resource>
+        -->
+        <violation-sample><![CDATA[private static final int RETVAL1 = 10;
+private static final int RETVAL2 = 1;
+public int getInt(final boolean which) {
+	if (which) {
+	} else {
+		return RETVAL2;
+	}
+	return RETVAL1;
+}]]></violation-sample>
+        <fix-sample><![CDATA[private static final int RETVAL1 = 10;
+private static final int RETVAL2 = 1;
+public int getInt(final boolean which) {
+	if (which) {
+		return RETVAL1;
+	} else {
+		return RETVAL2;
+	}
+}]]></fix-sample>
+    </inspector-descriptor>
+    
+    <inspector-descriptor>
+    	<name>ER-081</name>
+    	<enabled>yes</enabled>
+    	<severity>2</severity> 
+    	<inspector type="org.hammurapi.inspectors.ForLoopControlVariablesRule"/>
+    	<description>Do not assign loop control variables in the body of a "for" loop</description>
+	<category>Possible bugs</category>
+    	<!--
+        <rationale></rationale>
+        <resource></resource>
+        -->
+        <violation-sample><![CDATA[for (Object obj = iter.next(); iter.hasNext(); obj = iter.next()) {
+	if (obj.equals(anObj)) {
+		throw new HammurapiTestCasesException(obj.toString());
+	}
+	obj = iter.next();
+}]]></violation-sample>
+        <fix-sample><![CDATA[for (Object obj = iter.next(); iter.hasNext(); obj = iter.next()) {
+	if (obj.equals(anObj)) {
+		throw new HammurapiTestCasesException(obj.toString());
+	}
+}]]></fix-sample>
+    </inspector-descriptor>
+    
+    <inspector-descriptor>
+    	<name>ER-082</name>
+    	<enabled>yes</enabled>
+    	<severity>3</severity> 
+    	<inspector type="org.hammurapi.inspectors.OperationParameterNamesRule"/>
+    	<description>Avoid using method parameter names that conflict with class member names</description>
+	<category>Possible bugs</category>
+    	<!--
+        <rationale></rationale>
+        <resource></resource>
+        -->
+        <violation-sample><![CDATA[public void setAmount(final int amount) {
+	this.amount = amount;
+}]]></violation-sample>
+        <fix-sample><![CDATA[public void setAmount(final int newAmount) {
+	amount = newAmount;
+}]]></fix-sample>
+    </inspector-descriptor>
+    
+    <inspector-descriptor>
+    	<name>ER-083</name>
+    	<enabled>yes</enabled>
+    	<severity>3</severity> 
+    	<inspector type="org.hammurapi.inspectors.MethodNameSameAsConstructorRule"/>
+    	<description>Avoid giving non-constructor methods the same name as the class</description>
+	<category>Possible bugs</category>
+    	<!--
+        <rationale></rationale>
+        <resource></resource>
+        -->
+        <violation-sample><![CDATA[public void MethodNameSameAsConstructorRuleViolationTestCase() {
+}]]></violation-sample>
+        <fix-sample><![CDATA[public void methodNameNotSameAsConstructorRuleFixTestCase() {
+}]]></fix-sample>
+    </inspector-descriptor>
+    
+    <inspector-descriptor>
+    	<name>ER-084</name>
+    	<enabled>yes</enabled>
+    	<severity>1</severity> 
+    	<inspector type="org.hammurapi.inspectors.TextLabelsInSwitchStatementRule"/>
+    	<description>Avoid using text labels in "switch" statements</description>
+	<category>Possible bugs</category>
+    	<!--
+        <rationale></rationale>
+        <resource></resource>
+        -->
+        <violation-sample><![CDATA[switch (baseVal) {
+	case TXT_1 :
+		retVal = INT_2;
+		break;
+	case "Option 2" :
+		retVal = INT_7;
+		break;
+	default :
+		retVal = INT_1;
+		break;
+}]]></violation-sample>
+        <fix-sample><![CDATA[if (TXT_1.compareTo(baseVal)==0) {
+	retVal = INT_2;
+} else if (TXT_1.compareTo(baseVal)==0) {
+	retVal = INT_7;
+} else {
+	retVal = INT_1;
+}]]></fix-sample>
+    </inspector-descriptor>
+    
+<!--
+    <inspector-descriptor>
+    	<name>ER-085</name>
+    	<enabled>yes</enabled>
+    	<severity>2</severity> 
+    	<inspector type="org.hammurapi.inspectors.CloseJdbcResourcesRule"/>
+    	<description>Close JDBC resources when done</description>
+	<category>Servlet</category>
+        <rationale></rationale>
+        <violation-sample><![CDATA[]]></violation-sample>
+        <fix-sample><![CDATA[]]></fix-sample>
+        <resource></resource>
+    </inspector-descriptor>
+-->
+    
+    <inspector-descriptor>
+    	<name>ER-086</name>
+    	<enabled>yes</enabled>
+    	<severity>2</severity> 
+    	<inspector type="org.hammurapi.inspectors.SynchronizationInServletsRule"/>
+    	<description>Minimize synchronization in Servlets</description>
+	<category>Servlet</category>
+    	<!--
+        <rationale></rationale>
+        <resource></resource>
+        -->
+        <violation-sample><![CDATA[]]></violation-sample>
+        <fix-sample><![CDATA[]]></fix-sample>
+    </inspector-descriptor>
+    
+    <inspector-descriptor>
+    	<name>ER-087</name>
+    	<enabled>yes</enabled>
+    	<severity>3</severity> 
+    	<inspector type="org.hammurapi.inspectors.NotifyRule"/>
+    	<description>Do not use 'notify ()'; use 'notifyAll ()' instead</description>
+	<category>Threads and Synchronization</category>
+    	<!--
+        <rationale></rationale>
+        <resource></resource>
+        -->
+        <violation-sample><![CDATA[public synchronized int get() {
+	while (available) {
+		try {
+			// wait for Producer to put value
+			wait();
+		} catch (InterruptedException e) {
+			logger.warn(e);
+		}
+	}
+	available = false;
+	// notify Producer that value has been retrieved
+	notify();
+	return contents;
+}
+public synchronized void put(final int value) {
+	while (available) {
+		try {
+			// wait for Consumer to get value
+			wait();
+		} catch (InterruptedException e) {
+			logger.warn(e);
+		}
+	}
+	contents = value;
+	available = true;
+	// notify Consumer that value has been set
+	notify();
+} ]]></violation-sample>
+        <fix-sample><![CDATA[public synchronized int get() {
+	while (available) {
+		try {
+			// wait for Producer to put value
+			wait();
+		} catch (InterruptedException e) {
+			logger.warn(e);
+		}
+	}
+	available = false;
+	// notify Producer that value has been retrieved
+	notifyAll();
+	return contents;
+}
+public synchronized void put(final int value) {
+	while (available) {
+		try {
+			// wait for Consumer to get value
+			wait();
+		} catch (InterruptedException e) {
+			logger.warn(e);
+		}
+	}
+	contents = value;
+	available = true;
+	// notify Consumer that value has been set
+	notifyAll();
+} ]]></fix-sample>
+    </inspector-descriptor>
+    
+    <inspector-descriptor>
+    	<name>ER-088</name>
+    	<enabled>yes</enabled>
+    	<severity>1</severity> 
+    	<inspector type="org.hammurapi.inspectors.ThreadGroupRule"/>
+    	<description>Avoid using variables of type 'java.lang.ThreadGroup'</description>
+	<category>Threads and Synchronization</category>
+    	<!--
+        <rationale></rationale>
+        <resource></resource>
+        -->
+        <violation-sample><![CDATA[private static final String TG_NAME = "Thread group users";
+private ThreadGroup tg = new ThreadGroup(TG_NAME);]]></violation-sample>
+        <fix-sample><![CDATA[]]></fix-sample>
+    </inspector-descriptor>
+    
+    <inspector-descriptor>
+    	<name>ER-089</name>
+    	<enabled>yes</enabled>
+    	<severity>2</severity> 
+    	<inspector type="org.hammurapi.inspectors.ThreadYieldRule"/>
+    	<description>Avoid using 'Thread.yield'</description>
+	<category>Threads and Synchronization</category>
+        <rationale></rationale>
+        <violation-sample><![CDATA[Thread myThread = new Thread() {
+	public void run() {
+		yield();
+	}
+};]]></violation-sample>
+        <fix-sample><![CDATA[]]></fix-sample>
+        <resource></resource>
+    </inspector-descriptor>
+    
+<!--
+    <inspector-descriptor>
+    	<name>ER-090</name>
+    	<enabled>yes</enabled>
+    	<severity>3</severity> 
+    	<inspector type="org.hammurapi.inspectors.DeadlockRule"/>
+    	<description>Avoid causing deadlock by calling a "synchronized" method from a "synchronized" method</description>
+	<category>Threads and Synchronization</category>
+        <rationale></rationale>
+        <violation-sample><![CDATA[]]></violation-sample>
+        <fix-sample><![CDATA[]]></fix-sample>
+        <resource></resource>
+    </inspector-descriptor>
+-->
+    
+    <inspector-descriptor>
+    	<name>ER-091</name>
+    	<enabled>yes</enabled>
+    	<severity>2</severity> 
+    	<inspector type="org.hammurapi.inspectors.ThreadSubclassesRule"/>
+    	<description>Give subclasses of Thread a 'run ()' method</description>
+	<category>Threads and Synchronization</category>
+    	<!--
+        <rationale></rationale>
+        <resource></resource>
+        -->
+        <violation-sample><![CDATA[]]></violation-sample>
+        <fix-sample><![CDATA[public void run() {
+}]]></fix-sample>
+    </inspector-descriptor>
+    
+<!--
+    <inspector-descriptor>
+    	<name>ER-092</name>
+    	<enabled>yes</enabled>
+    	<severity>1</severity> 
+    	<inspector type="org.hammurapi.inspectors.WaitAndNotifyRule"/>
+    	<description>wait(), notify() and notifyAll() shall be called from  "synchronized" method or block.</description>
+	<category>Threads and Synchronization</category>
+        <rationale></rationale>
+        <violation-sample><![CDATA[]]></violation-sample>
+        <fix-sample><![CDATA[]]></fix-sample>
+        <resource></resource>
+    </inspector-descriptor>
+-->
+    
+    <inspector-descriptor>
+    	<name>ER-093</name>
+    	<enabled>yes</enabled>
+    	<severity>2</severity> 
+    	<inspector type="org.hammurapi.inspectors.WaitInLoopRule"/>
+    	<description>Call 'wait ()' only inside a "while" loop</description>
+	<category>Threads and Synchronization</category>
+    	<!--
+        <rationale></rationale>
+        <resource></resource>
+        -->
+        <violation-sample><![CDATA[private void work() {
+	try {
+		if (working) {
+			wait(TIMEOUT);
+		}
+	} catch (InterruptedException e) {
+		logger.debug(STOP_TXT);
+	}
+}]]></violation-sample>
+        <fix-sample><![CDATA[private void work() {
+	try {
+		while (working) {
+			wait(TIMEOUT);
+		}
+	} catch (InterruptedException e) {
+		logger.debug(STOP_TXT);
+	}
+}]]></fix-sample>
+    </inspector-descriptor>
+    
+    <inspector-descriptor>
+    	<name>ER-094</name>
+    	<enabled>yes</enabled>
+    	<severity>2</severity> 
+    	<inspector type="org.hammurapi.inspectors.WaitAndNotifyInsteadOfPollingRule"/>
+    	<description>Use 'wait ()' and 'notifyAll ()' instead of polling loops</description>
+	<category>Threads and Synchronization</category>
+    	<!--
+        <rationale></rationale>
+        <resource></resource>
+        -->
+        <violation-sample><![CDATA[public void run() {
+	try {
+		while (true) {
+			if (!working) {
+				sleep(TIMEOUT);
+			}
+		}
+	} catch (InterruptedException e) {
+		logger.debug(STOP_TXT);
+	}
+}]]></violation-sample>
+        <fix-sample><![CDATA[public void run() {
+	try {
+		while (working) {
+			wait(TIMEOUT);
+		}
+	} catch (InterruptedException e) {
+		logger.debug(STOP_TXT);
+	}
+}]]></fix-sample>
+    </inspector-descriptor>
+    
+    <inspector-descriptor>
+    	<name>ER-095</name>
+    	<enabled>yes</enabled>
+    	<severity>2</severity> 
+    	<inspector type="org.hammurapi.inspectors.TooManyThrowsRule"/>
+    	<description>Too many exceptions listed in throws clause</description>
+	<category>Exception handling</category>
+    	<!--
+        <rationale></rationale>
+        <resource></resource>
+        -->
+        <parameter type="java.lang.Integer" name="max-throws">3</parameter>
+        <violation-sample><![CDATA[public static TooManyThrowsRuleViolationTestCase readIn(final String fName)
+	throws FileNotFoundException, IOException, ClassNotFoundException,StreamCorruptedException {
+	InputStream is = new FileInputStream(fName);
+	ObjectInputStream ois = new ObjectInputStream(is);
+	TooManyThrowsRuleViolationTestCase obj =
+	(TooManyThrowsRuleViolationTestCase) ois.readObject();
+	return obj;
+}]]></violation-sample>
+        <fix-sample><![CDATA[public static TooManyThrowsRuleFixTestCase readIn(final String fName)throws HammurapiTestCasesException { 
+	TooManyThrowsRuleFixTestCase obj = null;
+	try {
+		InputStream is = new FileInputStream(fName);
+		ObjectInputStream ois = new ObjectInputStream(is);
+		obj = (TooManyThrowsRuleFixTestCase) ois.readObject();
+	} catch (FileNotFoundException e) {
+		logger.error(SERIALIZATION_ERROR + e.getMessage());
+		throw new HammurapiTestCasesException(e);
+	} catch (ClassNotFoundException e) {
+		logger.error(SERIALIZATION_ERROR + e.getMessage());
+		throw new HammurapiTestCasesException(e);
+	} catch (StreamCorruptedException e) {
+		logger.error(SERIALIZATION_ERROR + e.getMessage());
+		throw new HammurapiTestCasesException(e);
+	} catch (IOException e) {
+		logger.error(SERIALIZATION_ERROR + e.getMessage());
+		throw new HammurapiTestCasesException(e);
+	}
+	return obj;
+}]]></fix-sample>
+    </inspector-descriptor>
+    
+    <inspector-descriptor>
+    	<name>ER-096</name>
+    	<enabled>yes</enabled>
+    	<severity>3</severity> 
+    	<inspector type="org.hammurapi.inspectors.EmptyStatements"/>
+    	<description>Empty statements</description>
+	<category>Coding Guidelines</category>
+    	<!--
+        <rationale></rationale>
+        <resource></resource>
+        -->
+        <violation-sample><![CDATA[;]]></violation-sample>
+        <fix-sample><![CDATA[]]></fix-sample>
+    </inspector-descriptor>
+    
+    <inspector-descriptor>
+    	<name>ER-097</name>
+    	<enabled>no</enabled>
+    	<severity>2</severity> 
+    	<inspector type="org.hammurapi.inspectors.ThrowsClauseRule"/>
+    	<description>Declare only predefined set of exceptions in throws clause (application layer specific)</description>
+	<category>Exception handling</category>
+        <parameter name="allowed-throw">org.hammurapi.inspectors.testcases.HammurapiTestCasesException</parameter>
+    	<!--
+        <rationale></rationale>
+        <resource></resource>
+        -->
+        <violation-sample><![CDATA[public void setFirstByte(final String fName)	throws IOException {
+	FileInputStream fin = null;
+	fin = new FileInputStream(fName);
+	firstByte = fin.read();
+	fin.close();
+}]]></violation-sample>
+        <fix-sample><![CDATA[public void setFirstByte(final String fName)throws HammurapiTestCasesException {
+	FileInputStream fin = null;
+	try {
+		fin = new FileInputStream(fName);
+		firstByte = fin.read();
+		fin.close();
+	} catch (IOException e) {
+		logger.error(FILE_ERROR_TXT, e);
+		throw new HammurapiTestCasesException(e);
+	}
+}]]></fix-sample>
+    </inspector-descriptor>
+    
+    <inspector-descriptor>
+    	<name>ER-098</name>
+    	<enabled>yes</enabled>
+    	<severity>3</severity> 
+    	<inspector type="org.hammurapi.inspectors.InterfaceMethodModifiersRule"/>
+    	<description>No need to provide (public, abstract, ) modifiers for interface methods</description>
+    	<!-- <parameter name="allowed-modifier">abstract</parameter> -->
+	<category>Coding Guidelines</category>
+    	<!--
+        <rationale></rationale>
+        <resource></resource>
+        -->
+        <violation-sample><![CDATA[public interface InterfaceMethodModifiersRuleViolationTestCase {
+	abstract String getName();
+}]]></violation-sample>
+        <fix-sample><![CDATA[public interface InterfaceMethodModifiersRuleFixTestCase {
+	String getName();
+}]]></fix-sample>
+    </inspector-descriptor>
+    
+    <inspector-descriptor>
+    	<name>ER-099</name>
+    	<enabled>yes</enabled>
+    	<severity>2</severity> 
+    	<inspector type="org.hammurapi.inspectors.SynchronizedRunnableRunMethodRule"/>
+    	<description>Use the "synchronized" modifier on methods that implement 'Runnable.run ()'</description>
+	<category>Threads and Synchronization</category>
+    	<!--
+        <rationale></rationale>
+        <resource></resource>
+        -->
+        <violation-sample><![CDATA[public class SynchronizedRunnableRunMethodRuleViolationTestCase extends Thread {
+	private static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getRootLogger();
+	public void run() {
+	}
+}]]></violation-sample>
+        <fix-sample><![CDATA[public class SynchronizedRunnableRunMethodRuleFixTestCase extends Thread {
+	private static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getRootLogger();
+	public synchronized void run() {
+	}
+}]]></fix-sample>
+    </inspector-descriptor>
+    
+    <inspector-descriptor>
+    	<name>ER-100</name>
+    	<enabled>no</enabled>
+    	<severity>1</severity> 
+    	<inspector type="org.hammurapi.inspectors.FileHeaderRule"/>
+    	<description>Copyrights information should be present in each  file.</description>
+    	<parameter name="copyright">Copyright (C) 2004  Pavel Vlasov</parameter>
+	<category>Coding Guidelines</category>
+    	<!--
+        <rationale></rationale>
+        <resource></resource>
+        -->
+        <violation-sample><![CDATA[]]></violation-sample>
+        <fix-sample><![CDATA[ // Copyright (C) 2004  Pavel Vlasov]]></fix-sample>
+    </inspector-descriptor>
+    
+<!--
+    <inspector-descriptor>
+    	<name>ER-101</name>
+    	<enabled>yes</enabled>
+    	<severity>3</severity> 
+    	<inspector type="org.hammurapi.inspectors.CommonPrefixRule"/>
+    	<description>Class Name Defect: Never prefix your classes but trust your package structure</description>
+	<category>Coding Guidelines</category>
+        <rationale></rationale>
+        <resource></resource>
+        <violation-sample><![CDATA[]]></violation-sample>
+        <fix-sample><![CDATA[]]></fix-sample>
+    </inspector-descriptor>
+-->
+    
+    <inspector-descriptor>
+    	<name>ER-102</name>
+    	<enabled>yes</enabled>
+    	<severity>2</severity> 
+    	<inspector type="org.hammurapi.inspectors.StringArraysRule"/>
+    	<description>String Arrays are deprecated and are ONLY allowed for final variables</description>
+	<category>Possible bugs</category>
+    	<!--
+        <rationale></rationale>
+        <resource></resource>
+        -->
+        <violation-sample><![CDATA[private String[] names = new String[DIM];]]></violation-sample>
+        <fix-sample><![CDATA[private final String[] names = new String[DIM];
+private java.util.List nameList = new java.util.ArrayList(DIM);]]></fix-sample>
+    </inspector-descriptor>
+    
+    <inspector-descriptor>
+    	<name>ER-103</name>
+    	<enabled>yes</enabled>
+    	<severity>2</severity> 
+    	<inspector type="org.hammurapi.inspectors.LogExceptionsRule"/>
+    	<description>Catch-blocks should log the exeption with Log4J.error("Context String"  , exception )</description>
+	<category>Logging</category>
+        <parameter name="logger_class">org.apache.log4j.Category</parameter>
+        <parameter name="logger_method">error</parameter>
+    	<!--
+        <rationale></rationale>
+        <resource></resource>
+        -->
+        <violation-sample><![CDATA[try {
+	InputStream is = new FileInputStream(fName);
+	return is.read();
+} catch (java.io.IOException e) {
+	logger.error(FILE_ERROR_TXT, e);
+	throw new HammurapiTestCasesException(e);
+}]]></violation-sample>
+        <fix-sample><![CDATA[try {
+	InputStream is = new FileInputStream(fName);
+	return is.read();
+} catch (java.io.IOException e) {
+	logger.error(FILE_ERROR_TXT, e);
+	throw new HammurapiTestCasesException(e);
+}]]></fix-sample>
+    </inspector-descriptor>
+    
+    <inspector-descriptor>
+    	<name>ER-104</name>
+    	<enabled>yes</enabled>
+    	<severity>2</severity> 
+    	<inspector type="org.hammurapi.inspectors.UseCollectionsInsteadOfArraysRule"/>
+    	<description>Use a Collection instead of arrays Object[]</description>
+	<category>Coding Guidelines</category>
+    	<!--
+        <rationale></rationale>
+        <resource></resource>
+        -->
+        <violation-sample><![CDATA[public char[] getArr() {
+	char[] arr = new char[DIM];
+	return arr;
+}]]></violation-sample>
+        <fix-sample><![CDATA[public java.util.Collection getArr() {
+	java.util.Collection arr = new java.util.ArrayList(DIM);
+	return arr;
+}]]></fix-sample>
+    </inspector-descriptor>
+    
+    <inspector-descriptor>
+    	<name>ER-105</name>
+    	<enabled>yes</enabled>
+    	<severity>3</severity> 
+    	<inspector type="org.hammurapi.inspectors.JavaDocInspector"/>
+    	<description>Document all Interfaces and public methods. Use a Class header. Provide Javadoc</description>
+	<category>JavaDoc</category>
+        <rationale></rationale>
+        <resource></resource>
+        <violation-sample><![CDATA[]]></violation-sample>
+        <fix-sample><![CDATA[]]></fix-sample>
+    </inspector-descriptor>
+    
+    <inspector-descriptor>
+    	<name>ER-106</name>
+    	<enabled>yes</enabled>
+    	<severity>2</severity> 
+    	<inspector type="org.hammurapi.inspectors.StringLiteralEqualsRule"/>
+    	<description>If you have to compare with a string do not use  degree.equals("1"))  but "1".equals(degree)</description>
+	<category>Possible bugs</category>
+    	<!--
+        <rationale></rationale>
+        <resource></resource>
+        -->
+        <violation-sample><![CDATA[public boolean compare(final String strToCompare) {
+	return strToCompare.equals(COMPARE_SRT);
+}]]></violation-sample>
+        <fix-sample><![CDATA[public boolean compare(final String strToCompare) {
+	return COMPARE_SRT.equals(strToCompare);
+}]]></fix-sample>
+    </inspector-descriptor>
+    
+    <inspector-descriptor>
+    	<name>ER-107</name>
+    	<enabled>yes</enabled>
+    	<severity>3</severity> 
+    	<inspector type="org.hammurapi.inspectors.VariablesAndMethodsNameClashingRule"/>
+    	<description>Instance variables and method names shouldn't have same name</description>
+	<category>Coding Guidelines</category>
+    	<!--
+        <rationale></rationale>
+        <resource></resource>
+        -->
+        <violation-sample><![CDATA[private int amount;
+public void amount(final int newAmount) {
+	amount = newAmount;
+}]]></violation-sample>
+        <fix-sample><![CDATA[private int amount;
+public void setAmount(final int newAmount) {
+	amount = newAmount;
+}]]></fix-sample>
+    </inspector-descriptor>
+        
+    <inspector-descriptor>
+		<name>ER-108</name>
+		<enabled>yes</enabled>
+		<severity>1</severity>
+		<inspector type="org.hammurapi.inspectors.SystemGcMisuseRule"/>
+		<description>Application controlled garbage collection is banned in a J2EE environment and mostly indicates lack of design.</description>
+        <violation-sample><![CDATA[public void ejbRemove() {
+	System.gc();
+}]]></violation-sample>
+        <fix-sample><![CDATA[public void ejbRemove() {
+}]]></fix-sample>
+	</inspector-descriptor> 
+	
+	<inspector-descriptor>
+		<name>ER-109</name>
+		<enabled>yes</enabled>
+		<severity>3</severity>
+		<inspector type="org.hammurapi.inspectors.ConstructorWithoutSuperRule"/>
+		<description>It is good practice to call in any case super() in a constructor. (see also: UnnecessaryConstructorRule )</description>
+        <violation-sample><![CDATA[ConstructorWithoutSuperRuleViolationTestCase(final Integer initState) {
+	objState = initState;
+}]]></violation-sample>
+        <fix-sample><![CDATA[ConstructorWithoutSuperRuleFixTestCase(final Integer initState) {
+	super();
+	objState = initState;
+}]]></fix-sample>
+	</inspector-descriptor> 
+	
+	
+	<inspector-descriptor>
+		<name>ER-110</name>
+		<enabled>yes</enabled>
+		<severity>3</severity>
+		<inspector type="org.hammurapi.inspectors.UnnecessaryConstructorRule"/>
+		<description>Unnecessary constructor detects when a constructor is not necessary; i.e., when there's only one constructor, it's public, has an empty body, and takes no arguments. </description>
+        <violation-sample><![CDATA[	public UnnecessaryConstructorRuleViolationTestCase() {
+	super();
+}]]></violation-sample>
+        <fix-sample><![CDATA[private int amount = 0;
+public UnnecessaryConstructorRuleFixTestCase(final int newAmount) {
+	super();
+	amount = newAmount;
+}]]></fix-sample>
+	</inspector-descriptor> 
+	
+	<inspector-descriptor>
+		<name>ER-111</name>
+		<enabled>yes</enabled>
+		<severity>1</severity>
+		<inspector type="org.hammurapi.inspectors.SystemPrintlnLoggingRule"/>
+		<description>LOG4J is mandatory for all logging in ERC. System.out.println will be lost in a system console of our web/app server.</description>
+        <violation-sample><![CDATA[private static final String TRACE_1 = "strToProc == null";
+private static final String TRACE_2 = "strToProc.length() == 0";
+private static final String TRACE_3 = "else";
+System.out.println(TRACE_1);
+System.out.println(TRACE_2);
+System.out.println(TRACE_3);]]></violation-sample>
+        <fix-sample><![CDATA[private static final String TRACE_1 = "strToProc == null";
+private static final String TRACE_2 = "strToProc.length() == 0";
+private static final String TRACE_3 = "else";
+logger.debug(TRACE_1);
+logger.debug(TRACE_2);
+logger.debug(TRACE_3);]]></fix-sample>
+	</inspector-descriptor> 	
+	
+	<inspector-descriptor>
+		<name>ER-112</name>
+		<enabled>yes</enabled>
+		<severity>2</severity>
+		<inspector type="org.hammurapi.inspectors.EmptyCompilationUnitRule"/>
+		<description>File doesn't contain classes or interfaces</description>
+        <violation-sample><![CDATA[]]></violation-sample>
+        <fix-sample><![CDATA[public class EmptyCompilationUnitRuleFixTestCase {
+	private static org.apache.log4j.Logger logger =	org.apache.log4j.Logger.getRootLogger();
+}]]></fix-sample>
+	</inspector-descriptor> 	
+	
+	<inspector-descriptor>
+		<name>ER-113</name>
+		<enabled>yes</enabled>
+		<severity>2</severity>
+		<inspector type="org.hammurapi.inspectors.UnusedVariablesRule"/>
+		<description>Unused private/local variables</description>
+        <violation-sample><![CDATA[private int amount;]]></violation-sample>
+        <fix-sample><![CDATA[private int amount;
+public void setAmount(final int newAmount) {
+	logger.debug(new Integer(newAmount));
+	amount = newAmount;
+}]]></fix-sample>
+	</inspector-descriptor> 	
+
+<!--	
+	<inspector-descriptor>
+		<name>ER-114</name>
+		<enabled>yes</enabled>
+		<severity>2</severity>
+		<inspector type="org.hammurapi.inspectors.MinimizeScopeRule"/>
+		<description>Variables shall be declared at the place of first use or right before it.</description>
+        <violation-sample><![CDATA[]]></violation-sample>
+        <fix-sample><![CDATA[]]></fix-sample>
+	</inspector-descriptor> 	
+-->
+
+<!--
+	<inspector-descriptor>
+		<name>ANNOTATION_TEST</name>
+		<enabled>yes</enabled>
+		<severity>2</severity>
+		<inspector type="org.hammurapi.inspectors.AnnotationTest"/>
+		<description>Testing annotations</description>
+		<message key="m1">Message 1</message>
+		<parameter name="pi" type="java.lang.Double">3.14159265358</parameter>
+        <violation-sample><![CDATA[]]></violation-sample>
+        <fix-sample><![CDATA[]]></fix-sample>
+	</inspector-descriptor> 	
+-->
+
+	<inspector-descriptor>
+		<name>NCSS</name>
+		<enabled>no</enabled>
+		<severity>2</severity>
+		<inspector type="org.hammurapi.inspectors.metrics.NcssInspector"/>
+		<description>NCSS metrics</description>
+		
+		<parameter name="function-max-loc">50</parameter>		
+	        <parameter name="class-max-loc">500</parameter>
+			  	<parameter name="class-max-function">20</parameter>
+
+        	<!--	
+			if chart-debug-window == 1  and ncss-report == 1  
+        		then open two Swing windows with generated NCSS metric distribution 
+		-->
+	        <parameter name="chart-debug-window">0</parameter>
+
+	        <!--	
+			if ncss-report == 1 then generate a NCSS report otherwise just check violations  		
+		-->
+	        <parameter name="ncss-report">1</parameter>        
+	</inspector-descriptor>
+    
+	<inspector-descriptor>
+		<name>ER-116</name>
+		<enabled>yes</enabled>
+		<severity>3</severity>
+		<inspector type="org.hammurapi.inspectors.performance.StringConcatenationInspector"/>
+		<description>Use StringBuffer for excessive String concatenation. This inspector skips 
+		static fields initializers, single concatenations (one +) and concatenations of constants like
+		"a"+"b"+"c" because they are calculated at compile time.</description>
+		<message>Use StringBuffer for excessive String concatenation</message>
+		<category>Performance</category>
+		<rationale>StringBuffer with reserved capacity more than default can yield as much 
+		as 50% performance improvement in string concatenation operations</rationale>
+        <violation-sample><![CDATA[public String concat(String a, String b, String c) {
+	// VIOLATION
+	return a+b+c;
+}]]></violation-sample>
+        <fix-sample><![CDATA[public String concat(String a, String b, String c) {
+	// FIX
+	return new StringBuffer(100).append(a).append(b).append(c).toString();
+}]]></fix-sample>
+	</inspector-descriptor> 	
+	
+    <inspector-descriptor>
+    	<name>ER-200</name>
+    	<enabled>yes</enabled>
+    	<severity>3</severity> 
+    	<inspector type="org.hammurapi.inspectors.VariableNameClashesWithTypeNameRule"/>
+    	<description>Instance variables and the declaring type shouldn't have same name</description>
+	<category>Coding Guidelines</category>
+    	<!--
+        <rationale></rationale>
+        <violation-sample></violation-sample>
+        <fix-sample></fix-sample>
+        <resource></resource>
+        -->
+        <violation-sample><![CDATA[public class VariableNameClashesWithTypeNameRuleViolationTestCase {
+	private static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getRootLogger();
+	private int VariableNameClashesWithTypeNameInspectorViolationTestCase;
+}]]></violation-sample>
+        <fix-sample><![CDATA[public class VariableNameClashesWithTypeNameRuleFixTestCase {
+	private static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getRootLogger();
+	private int theVariableNameClashesWithTypeNameInspectorFixTestCase;
+}]]></fix-sample>
+    </inspector-descriptor>
+    
+    <inspector-descriptor>
+    	<name>ER-201</name>
+    	<enabled>yes</enabled>
+    	<severity>3</severity> 
+    	<inspector type="org.hammurapi.inspectors.MinimalInstanceVariableLengthRule"/>
+    	<description>Discourage usage of instance variables like a, j by enforcing minimal variable name length.</description>
+    	<parameter type="java.lang.Integer" name="min-length">3</parameter>
+	<category>Coding Guidelines</category>
+    	<!--
+        <rationale></rationale>
+        <violation-sample></violation-sample>
+        <fix-sample></fix-sample>
+        <resource></resource>
+        -->
+        <violation-sample><![CDATA[private int i;]]></violation-sample>
+        <fix-sample><![CDATA[private int amount;]]></fix-sample>
+    </inspector-descriptor>
+    
+    <inspector-descriptor>
+    	<name>ER-202</name>
+    	<enabled>yes</enabled>
+    	<severity>2</severity> 
+    	<inspector type="org.hammurapi.inspectors.DoNotUseTypeRule"/>
+    	<description>Disallows to use a particular type or package in a particular context.</description>
+		<message>Do not use {0} in this context.</message>
+    	<parameter name="include">javax.accessibility.AccessibleResourceBundle</parameter>
+    	<parameter name="include">javax.swing.text.DefaultTextUI</parameter>
+    	<parameter name="include">java.security.Identity</parameter>
+    	<parameter name="include">java.security.Identity</parameter>
+    	<parameter name="include">java.security.IdentityScope</parameter>
+    	<parameter name="include">java.io.LineNumberInputStream</parameter>
+        <parameter name="include">java.rmi.server.LogStream</parameter>
+        <parameter name="include">java.rmi.server.Operation</parameter>
+        <parameter name="include">org.omg.CORBA.Principal</parameter>
+        <parameter name="include">org.omg.CORBA.PrincipalHolder</parameter>
+        <parameter name="include">java.security.Signer</parameter>
+        <parameter name="include">java.io.StringBufferInputStream</parameter>
+        <parameter name="include">javax.swing.text.TableView.TableCell</parameter>
+    	<!--
+        <rationale></rationale>
+        <violation-sample></violation-sample>
+        <fix-sample></fix-sample>
+        <resource></resource>
+        -->
+        <violation-sample><![CDATA[
+        <span class="problem">
+import java.util.Vector;
+</span>
+class DoNotUseTypeRuleViolationTestCase 
+{
+	private void violate() 
+	{
+ 	<span class="problem">
+		Vector list = new Vector();
+		</span>
+        list.add("some text");
+	}
+}]]></violation-sample>
+        <fix-sample><![CDATA[
+        <span class="fix">
+        import java.util.List;
+        import java.util.ArrayList;
+        </span>
+class DoNotUseTypeRuleFixTestCase 
+{
+	private void fix() 
+	{
+	<span class="fix">
+		List list = new ArrayList();
+		</span>
+        list.add("some text");
+	}
+}]]></fix-sample>
+    </inspector-descriptor>
+    
+	<inspector-descriptor>
+    	<name>ER-203</name>
+    	<enabled>no</enabled>
+    	<severity>1</severity> 
+    	<inspector type="org.hammurapi.inspectors.StatelessStrutsAction"/>
+    	<description>Do not use instance or class non-final variables in Struts Action.</description>
+        <rationale>In multithreading environment value of instance/class variable can be changed from
+        one thread and the be read by another which will lead to data corruption.</rationale>
+    	<!--
+        <fix-sample></fix-sample>
+        <resource></resource>
+        -->
+        <violation-sample><![CDATA[public  class EmployeeAction extends DispatchAction {
+		//-- violation
+		private String path = "";
+		
+		//-- OK	
+		private static Logger logger = Logger.getLogger(EmployeeAction.class.getName());
+	}	
+        ]]></violation-sample>
+        <fix-sample><![CDATA[public  class EmployeeAction extends DispatchAction {
+		
+		//-- OK	
+		private static Logger logger = Logger.getLogger(EmployeeAction.class.getName());
+		
+		public void execute(){
+		 	//-- move instance variable to local variable
+			String path = "";
+			BusinessDelegate b = new BusinessDelegate();
+			b.insertEmployee();
+		}
+
+	}	 ]]></fix-sample>
+    </inspector-descriptor>
+    
+    <inspector-descriptor>
+    	<name>JSP-Metrics</name>
+    	<enabled>no</enabled>
+    	<severity>1</severity> 
+    	<inspector type="org.hammurapi.inspectors.metrics.JspInspector"/>
+    	<description>Jsp Metrics</description>
+    	<parameter name="jsp-base-class">org.apache.jasper.runtime.HttpJspBase</parameter>
+    </inspector-descriptor>
+
+    <inspector-descriptor>
+    	<name>Test</name>
+    	<enabled>no</enabled>
+    	<severity>5</severity> 
+    	<inspector type="org.hammurapi.inspectors.TestInspector"/>
+    	<description>Test inspectors</description>
+    </inspector-descriptor>
+ 
+    	<inspector-descriptor>
+    		<name>CallerTrace</name>
+    		<enabled>no</enabled>
+    		<severity>2</severity>
+    		<inspector type="org.hammurapi.inspectors.metrics.CallerTrace"/>
+    		<description>Caller Trace</description>
+	</inspector-descriptor>
+
+	<inspector-descriptor>
+		<name>Architecture</name>
+		<enabled>no</enabled>
+		<severity>2</severity>
+		<inspector type="org.hammurapi.inspectors.metrics.ArchitecturalLayerInspector"/>
+		<description>Architectural Layers</description>
+		<!--
+				
+			If this parameter is not given, Default will cause a file-not-found-exception
+			<parameter name="mapping-configuration">src/org/hammurapi/inspectors/metrics/ArchitecturalLayerMapping.xml</parameter>
+		-->
+		<!-- <parameter name="mapping-configuration">src/org/hammurapi/inspectors/metrics/ArchitecturalLayerMapping.xml</parameter> -->
+	</inspector-descriptor>
+	
+	<inspector-descriptor>
+		<name>ER-204</name>
+		<enabled>yes</enabled>
+		<severity>2</severity>
+		<inspector type="org.hammurapi.inspectors.ResourceHandlingRule"/>
+		<category>Resource management</category>
+		<parameter type="java.lang.String" name="resource-def">javax.sql.DataSource:getConnection:java.sql.Connection:close</parameter>
+		<parameter type="java.lang.String" name="resource-def">java.sql.Connection:prepareStatement:java.sql.Statement:close</parameter>
+		<description>Allocation of the resource should follow try/finally pattern to ensure proper de-allocation.</description>
+		<rationale>Allocating resource and not properly disposing it is a common problem in applications (JDBC/JNDI/Sockets).
+		Usually this happens due to not using try/finally pattern.</rationale>
+		<violation-sample><![CDATA[
+void problemCode1(DataSource ds)
+{
+  Connection <span class="problem">conn</span> = ds.getConnection();
+  PreparedStatement stmt = conn.prepareStatement("SELECT * FROM MY_TABLE");
+  //...
+  <span class="problem">conn.close();</span>
+}
+		
+void problemCode2(DataSource ds)
+{
+  Connection conn = null;
+  <span class="problem">try</span>
+  {
+    Connection conn = ds.getConnection();
+    PreparedStatement stmt = conn.prepareStatement("SELECT * FROM MY_TABLE");
+    //...
+  }
+  finally
+  {
+    conn.close();
+  }
+}
+
+void problemCode3(DataSource ds)
+{
+  Connection conn = ds.getConnection();;
+  try
+  {
+    //...
+  }
+  finally
+  {
+    <span class="problem">
+    conn.getAutoCommit(); // can throw an exeption and next line never execute
+    conn.close();
+    </span>
+  }
+}
+]]></violation-sample>
+
+		<fix-sample><![CDATA[
+Connection conn = ds.getConnection();
+<span class="fix">try</span>
+{
+  PreparedStatement stmt = conn.prepareStatement("SELECT * FROM MY_TABLE");
+	//...
+}
+<span class="fix">finally</span>
+{
+  conn.close();
+}]]></fix-sample>
+	</inspector-descriptor>	
+	
+	<!-- Filters -->
+	<!--  - - >
+	<inspector-descriptor>
+		<name>JSP_FILTER</name>
+		<enabled>yes</enabled>
+		<severity>5</severity>
+		<inspector type="org.hammurapi.inspectors.filters.LanguageElementFilter"/>
+		<description>Filters inspectors for JSP classes</description>
+		<category>Filter</category>		
+		
+		<filter name="*"/>
+		<filter-exclude name="JSP_FILTER"/>
+		<filter name="ER-005"/>
+		<filter name="ER-021"/>		
+		<filter name="ER-023"/>		
+		<filter name="ER-033"/>
+		<filter name="ER-011"/>
+		<filter name="ER-036"/>
+		<filter category="Zorro"/>
+		
+		<parameter name="exclude-file">*_jsp.java</parameter>
+		<parameter name="exclude">_jspService(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)</parameter>
+		<parameter name="exclude">org.hammurapi.*</parameter>
+		
+		<parameter name ="exclude-file">*.java</parameter>
+		<parameter name ="include-file">*_jsp.java</parameter>
+		
+	</inspector-descriptor>
+	< ! - - -->
+
+	<inspector-descriptor>
+		<name>String literals collector</name>
+		<enabled>no</enabled>
+		<severity>5</severity>
+		<inspector type="org.hammurapi.inspectors.samples.CollectStringLiterals"/>
+		<description>Collects string literals from all source files</description>
+		<category>Sample</category>				
+	</inspector-descriptor>
+	
+	<inspector-descriptor>
+		<name>Technology stack</name>
+		<enabled>yes</enabled>
+		<severity>5</severity>
+		<inspector type="org.hammurapi.inspectors.techstack.TechStackInspector"/>
+		<description>Technology stack report</description>
+		<category>Reports</category>				
+	</inspector-descriptor>
+
+    <inspector-descriptor>
+    	<name>ER-205</name>
+    	<enabled>no</enabled>
+    	<severity>3</severity> 
+    	<inspector type="org.hammurapi.inspectors.FormattingRule"/>
+    	<description>Inconsistent source code formatting</description>
+		<parameter type="java.lang.String" name="coding-style">new-line</parameter>
+ 		<!-- parameter type="java.lang.String" name="coding-style">new-line</parameter -->    	
+ 		<category>Miscellaneous</category>
+    	<!--
+        <rationale></rationale>
+        <violation-sample></violation-sample>
+        <fix-sample></fix-sample>
+        <resource></resource>
+        -->
+        <violation-sample><![CDATA[]]></violation-sample>
+        <fix-sample><![CDATA[]]></fix-sample>
+    </inspector-descriptor>
+
+    
+
+	<inspector-descriptor>
+		<name>ER-206</name>
+		<category>Database Connection Pool</category>
+		<enabled>yes</enabled>
+		<severity>2</severity>
+		<inspector type="org.hammurapi.inspectors.SqlStatementAsInstanceVariableRule"/>
+		<description> Wrong declaration of SQL Resources Management: Do not declare Statements and ResultSets on Instance Level but use local variables on method level only. You may run in leakage problems if you do not close these resources in a connection-pooled environment. </description>
+		<violation-sample><![CDATA[public class MyDao {
+Statement global_stmt = null;
+ResultSet rs = null;
+public void select(){
+	Connection lcon_dbConnection = getConnection();
+	int i = 0;
+	try{
+	    global_stmt = lcon_dbConnection.createStatement();
+	    rs	= global_stmt.executeQuery("SELECT * FROM DUAL" );
+	 } catch (Exception ex){
+	     ex.printStackTrace();
+	 }
+}]]></violation-sample> 								
+		        <fix-sample><![CDATA[public class MyDao {
+		        
+public void selectWithLocalResources() throws Exception{
+    Statement stmt = null;
+    ResultSet rs = null;
+try{
+    Connection lcon_dbConnection = getConnection();
+    stmt = lcon_dbConnection.createStatement();
+    rs	= global_stmt.executeQuery("SELECT * FROM DUAL" );
+ } catch (Exception ex){
+     ex.printStackTrace();
+ }finally{
+	if (stmt != null){
+	   stmt.close();
+	}
+	if (rs != null){
+	    rs.close();
+	}
+ }
+}
+}]]></fix-sample>		        
+	</inspector-descriptor>
+	
+	<inspector-descriptor>
+		<name>ER-207</name>
+		<category>Database Connection Pool</category>
+		<enabled>yes</enabled>
+		<severity>1</severity>
+		<inspector type="org.hammurapi.inspectors.SqlCreateStatementWithoutCloseRule"/>
+		<description> SQL Resource Management - Create Statement Without Close Rule: You have to close each created SQL Statement on method level. Use the finally block, but check for null  value. If you use a operation in the finally block for closing your SQL resource, please define the operation name in the inspector.xml. Hammurapi will search for this method call and check the parameter list. This rule is only applicable in a connection-pooled environment.</description>
+		<violation-sample><![CDATA[public void select(){
+try {
+	 Statement stmt = dbConnection.createStatement();
+	 stmt.execute("SELECT * FROM DUAL" );
+} catch (Exception ex){
+     ex.printStackTrace();
+}]]></violation-sample> 								
+		        <fix-sample><![CDATA[public void select(){
+try {
+	 Statement stmt = dbConnection.createStatement();
+	 stmt.execute("SELECT * FROM DUAL" );
+} catch (Exception ex){
+     ex.printStackTrace();
+} finally {
+   stmt.close();
+}]]></fix-sample>
+		<parameter name ="release-resource-method">releaseConnection</parameter>
+		<parameter name ="release-resource-method">releaseResources</parameter>
+		
+	</inspector-descriptor>
+
+	<inspector-descriptor>
+		<name>ER-208</name>
+		<category>Database Connection Pool</category>
+		<enabled>yes</enabled>
+		<severity>1</severity>
+		
+		<inspector type="org.hammurapi.inspectors.SqlCreateStatementWithinLoop"/>
+		<description> SQL Resource Management - Create Statement Within a Loop: Never create Statements inside loops. This rule is only applicable in a connection-pooled environment.</description>
+		<violation-sample><![CDATA[Connection lcon_dbConnection = getConnection();
+ResultSet rs = null;
+int i = 0;
+while ( i< 10 ){
+    Statement lst_stmt = lcon_dbConnection.createStatement();
+    lst_stmt.executeUpdate(sqlString);
+    i++;
+};
+
+for (int j=0; j<10; j++){
+    Statement sss_stmt = lcon_dbConnection.createStatement();
+    lst_stmt.executeUpdate(sqlString);
+}
+
+do{
+    Statement sss_stmt = lcon_dbConnection.createStatement();
+    lst_stmt.executeUpdate(sqlString);
+}while (10< i);
+]]></violation-sample> 								
+		        <fix-sample><![CDATA[Connection lcon_dbConnection = getConnection();
+		        
+Statement lst_stmt = lcon_dbConnection.createStatement();
+ResultSet rs = null;
+int i = 0;
+while ( i< 10 ){
+    lst_stmt.executeUpdate(sqlString);
+    i++;
+};
+
+for (int j=0; j<10; j++){
+    lst_stmt.executeUpdate(sqlString);
+}
+
+do{
+    lst_stmt.executeUpdate(sqlString);
+}while (10< i);
+]]></fix-sample>		
+		
+
+
+	</inspector-descriptor>
+	
+	<inspector-descriptor>
+		<name>ER-History</name>
+		<category>Reports</category>
+		<enabled>yes</enabled>
+		<severity>5</severity>		
+		<inspector type="org.hammurapi.inspectors.history.HistoryInspector"/>
+		<description>Generates history annotation.</description>
+		<rationale>History annotation give insight into codebase evolution over time.</rationale>
+	</inspector-descriptor>	
+
+	<inspector-descriptor>
+		<name>ER-114</name>
+		<category>Coding standards</category>
+		<enabled>yes</enabled>
+		<severity>3</severity>		
+		<inspector type="org.hammurapi.inspectors.UseEqualsInsteadOfCompareToInspector"/>
+		<description>Use object.equals(anotherObject) instead of 
+		object.compareTo(anotherObject)==0</description>
+		<rationale>equals() is part of the java.lang.Object contract whereas compareTo() 
+			is part of the java.lang.Comparable contract. Use more generic methods. 
+			Not every class implements compareTo(), but each 
+			class has equals() method.
+		</rationale>
+	</inspector-descriptor>	
+
+	<!--	
+	<inspector-descriptor>
+		<name>ER-Logging-Filter</name>
+		<description>Filters files in a particular package. org.apache.* classes don't log</description>
+		<enabled>yes</enabled>
+		<category>Filters</category>
+		<inspector type="org.hammurapi.inspectors.filters.LanguageElementFilter"/> 
+		<severity>5</severity>
+		
+		<filter name="ER-049"/> 
+		<parameter name="exclude">org.apache.*</parameter>
+	</inspector-descriptor>	
+	-->
+	
+	<!--
+	<inspector-descriptor>
+		<name>DUMMY</name>
+		<description>Dummy inspector</description>
+		<enabled>no</enabled>
+		<category>Dummy inspectors</category>
+		<severity>5</severity>		
+	</inspector-descriptor>	
+	-->
+	
+   <inspector-descriptor>
+      <name>ER-209</name>
+
+      <category>Database Connection Pool</category>
+
+      <enabled>no</enabled>
+
+	  <!-- This Inspector is implemented in org.hammurapi.inspectors.SqlCreateStatementWithoutCloseRule -->
+      <severity>1</severity>
+
+      <description>SQL Resource Management - Create Statement Number doesn't fit to Close Statement : You have to close each created SQL Statement on method level. The inspector counts the number of create- and close statement calls, and report a violation if there are less close calls as create calls. This may be wrong diagnosis if you nest your create statements in if-then-else blocks. If you use a operation in the finally block for closing your SQL resource, please define the operation name in the inspector.xml. Hammurapi will search for this method call and check the parameter list. This rule is only applicable in a connection-pooled environment.</description>
+
+      <violation-sample>
+         <![CDATA[public void selectMultiplePrepStatements(){
+                 PreparedStatement pstmt = null;
+                 Connection conn = null;
+                 try{
+                     pstmt=conn.prepareStatement("SELECT * FROM Something");
+                     
+                     //-- do something but no close()
+                     pstmt=conn.prepareStatement("SELECT * FROM Something");
+                 } catch (Exception ex){
+                     ex.printStackTrace();
+                 } finally {
+                     try{
+                    
+                         if(pstmt != null){pstmt.close();}
+                                 } catch (Exception ex){
+                         ex.printStackTrace();
+                     }
+                 }
+             }]]>
+      </violation-sample>
+
+      <fix-sample>
+         <![CDATA[public void selectMultiplePrepStatements(){
+                 PreparedStatement pstmt = null;
+                 Connection conn = null;
+                 try{
+                     pstmt=conn.prepareStatement("SELECT * FROM Something");
+                     pstmt.close();
+                     //-- do something 
+                     
+                     pstmt=conn.prepareStatement("SELECT * FROM Something");
+                 } catch (Exception ex){
+                     ex.printStackTrace();
+                 } finally {
+                     try{
+                    
+                         if(pstmt != null){pstmt.close();}
+                                 } catch (Exception ex){
+                         ex.printStackTrace();
+                     }
+                 }
+             }]
+             ]]>
+      </fix-sample>
+
+      <parameter name="release-resource-method">releaseConnection</parameter>
+
+      <parameter name="release-resource-method">releaseResources</parameter>
+   </inspector-descriptor>
+   
+   	<inspector-descriptor>
+		<name>ER-210</name>
+		<description>StringTokenizer is deprecated, use String.split() instead.</description>
+		<enabled>yes</enabled>
+		<category>Coding standards</category>
+		<inspector type="org.hammurapi.inspectors.StringTokenizerDeprecatedInspector"/> 
+		<severity>3</severity>
+	</inspector-descriptor>	
+   
+   	<inspector-descriptor>
+		<name>ER-211</name>
+		<description>Dot chain (e.g. a().b.c.d().e().g().toString()) is too long.</description>
+		<enabled>yes</enabled>
+		<category>Coding standards</category>
+		<inspector type="org.hammurapi.inspectors.DotChainInspector"/> 
+		<severity>2</severity>
+		
+		<parameter type="java.lang.Integer" name="max-chain">50</parameter>
+	</inspector-descriptor>	
+   <inspector-descriptor>
+      <name>ER-212</name>
+   
+      <enabled>yes</enabled>
+   
+      <severity>2</severity>
+   
+      <category>EJB, Clustring, or Load Balancing Architecture</category>
+   
+      <inspector type="org.hammurapi.inspectors.StatelessSingleton" />
+   
+      <description>Statefull Singleton could cause problems in an environment of EJB, Clustering, or Load Balancing Architecture. Make sure that all you class and instance variables are final. This inspector found non-final variable(s), beside the variable referenzing the singleton.</description>
+   
+      <violation-sample>
+         <![CDATA[<span class="problem">public class Singleton {
+       private static Singleton instance;
+       private String statefull; 
+       
+       private Singleton() {
+           }
+   
+       public static synchronized Singleton  getInstance() {
+           if (instance == null) {
+                instance = new Singleton();
+            }
+            return instance;
+       }
+   }
+   </span>]]>
+      </violation-sample>
+         <fix-sample>
+            <![CDATA[public class Singleton {
+       private static Singleton instance;
+       private final String statefull; 
+       
+       private Singleton() {
+           }
+   
+       public static synchronized Singleton  getInstance() {
+           if (instance == null) {
+                instance = new Singleton();
+            }
+            return instance;
+       }
+   }]
+                ]]>
+         </fix-sample>
+      
+   </inspector-descriptor>
+   
+   <inspector-descriptor>
+      <name>ER-213</name>
+   
+      <enabled>no</enabled>
+   
+      <severity>3</severity>
+   
+      <category>EJB, Clustering, or Load Balancing Architecture</category>
+   
+      <enabled>no</enabled>
+   
+   <!-- This Inspector is implemented in org.hammurapi.inspectors.StatelessSingleton -->
+      <description>Singleton could cause problems in an environment of EJB, Clustering, or Load Balancing Architecture. Please double check thread safety and any unwanted side effects.</description>
+   
+      <violation-sample>
+         <![CDATA[<span class="problem">import java.lang.Long;</span>]]>
+      </violation-sample>
+   </inspector-descriptor>
+   
+      
+
+   	<inspector-descriptor>
+		<name>Prioritizer</name>
+		<description>Generates priority metric. This metric is calculated 
+		as 100/((ln(clients+1)+1)*violationLevel+1) where clients is a number 
+		of classes which depend on classes in this file and violationLevel is a weighed sum
+		of violations in the file. In a nutshell the worse the code in the file the lower
+		priority metric value and as such the higher its position in the list.</description>
+		<enabled>yes</enabled>
+		<category>Work prioritization</category>
+		<inspector type="org.hammurapi.inspectors.PrioritizingInspector"/> 
+
+		<severity>5</severity>
+	</inspector-descriptor>	
+
+   	<inspector-descriptor>
+   	   <name>ER-214</name>
+   
+   	   <enabled>yes</enabled>
+   
+   	   <severity>1</severity>
+   
+   	   <category>General</category>
+   
+   	   <inspector type="org.hammurapi.inspectors.HeterogenousCollection" />
+   
+   	   <description>Heterogenous Collection detected: The code adds objects of different types in a collection. This can cause serious mainteance issues. 
+   	   The creator and consumer of the collection have to have implicit knowledge about the index of a specific object inside of the collection.
+   
+   
+   	   Go with a dedicated parameter or Data Transfer Object instead.
+   
+   	   There is only one exception for using Heterogenous Collection: If all objects in the collection implement a  specific interface, this is acceptable.
+   	   </description>
+   
+   	   <violation-sample>
+   	      <![CDATA[<span class="problem">
+   	</span>]]>
+   	   </violation-sample>
+   	      <fix-sample>
+   		 <![CDATA[]]>
+   	      </fix-sample>
+   
+   	</inspector-descriptor>
+   	<inspector-descriptor>
+   	   <name>ER-215</name>
+   
+   	   <enabled>no</enabled>
+   
+   	   <severity>2</severity>
+   
+   	   <category>General</category>
+   
+   	   <!-- implemented in inspector type="org.hammurapi.inspectors.HeterogenousCollection" / -->
+   
+   	   <description>There are many add calls on a collection in a code snippet. This is a strong indication of miss using collections as a parameter container.
+   	   Use well-designed Value Objects or DTO instead.
+   	   </description>
+   
+   	   <violation-sample>
+   	      <![CDATA[<span class="problem">	public void fifthMethod(){
+   			ArrayList list = new ArrayList();
+   			BigDecimal bg = new BigDecimal(0.8);
+   			list.add(new BigDecimal(0.8));			
+   			list.add(bg ); }
+   	</span>]]>
+   	   </violation-sample>
+   	      <fix-sample>
+   		 <![CDATA[]]>
+   	      </fix-sample>
+   
+   	</inspector-descriptor>
+
+
+   
+</inspector-set>
+
+

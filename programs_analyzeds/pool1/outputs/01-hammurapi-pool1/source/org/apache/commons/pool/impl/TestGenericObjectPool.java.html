@@ -1,0 +1,410 @@
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<STYLE>
+                <!-- 
+                    .lineNum { width:40px; background:silver; text-align:right; padding-right:3px; color:maroon }
+                    .reserved_word { color:blue; font:bold }
+                    .comment { color:gray }
+                    .literal { color:maroon }
+                    TH.standard { font:bold; background:gray }
+                    TABLE.standard { background:silver }
+                    TR.standard { background:white }
+             --> 
+            </STYLE>
+<TITLE>Hammurapi 3.18.4 []</TITLE>
+</HEAD>
+<BODY>
+<H1>TestGenericObjectPool.java</H1>
+<BR>     
+            Package: org.apache.commons.pool.impl<P></P>
+<P></P>
+<B style="color:blue">Results</B>
+<table cellspacing="0" cellpadding="5">
+<tr>
+<th align="left">Date</th><td align="right">2016/06/28</td>
+</tr>
+<tr>
+<th align="left">Codebase</th><td align="right">2594</td>
+</tr>
+<tr>
+<th align="left">Reviews</th><td align="right">4496</td>
+</tr>
+<tr title="Defects per million opportunities">
+<td align="left"><B>DPMO</B></td><td align="right">1952 (not accurate because of warnings)</td>
+</tr>
+<tr title="Sigma">
+<td align="left"><B>Sigma</B></td><td align="right">4,386 (not accurate because of warnings)</td>
+</tr>
+</table>
+<P></P>
+<B style="color:blue">Metrics</B>
+<table border="0" cellspacing="1" cellpadding="3" class="standard">
+<tr class="standard">
+<th class="standard">Name</th><th class="standard">Number</th><th class="standard">Min</th><th class="standard">Avg</th><th class="standard">Max</th><th class="standard">Total</th>
+</tr>
+<tr class="standard">
+<td>Class complexity</td><td align="right">3</td><td align="right">13.00</td><td align="right">29.33</td><td align="right">45.00</td><td align="right">88.00</td>
+</tr>
+<tr class="standard">
+<td>Code length</td><td align="right">30</td><td align="right">1.00</td><td align="right">4.53</td><td align="right">37.00</td><td align="right">136.00</td>
+</tr>
+<tr class="standard">
+<td>File length</td><td align="right">1</td><td align="right">284.00</td><td align="right">284.00</td><td align="right">284.00</td><td align="right">284.00</td>
+</tr>
+<tr class="standard">
+<td>Operation complexity</td><td align="right">30</td><td align="right">1.00</td><td align="right">1.60</td><td align="right">7.00</td><td align="right">48.00</td>
+</tr>
+<tr class="standard">
+<td>Work order</td><td align="right">1</td><td align="right">3.72</td><td align="right">3.72</td><td align="right">3.72</td><td align="right">3.72</td>
+</tr>
+</table>
+<P></P>
+<B style="color:blue">Violations</B>
+<table border="0" cellspacing="1" cellpadding="3" class="standard">
+<tr class="standard">
+<th class="standard">#</th><th class="standard">Line</th><th class="standard">Column</th><th class="standard">Name</th><th class="standard">Severity</th><th class="standard">Description</th>
+</tr>
+<tr class="standard">
+<td align="right">1</td><td align="right"><a href="#line_18">18</a></td><td align="right">1</td><td NOWRAP="yes"><a href="../../../../../../inspectors/inspector_ER-023.html">ER-023</a></td><td align="right">3</td><td>Packages should begin with []</td>
+</tr>
+<tr class="standard">
+<td align="right">2</td><td align="right"><a href="#line_34">34</a></td><td align="right">51</td><td NOWRAP="yes"><a href="../../../../../../inspectors/inspector_ER-046.html">ER-046</a></td><td align="right">2</td><td>Method declares too general exception types (Exception, Throwable) in throws clause</td>
+</tr>
+<tr class="standard">
+<td align="right">3</td><td align="right"><a href="#line_43">43</a></td><td align="right">54</td><td NOWRAP="yes"><a href="../../../../../../inspectors/inspector_ER-046.html">ER-046</a></td><td align="right">2</td><td>Method declares too general exception types (Exception, Throwable) in throws clause</td>
+</tr>
+<tr class="standard">
+<td align="right">4</td><td align="right"><a href="#line_45">45</a></td><td align="right">32</td><td NOWRAP="yes"><a href="../../../../../../inspectors/inspector_ER-029.html">ER-029</a></td><td align="right">3</td><td>Avoid hardwired numeric literals</td>
+</tr>
+<tr class="standard">
+<td align="right">5</td><td align="right"><a href="#line_46">46</a></td><td align="right">30</td><td NOWRAP="yes"><a href="../../../../../../inspectors/inspector_ER-029.html">ER-029</a></td><td align="right">3</td><td>Avoid hardwired numeric literals</td>
+</tr>
+<tr class="standard">
+<td align="right">6</td><td align="right"><a href="#line_48">48</a></td><td align="right">27</td><td NOWRAP="yes"><a href="../../../../../../inspectors/inspector_ER-029.html">ER-029</a></td><td align="right">3</td><td>Avoid hardwired numeric literals</td>
+</tr>
+<tr class="standard">
+<td align="right">7</td><td align="right"><a href="#line_55">55</a></td><td align="right">55</td><td NOWRAP="yes"><a href="../../../../../../inspectors/inspector_ER-029.html">ER-029</a></td><td align="right">3</td><td>Avoid hardwired numeric literals</td>
+</tr>
+<tr class="standard">
+<td align="right">8</td><td align="right"><a href="#line_60">60</a></td><td align="right">13</td><td NOWRAP="yes"><a href="../../../../../../inspectors/inspector_ER-105.html">ER-105</a></td><td align="right">3</td><td>Document all Interfaces and public methods. Use a Class header. Provide Javadoc</td>
+</tr>
+<tr class="standard">
+<td align="right">9</td><td align="right"><a href="#line_63">63</a></td><td align="right">19</td><td NOWRAP="yes"><a href="../../../../../../inspectors/inspector_ER-002.html">ER-002</a></td><td align="right">1</td><td>Empty catch block</td>
+</tr>
+<tr class="standard">
+<td align="right">10</td><td align="right"><a href="#line_63">63</a></td><td align="right">19</td><td NOWRAP="yes"><a href="../../../../../../inspectors/inspector_ER-103.html">ER-103</a></td><td align="right">2</td><td>Catch-blocks should log the exeption with Log4J.error("Context String"  , exception )</td>
+</tr>
+<tr class="standard">
+<td align="right">11</td><td align="right"><a href="#line_63">63</a></td><td align="right">39</td><td NOWRAP="yes"><a href="../../../../../../inspectors/inspector_ER-096.html">ER-096</a></td><td align="right">3</td><td>Empty statements</td>
+</tr>
+<tr class="standard">
+<td align="right">12</td><td align="right"><a href="#line_68">68</a></td><td align="right">19</td><td NOWRAP="yes"><a href="../../../../../../inspectors/inspector_ER-002.html">ER-002</a></td><td align="right">1</td><td>Empty catch block</td>
+</tr>
+<tr class="standard">
+<td align="right">13</td><td align="right"><a href="#line_68">68</a></td><td align="right">19</td><td NOWRAP="yes"><a href="../../../../../../inspectors/inspector_ER-103.html">ER-103</a></td><td align="right">2</td><td>Catch-blocks should log the exeption with Log4J.error("Context String"  , exception )</td>
+</tr>
+<tr class="standard">
+<td align="right">14</td><td align="right"><a href="#line_68">68</a></td><td align="right">39</td><td NOWRAP="yes"><a href="../../../../../../inspectors/inspector_ER-096.html">ER-096</a></td><td align="right">3</td><td>Empty statements</td>
+</tr>
+<tr class="standard">
+<td align="right">15</td><td align="right"><a href="#line_79">79</a></td><td align="right">15</td><td NOWRAP="yes"><a href="../../../../../../inspectors/inspector_ER-025.html">ER-025</a></td><td align="right">3</td><td>Parenthesis are redundant</td>
+</tr>
+<tr class="standard">
+<td align="right">16</td><td align="right"><a href="#line_79">79</a></td><td align="right">35</td><td NOWRAP="yes"><a href="../../../../../../inspectors/inspector_ER-040.html">ER-040</a></td><td align="right">2</td><td>Avoid equality operations on 'true' and 'false' boolean literals.</td>
+</tr>
+<tr class="standard">
+<td align="right">17</td><td align="right"><a href="#line_83">83</a></td><td align="right">11</td><td NOWRAP="yes"><a href="../../../../../../inspectors/inspector_ER-076.html">ER-076</a></td><td align="right">1</td><td>Make inner classes "private"</td>
+</tr>
+<tr class="standard">
+<td align="right">18</td><td align="right"><a href="#line_84">84</a></td><td align="right">18</td><td NOWRAP="yes"><a href="../../../../../../inspectors/inspector_ER-005.html">ER-005</a></td><td align="right">3</td><td>Classes, interfaces, methods, and variables should be named according to Sun's naming conventions.</td>
+</tr>
+<tr class="standard">
+<td align="right">19</td><td align="right"><a href="#line_85">85</a></td><td align="right">9</td><td NOWRAP="yes"><a href="../../../../../../inspectors/inspector_ER-005.html">ER-005</a></td><td align="right">3</td><td>Classes, interfaces, methods, and variables should be named according to Sun's naming conventions.</td>
+</tr>
+<tr class="standard">
+<td align="right">20</td><td align="right"><a href="#line_86">86</a></td><td align="right">9</td><td NOWRAP="yes"><a href="../../../../../../inspectors/inspector_ER-005.html">ER-005</a></td><td align="right">3</td><td>Classes, interfaces, methods, and variables should be named according to Sun's naming conventions.</td>
+</tr>
+<tr class="standard">
+<td align="right">21</td><td align="right"><a href="#line_87">87</a></td><td align="right">9</td><td NOWRAP="yes"><a href="../../../../../../inspectors/inspector_ER-005.html">ER-005</a></td><td align="right">3</td><td>Classes, interfaces, methods, and variables should be named according to Sun's naming conventions.</td>
+</tr>
+<tr class="standard">
+<td align="right">22</td><td align="right"><a href="#line_88">88</a></td><td align="right">9</td><td NOWRAP="yes"><a href="../../../../../../inspectors/inspector_ER-005.html">ER-005</a></td><td align="right">3</td><td>Classes, interfaces, methods, and variables should be named according to Sun's naming conventions.</td>
+</tr>
+<tr class="standard">
+<td align="right">23</td><td align="right"><a href="#line_88">88</a></td><td align="right">21</td><td NOWRAP="yes"><a href="../../../../../../inspectors/inspector_ER-029.html">ER-029</a></td><td align="right">3</td><td>Avoid hardwired numeric literals</td>
+</tr>
+<tr class="standard">
+<td align="right">24</td><td align="right"><a href="#line_89">89</a></td><td align="right">9</td><td NOWRAP="yes"><a href="../../../../../../inspectors/inspector_ER-005.html">ER-005</a></td><td align="right">3</td><td>Classes, interfaces, methods, and variables should be named according to Sun's naming conventions.</td>
+</tr>
+<tr class="standard">
+<td align="right">25</td><td align="right"><a href="#line_89">89</a></td><td align="right">22</td><td NOWRAP="yes"><a href="../../../../../../inspectors/inspector_ER-029.html">ER-029</a></td><td align="right">3</td><td>Avoid hardwired numeric literals</td>
+</tr>
+<tr class="standard">
+<td align="right">26</td><td align="right"><a href="#line_90">90</a></td><td align="right">9</td><td NOWRAP="yes"><a href="../../../../../../inspectors/inspector_ER-005.html">ER-005</a></td><td align="right">3</td><td>Classes, interfaces, methods, and variables should be named according to Sun's naming conventions.</td>
+</tr>
+<tr class="standard">
+<td align="right">27</td><td align="right"><a href="#line_92">92</a></td><td align="right">9</td><td NOWRAP="yes"><a href="../../../../../../inspectors/inspector_ER-105.html">ER-105</a></td><td align="right">3</td><td>Document all Interfaces and public methods. Use a Class header. Provide Javadoc</td>
+</tr>
+<tr class="standard">
+<td align="right">28</td><td align="right"><a href="#line_92">92</a></td><td align="right">9</td><td NOWRAP="yes"><a href="../../../../../../inspectors/inspector_ER-109.html">ER-109</a></td><td align="right">3</td><td>It is good practice to call in any case super() in a constructor. (see also: UnnecessaryConstructorRule )</td>
+</tr>
+<tr class="standard">
+<td align="right">29</td><td align="right"><a href="#line_96">96</a></td><td align="right">9</td><td NOWRAP="yes"><a href="../../../../../../inspectors/inspector_ER-105.html">ER-105</a></td><td align="right">3</td><td>Document all Interfaces and public methods. Use a Class header. Provide Javadoc</td>
+</tr>
+<tr class="standard">
+<td align="right">30</td><td align="right"><a href="#line_96">96</a></td><td align="right">9</td><td NOWRAP="yes"><a href="../../../../../../inspectors/inspector_ER-109.html">ER-109</a></td><td align="right">3</td><td>It is good practice to call in any case super() in a constructor. (see also: UnnecessaryConstructorRule )</td>
+</tr>
+<tr class="standard">
+<td align="right">31</td><td align="right"><a href="#line_101">101</a></td><td align="right">9</td><td NOWRAP="yes"><a href="../../../../../../inspectors/inspector_ER-105.html">ER-105</a></td><td align="right">3</td><td>Document all Interfaces and public methods. Use a Class header. Provide Javadoc</td>
+</tr>
+<tr class="standard">
+<td align="right">32</td><td align="right"><a href="#line_101">101</a></td><td align="right">9</td><td NOWRAP="yes"><a href="../../../../../../inspectors/inspector_ER-109.html">ER-109</a></td><td align="right">3</td><td>It is good practice to call in any case super() in a constructor. (see also: UnnecessaryConstructorRule )</td>
+</tr>
+<tr class="standard">
+<td align="right">33</td><td align="right"><a href="#line_107">107</a></td><td align="right">9</td><td NOWRAP="yes"><a href="../../../../../../inspectors/inspector_ER-105.html">ER-105</a></td><td align="right">3</td><td>Document all Interfaces and public methods. Use a Class header. Provide Javadoc</td>
+</tr>
+<tr class="standard">
+<td align="right">34</td><td align="right"><a href="#line_107">107</a></td><td align="right">9</td><td NOWRAP="yes"><a href="../../../../../../inspectors/inspector_ER-109.html">ER-109</a></td><td align="right">3</td><td>It is good practice to call in any case super() in a constructor. (see also: UnnecessaryConstructorRule )</td>
+</tr>
+<tr class="standard">
+<td align="right">35</td><td align="right"><a href="#line_115">115</a></td><td align="right">9</td><td NOWRAP="yes"><a href="../../../../../../inspectors/inspector_ER-105.html">ER-105</a></td><td align="right">3</td><td>Document all Interfaces and public methods. Use a Class header. Provide Javadoc</td>
+</tr>
+<tr class="standard">
+<td align="right">36</td><td align="right"><a href="#line_119">119</a></td><td align="right">9</td><td NOWRAP="yes"><a href="../../../../../../inspectors/inspector_ER-105.html">ER-105</a></td><td align="right">3</td><td>Document all Interfaces and public methods. Use a Class header. Provide Javadoc</td>
+</tr>
+<tr class="standard">
+<td align="right">37</td><td align="right"><a href="#line_123">123</a></td><td align="right">9</td><td NOWRAP="yes"><a href="../../../../../../inspectors/inspector_ER-105.html">ER-105</a></td><td align="right">3</td><td>Document all Interfaces and public methods. Use a Class header. Provide Javadoc</td>
+</tr>
+<tr class="standard">
+<td align="right">38</td><td align="right"><a href="#line_129">129</a></td><td align="right">19</td><td NOWRAP="yes"><a href="../../../../../../inspectors/inspector_ER-002.html">ER-002</a></td><td align="right">1</td><td>Empty catch block</td>
+</tr>
+<tr class="standard">
+<td align="right">39</td><td align="right"><a href="#line_129">129</a></td><td align="right">19</td><td NOWRAP="yes"><a href="../../../../../../inspectors/inspector_ER-103.html">ER-103</a></td><td align="right">2</td><td>Catch-blocks should log the exeption with Log4J.error("Context String"  , exception )</td>
+</tr>
+<tr class="standard">
+<td align="right">40</td><td align="right"><a href="#line_129">129</a></td><td align="right">39</td><td NOWRAP="yes"><a href="../../../../../../inspectors/inspector_ER-096.html">ER-096</a></td><td align="right">3</td><td>Empty statements</td>
+</tr>
+<tr class="standard">
+<td align="right">41</td><td align="right"><a href="#line_135">135</a></td><td align="right">19</td><td NOWRAP="yes"><a href="../../../../../../inspectors/inspector_ER-103.html">ER-103</a></td><td align="right">2</td><td>Catch-blocks should log the exeption with Log4J.error("Context String"  , exception )</td>
+</tr>
+<tr class="standard">
+<td align="right">42</td><td align="right"><a href="#line_144">144</a></td><td align="right">19</td><td NOWRAP="yes"><a href="../../../../../../inspectors/inspector_ER-002.html">ER-002</a></td><td align="right">1</td><td>Empty catch block</td>
+</tr>
+<tr class="standard">
+<td align="right">43</td><td align="right"><a href="#line_144">144</a></td><td align="right">19</td><td NOWRAP="yes"><a href="../../../../../../inspectors/inspector_ER-103.html">ER-103</a></td><td align="right">2</td><td>Catch-blocks should log the exeption with Log4J.error("Context String"  , exception )</td>
+</tr>
+<tr class="standard">
+<td align="right">44</td><td align="right"><a href="#line_144">144</a></td><td align="right">39</td><td NOWRAP="yes"><a href="../../../../../../inspectors/inspector_ER-096.html">ER-096</a></td><td align="right">3</td><td>Empty statements</td>
+</tr>
+<tr class="standard">
+<td align="right">45</td><td align="right"><a href="#line_149">149</a></td><td align="right">19</td><td NOWRAP="yes"><a href="../../../../../../inspectors/inspector_ER-103.html">ER-103</a></td><td align="right">2</td><td>Catch-blocks should log the exeption with Log4J.error("Context String"  , exception )</td>
+</tr>
+<tr class="standard">
+<td align="right">46</td><td align="right"><a href="#line_159">159</a></td><td align="right">5</td><td NOWRAP="yes"><a href="../../../../../../inspectors/inspector_ER-076.html">ER-076</a></td><td align="right">1</td><td>Make inner classes "private"</td>
+</tr>
+<tr class="standard">
+<td align="right">47</td><td align="right"><a href="#line_159">159</a></td><td align="right">5</td><td NOWRAP="yes"><a href="../../../../../../inspectors/inspector_ER-105.html">ER-105</a></td><td align="right">3</td><td>Document all Interfaces and public methods. Use a Class header. Provide Javadoc</td>
+</tr>
+<tr class="standard">
+<td align="right">48</td><td align="right"><a href="#line_160">160</a></td><td align="right">9</td><td NOWRAP="yes"><a href="../../../../../../inspectors/inspector_ER-105.html">ER-105</a></td><td align="right">3</td><td>Document all Interfaces and public methods. Use a Class header. Provide Javadoc</td>
+</tr>
+<tr class="standard">
+<td align="right">49</td><td align="right"><a href="#line_160">160</a></td><td align="right">9</td><td NOWRAP="yes"><a href="../../../../../../inspectors/inspector_ER-109.html">ER-109</a></td><td align="right">3</td><td>It is good practice to call in any case super() in a constructor. (see also: UnnecessaryConstructorRule )</td>
+</tr>
+<tr class="standard">
+<td align="right">50</td><td align="right"><a href="#line_164">164</a></td><td align="right">9</td><td NOWRAP="yes"><a href="../../../../../../inspectors/inspector_ER-105.html">ER-105</a></td><td align="right">3</td><td>Document all Interfaces and public methods. Use a Class header. Provide Javadoc</td>
+</tr>
+<tr class="standard">
+<td align="right">51</td><td align="right"><a href="#line_164">164</a></td><td align="right">9</td><td NOWRAP="yes"><a href="../../../../../../inspectors/inspector_ER-109.html">ER-109</a></td><td align="right">3</td><td>It is good practice to call in any case super() in a constructor. (see also: UnnecessaryConstructorRule )</td>
+</tr>
+<tr class="standard">
+<td align="right">52</td><td align="right"><a href="#line_168">168</a></td><td align="right">9</td><td NOWRAP="yes"><a href="../../../../../../inspectors/inspector_ER-105.html">ER-105</a></td><td align="right">3</td><td>Document all Interfaces and public methods. Use a Class header. Provide Javadoc</td>
+</tr>
+<tr class="standard">
+<td align="right">53</td><td align="right"><a href="#line_168">168</a></td><td align="right">9</td><td NOWRAP="yes"><a href="../../../../../../inspectors/inspector_ER-109.html">ER-109</a></td><td align="right">3</td><td>It is good practice to call in any case super() in a constructor. (see also: UnnecessaryConstructorRule )</td>
+</tr>
+<tr class="standard">
+<td align="right">54</td><td align="right"><a href="#line_186">186</a></td><td align="right">9</td><td NOWRAP="yes"><a href="../../../../../../inspectors/inspector_ER-105.html">ER-105</a></td><td align="right">3</td><td>Document all Interfaces and public methods. Use a Class header. Provide Javadoc</td>
+</tr>
+<tr class="standard">
+<td align="right">55</td><td align="right"><a href="#line_190">190</a></td><td align="right">34</td><td NOWRAP="yes"><a href="../../../../../../inspectors/inspector_ER-082.html">ER-082</a></td><td align="right">3</td><td>Avoid using method parameter names that conflict with class member names</td>
+</tr>
+<tr class="standard">
+<td align="right">56</td><td align="right"><a href="#line_190">190</a></td><td align="right">9</td><td NOWRAP="yes"><a href="../../../../../../inspectors/inspector_ER-105.html">ER-105</a></td><td align="right">3</td><td>Document all Interfaces and public methods. Use a Class header. Provide Javadoc</td>
+</tr>
+<tr class="standard">
+<td align="right">57</td><td align="right"><a href="#line_194">194</a></td><td align="right">39</td><td NOWRAP="yes"><a href="../../../../../../inspectors/inspector_ER-082.html">ER-082</a></td><td align="right">3</td><td>Avoid using method parameter names that conflict with class member names</td>
+</tr>
+<tr class="standard">
+<td align="right">58</td><td align="right"><a href="#line_194">194</a></td><td align="right">9</td><td NOWRAP="yes"><a href="../../../../../../inspectors/inspector_ER-105.html">ER-105</a></td><td align="right">3</td><td>Document all Interfaces and public methods. Use a Class header. Provide Javadoc</td>
+</tr>
+<tr class="standard">
+<td align="right">59</td><td align="right"><a href="#line_198">198</a></td><td align="right">36</td><td NOWRAP="yes"><a href="../../../../../../inspectors/inspector_ER-082.html">ER-082</a></td><td align="right">3</td><td>Avoid using method parameter names that conflict with class member names</td>
+</tr>
+<tr class="standard">
+<td align="right">60</td><td align="right"><a href="#line_198">198</a></td><td align="right">9</td><td NOWRAP="yes"><a href="../../../../../../inspectors/inspector_ER-105.html">ER-105</a></td><td align="right">3</td><td>Document all Interfaces and public methods. Use a Class header. Provide Javadoc</td>
+</tr>
+<tr class="standard">
+<td align="right">61</td><td align="right"><a href="#line_202">202</a></td><td align="right">9</td><td NOWRAP="yes"><a href="../../../../../../inspectors/inspector_ER-105.html">ER-105</a></td><td align="right">3</td><td>Document all Interfaces and public methods. Use a Class header. Provide Javadoc</td>
+</tr>
+<tr class="standard">
+<td align="right">62</td><td align="right"><a href="#line_207">207</a></td><td align="right">25</td><td NOWRAP="yes"><a href="../../../../../../inspectors/inspector_ER-030.html">ER-030</a></td><td align="right">3</td><td>Avoid hardwired string literals</td>
+</tr>
+<tr class="standard">
+<td align="right">63</td><td align="right"><a href="#line_216">216</a></td><td align="right">9</td><td NOWRAP="yes"><a href="../../../../../../inspectors/inspector_ER-105.html">ER-105</a></td><td align="right">3</td><td>Document all Interfaces and public methods. Use a Class header. Provide Javadoc</td>
+</tr>
+<tr class="standard">
+<td align="right">64</td><td align="right"><a href="#line_225">225</a></td><td align="right">9</td><td NOWRAP="yes"><a href="../../../../../../inspectors/inspector_ER-105.html">ER-105</a></td><td align="right">3</td><td>Document all Interfaces and public methods. Use a Class header. Provide Javadoc</td>
+</tr>
+<tr class="standard">
+<td align="right">65</td><td align="right"><a href="#line_227">227</a></td><td align="right">44</td><td NOWRAP="yes"><a href="../../../../../../inspectors/inspector_ER-029.html">ER-029</a></td><td align="right">3</td><td>Avoid hardwired numeric literals</td>
+</tr>
+<tr class="standard">
+<td align="right">66</td><td align="right"><a href="#line_233">233</a></td><td align="right">55</td><td NOWRAP="yes"><a href="../../../../../../inspectors/inspector_ER-046.html">ER-046</a></td><td align="right">2</td><td>Method declares too general exception types (Exception, Throwable) in throws clause</td>
+</tr>
+<tr class="standard">
+<td align="right">67</td><td align="right"><a href="#line_233">233</a></td><td align="right">9</td><td NOWRAP="yes"><a href="../../../../../../inspectors/inspector_ER-105.html">ER-105</a></td><td align="right">3</td><td>Document all Interfaces and public methods. Use a Class header. Provide Javadoc</td>
+</tr>
+<tr class="standard">
+<td align="right">68</td><td align="right"><a href="#line_235">235</a></td><td align="right">43</td><td NOWRAP="yes"><a href="../../../../../../inspectors/inspector_ER-029.html">ER-029</a></td><td align="right">3</td><td>Avoid hardwired numeric literals</td>
+</tr>
+<tr class="standard">
+<td align="right">69</td><td align="right"><a href="#line_241">241</a></td><td align="right">56</td><td NOWRAP="yes"><a href="../../../../../../inspectors/inspector_ER-046.html">ER-046</a></td><td align="right">2</td><td>Method declares too general exception types (Exception, Throwable) in throws clause</td>
+</tr>
+<tr class="standard">
+<td align="right">70</td><td align="right"><a href="#line_241">241</a></td><td align="right">9</td><td NOWRAP="yes"><a href="../../../../../../inspectors/inspector_ER-105.html">ER-105</a></td><td align="right">3</td><td>Document all Interfaces and public methods. Use a Class header. Provide Javadoc</td>
+</tr>
+<tr class="standard">
+<td align="right">71</td><td align="right"><a href="#line_259">259</a></td><td align="right">9</td><td NOWRAP="yes"><a href="../../../../../../inspectors/inspector_ER-105.html">ER-105</a></td><td align="right">3</td><td>Document all Interfaces and public methods. Use a Class header. Provide Javadoc</td>
+</tr>
+<tr class="standard">
+<td align="right">72</td><td align="right"><a href="#line_263">263</a></td><td align="right">9</td><td NOWRAP="yes"><a href="../../../../../../inspectors/inspector_ER-105.html">ER-105</a></td><td align="right">3</td><td>Document all Interfaces and public methods. Use a Class header. Provide Javadoc</td>
+</tr>
+<tr class="standard">
+<td align="right">73</td><td align="right"><a href="#line_267">267</a></td><td align="right">9</td><td NOWRAP="yes"><a href="../../../../../../inspectors/inspector_ER-105.html">ER-105</a></td><td align="right">3</td><td>Document all Interfaces and public methods. Use a Class header. Provide Javadoc</td>
+</tr>
+<tr class="standard">
+<td align="right">74</td><td align="right"><a href="#line_271">271</a></td><td align="right">9</td><td NOWRAP="yes"><a href="../../../../../../inspectors/inspector_ER-105.html">ER-105</a></td><td align="right">3</td><td>Document all Interfaces and public methods. Use a Class header. Provide Javadoc</td>
+</tr>
+<tr class="standard">
+<td align="right">75</td><td align="right"><a href="#line_278">278</a></td><td align="right">15</td><td NOWRAP="yes"><a href="../../../../../../inspectors/inspector_ER-002.html">ER-002</a></td><td align="right">1</td><td>Empty catch block</td>
+</tr>
+<tr class="standard">
+<td align="right">76</td><td align="right"><a href="#line_278">278</a></td><td align="right">15</td><td NOWRAP="yes"><a href="../../../../../../inspectors/inspector_ER-103.html">ER-103</a></td><td align="right">2</td><td>Catch-blocks should log the exeption with Log4J.error("Context String"  , exception )</td>
+</tr>
+<tr class="standard">
+<td align="right">77</td><td align="right"><a href="#line_278">278</a></td><td align="right">47</td><td NOWRAP="yes"><a href="../../../../../../inspectors/inspector_ER-096.html">ER-096</a></td><td align="right">3</td><td>Empty statements</td>
+</tr>
+</table>
+<P></P>
+<B style="color:blue">Warnings</B>
+<table border="0" cellspacing="1" cellpadding="3" class="standard">
+<tr class="standard">
+<th class="standard">#</th><th class="standard">Line</th><th class="standard">Column</th><th class="standard">Message</th>
+</tr>
+<tr class="standard">
+<td align="right">1</td><td align="right"><a href="#line_32">32</a></td><td align="right">1</td><td>java.lang.ClassNotFoundException: Class not found: org.apache.log4j.Logger</td>
+</tr>
+<tr class="standard">
+<td align="right">2</td><td align="right"><a href="#line_60">60</a></td><td align="right">13</td><td>com.pavelvlasov.jsel.JselException: Superclass not found in class loader: 'javax.ejb.EnterpriseBean', subclass parameter: 'java.lang.Runnable'</td>
+</tr>
+<tr class="standard">
+<td align="right">3</td><td align="right"><a href="#line_62">62</a></td><td align="right">31</td><td>com.pavelvlasov.jsel.JselException: Superclass not found in class loader: 'javax.ejb.EnterpriseBean', subclass parameter: 'java.lang.Runnable'</td>
+</tr>
+<tr class="standard">
+<td align="right">4</td><td align="right"><a href="#line_67">67</a></td><td align="right">39</td><td>com.pavelvlasov.jsel.JselException: Superclass not found in class loader: 'javax.ejb.EnterpriseBean', subclass parameter: 'java.lang.Runnable'</td>
+</tr>
+<tr class="standard">
+<td align="right">5</td><td align="right"><a href="#line_83">83</a></td><td align="right">11</td><td>java.lang.ClassNotFoundException: Class not found: org.apache.log4j.Logger</td>
+</tr>
+<tr class="standard">
+<td align="right">6</td><td align="right"><a href="#line_83">83</a></td><td align="right">11</td><td>com.pavelvlasov.jsel.JselException: Superclass not found in class loader: 'javax.ejb.EnterpriseBean', subclass parameter: 'java.lang.Runnable'</td>
+</tr>
+<tr class="standard">
+<td align="right">7</td><td align="right"><a href="#line_83">83</a></td><td align="right">11</td><td>com.pavelvlasov.jsel.JselException: Superclass not found in class loader: 'javax.ejb.EnterpriseBean', subclass parameter: 'java.lang.Runnable'</td>
+</tr>
+<tr class="standard">
+<td align="right">8</td><td align="right"><a href="#line_83">83</a></td><td align="right">11</td><td>com.pavelvlasov.jsel.JselException: Superclass not found in class loader: 'javax.ejb.EnterpriseBean', subclass parameter: 'java.lang.Runnable'</td>
+</tr>
+<tr class="standard">
+<td align="right">9</td><td align="right"><a href="#line_83">83</a></td><td align="right">11</td><td>com.pavelvlasov.jsel.JselException: Superclass not found in class loader: 'javax.ejb.EnterpriseBean', subclass parameter: 'java.lang.Runnable'</td>
+</tr>
+<tr class="standard">
+<td align="right">10</td><td align="right"><a href="#line_83">83</a></td><td align="right">11</td><td>com.pavelvlasov.jsel.JselException: Superclass not found in class loader: 'javax.ejb.EntityBean', subclass parameter: 'java.lang.Runnable'</td>
+</tr>
+<tr class="standard">
+<td align="right">11</td><td align="right"><a href="#line_83">83</a></td><td align="right">11</td><td>com.pavelvlasov.jsel.JselException: Superclass not found in class loader: 'javax.ejb.EnterpriseBean', subclass parameter: 'java.lang.Runnable'</td>
+</tr>
+<tr class="standard">
+<td align="right">12</td><td align="right"><a href="#line_83">83</a></td><td align="right">11</td><td>com.pavelvlasov.jsel.JselException: Superclass not found in class loader: 'javax.ejb.EnterpriseBean', subclass parameter: 'java.lang.Runnable'</td>
+</tr>
+<tr class="standard">
+<td align="right">13</td><td align="right"><a href="#line_83">83</a></td><td align="right">11</td><td>Exception com.pavelvlasov.jsel.JselException: Superclass not found in class loader: 'javax.ejb.EnterpriseBean', subclass parameter: 'java.lang.Runnable'</td>
+</tr>
+<tr class="standard">
+<td align="right">14</td><td align="right"><a href="#line_83">83</a></td><td align="right">11</td><td>com.pavelvlasov.jsel.JselException: Superclass not found in class loader: 'javax.ejb.EnterpriseBean', subclass parameter: 'java.lang.Runnable'</td>
+</tr>
+<tr class="standard">
+<td align="right">15</td><td align="right"><a href="#line_83">83</a></td><td align="right">11</td><td>com.pavelvlasov.jsel.JselException: Superclass not found in class loader: 'javax.ejb.SessionBean', subclass parameter: 'java.lang.Runnable'</td>
+</tr>
+<tr class="standard">
+<td align="right">16</td><td align="right"><a href="#line_83">83</a></td><td align="right">11</td><td>com.pavelvlasov.jsel.JselException: Superclass not found in class loader: 'javax.ejb.EnterpriseBean', subclass parameter: 'java.lang.Runnable'</td>
+</tr>
+<tr class="standard">
+<td align="right">17</td><td align="right"><a href="#line_83">83</a></td><td align="right">11</td><td>com.pavelvlasov.jsel.JselException: Superclass not found in class loader: 'javax.ejb.EnterpriseBean', subclass parameter: 'java.lang.Runnable'</td>
+</tr>
+<tr class="standard">
+<td align="right">18</td><td align="right"><a href="#line_115">115</a></td><td align="right">9</td><td>com.pavelvlasov.jsel.JselException: Superclass not found in class loader: 'javax.ejb.EnterpriseBean', subclass parameter: 'java.lang.Runnable'</td>
+</tr>
+<tr class="standard">
+<td align="right">19</td><td align="right"><a href="#line_119">119</a></td><td align="right">9</td><td>com.pavelvlasov.jsel.JselException: Superclass not found in class loader: 'javax.ejb.EnterpriseBean', subclass parameter: 'java.lang.Runnable'</td>
+</tr>
+<tr class="standard">
+<td align="right">20</td><td align="right"><a href="#line_123">123</a></td><td align="right">9</td><td>com.pavelvlasov.jsel.JselException: Superclass not found in class loader: 'javax.ejb.EnterpriseBean', subclass parameter: 'java.lang.Runnable'</td>
+</tr>
+<tr class="standard">
+<td align="right">21</td><td align="right"><a href="#line_125">125</a></td><td align="right">67</td><td>com.pavelvlasov.jsel.JselException: Superclass not found in class loader: 'javax.ejb.EnterpriseBean', subclass parameter: 'java.lang.Runnable'</td>
+</tr>
+<tr class="standard">
+<td align="right">22</td><td align="right"><a href="#line_128">128</a></td><td align="right">33</td><td>com.pavelvlasov.jsel.JselException: Superclass not found in class loader: 'javax.ejb.EnterpriseBean', subclass parameter: 'java.lang.Runnable'</td>
+</tr>
+<tr class="standard">
+<td align="right">23</td><td align="right"><a href="#line_134">134</a></td><td align="right">45</td><td>com.pavelvlasov.jsel.JselException: Superclass not found in class loader: 'javax.ejb.EnterpriseBean', subclass parameter: 'java.lang.Runnable'</td>
+</tr>
+<tr class="standard">
+<td align="right">24</td><td align="right"><a href="#line_136">136</a></td><td align="right">38</td><td>com.pavelvlasov.jsel.JselException: Superclass not found in class loader: 'javax.ejb.EnterpriseBean', subclass parameter: 'java.lang.Runnable'</td>
+</tr>
+<tr class="standard">
+<td align="right">25</td><td align="right"><a href="#line_143">143</a></td><td align="right">33</td><td>com.pavelvlasov.jsel.JselException: Superclass not found in class loader: 'javax.ejb.EnterpriseBean', subclass parameter: 'java.lang.Runnable'</td>
+</tr>
+<tr class="standard">
+<td align="right">26</td><td align="right"><a href="#line_148">148</a></td><td align="right">39</td><td>com.pavelvlasov.jsel.JselException: Superclass not found in class loader: 'javax.ejb.EnterpriseBean', subclass parameter: 'java.lang.Runnable'</td>
+</tr>
+<tr class="standard">
+<td align="right">27</td><td align="right"><a href="#line_159">159</a></td><td align="right">5</td><td>java.lang.ClassNotFoundException: Class not found: org.apache.log4j.Logger</td>
+</tr>
+</table>
+<P></P>
+<DL>
+<DT>
+<B style="color:blue">JavaDoc</B>
+</DT>
+<DD>
+<a href="../../../../../../../javadoc/org/apache/commons/pool/impl/TestGenericObjectPool.html">TestGenericObjectPool</a>
+</DD>
+<DD>
+<a href="../../../../../../../javadoc/org/apache/commons/pool/impl/TestGenericObjectPool.TestThread.html">TestGenericObjectPool.TestThread</a>
+</DD>
+<DD>
+<a href="../../../../../../../javadoc/org/apache/commons/pool/impl/TestGenericObjectPool.SimpleFactory.html">TestGenericObjectPool.SimpleFactory</a>
+</DD>
+</DL>
+<HR>
+<PRE>
+<a name="line_1" class="lineNum">1</a><span class="comment">/*<BR/><A class="lineNum" name="line_2">2</A> * Licensed to the Apache Software Foundation (ASF) under one or more<BR/><A class="lineNum" name="line_3">3</A> * contributor license agreements.  See the NOTICE file distributed with<BR/><A class="lineNum" name="line_4">4</A> * this work for additional information regarding copyright ownership.<BR/><A class="lineNum" name="line_5">5</A> * The ASF licenses this file to You under the Apache License, Version 2.0<BR/><A class="lineNum" name="line_6">6</A> * (the "License"); you may not use this file except in compliance with<BR/><A class="lineNum" name="line_7">7</A> * the License.  You may obtain a copy of the License at<BR/><A class="lineNum" name="line_8">8</A> *<BR/><A class="lineNum" name="line_9">9</A> *      http://www.apache.org/licenses/LICENSE-2.0<BR/><A class="lineNum" name="line_10">10</A> *<BR/><A class="lineNum" name="line_11">11</A> * Unless required by applicable law or agreed to in writing, software<BR/><A class="lineNum" name="line_12">12</A> * distributed under the License is distributed on an "AS IS" BASIS,<BR/><A class="lineNum" name="line_13">13</A> * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.<BR/><A class="lineNum" name="line_14">14</A> * See the License for the specific language governing permissions and<BR/><A class="lineNum" name="line_15">15</A> * limitations under the License.<BR/><A class="lineNum" name="line_16">16</A> */</span><BR/><A class="lineNum" name="line_17">17</A><BR/><A class="lineNum" name="line_18">18</A><span class="reserved_word">package</span> org.apache.commons.pool.impl;<BR/><A class="lineNum" name="line_19">19</A><BR/><A class="lineNum" name="line_20">20</A><span class="comment">//import junit.framework.Test;<BR/><A class="lineNum" name="line_21">21</A></span><span class="reserved_word">import</span> org.apache.commons.pool.ObjectPool;<BR/><A class="lineNum" name="line_22">22</A><span class="reserved_word">import</span> org.apache.commons.pool.PoolableObjectFactory;<BR/><A class="lineNum" name="line_23">23</A><BR/><A class="lineNum" name="line_24">24</A><span class="comment">/**<BR/><A class="lineNum" name="line_25">25</A> * @author Rodney Waldhoff<BR/><A class="lineNum" name="line_26">26</A> * @author Dirk Verbeeck<BR/><A class="lineNum" name="line_27">27</A> * @author Sandy McArthur<BR/><A class="lineNum" name="line_28">28</A> * @version $Revision: 609415 $ $Date: 2008-01-06 16:45:32 -0500 (Sun, 06 Jan<BR/><A class="lineNum" name="line_29">29</A> *          2008) $<BR/><A class="lineNum" name="line_30">30</A> */</span><BR/><A class="lineNum" name="line_31">31</A><BR/><A class="lineNum" name="line_32">32</A><span class="reserved_word">public</span> <span class="reserved_word">class</span> TestGenericObjectPool {<BR/><A class="lineNum" name="line_33">33</A><BR/><A class="lineNum" name="line_34">34</A>    <span class="reserved_word">public</span> <span class="reserved_word">static</span> <span class="reserved_word">void</span> main(String[] args) <span class="reserved_word">throws</span> Exception {<BR/><A class="lineNum" name="line_35">35</A>        TestGenericObjectPool test = <span class="reserved_word">new</span> TestGenericObjectPool();<BR/><A class="lineNum" name="line_36">36</A>        test.testEvictAddObjectsImproved();<BR/><A class="lineNum" name="line_37">37</A>    }<BR/><A class="lineNum" name="line_38">38</A><BR/><A class="lineNum" name="line_39">39</A>    <span class="comment">/**<BR/><A class="lineNum" name="line_40">40</A>     * Tests addObject contention between ensureMinIdle triggered by minIdle &gt; 0<BR/><A class="lineNum" name="line_41">41</A>     * and borrowObject.<BR/><A class="lineNum" name="line_42">42</A>     */</span><BR/><A class="lineNum" name="line_43">43</A>    <span class="reserved_word">public</span> <span class="reserved_word">void</span> testEvictAddObjectsImproved() <span class="reserved_word">throws</span> Exception {<BR/><A class="lineNum" name="line_44">44</A>        SimpleFactory factory = <span class="reserved_word">new</span> SimpleFactory();<BR/><A class="lineNum" name="line_45">45</A>        factory.setMakeLatency(<span class="literal">300</span>);<BR/><A class="lineNum" name="line_46">46</A>        factory.setMaxActive(<span class="literal">2</span>);<BR/><A class="lineNum" name="line_47">47</A>        <span class="reserved_word">final</span> GenericObjectPool pool = <span class="reserved_word">new</span> GenericObjectPool(factory);<BR/><A class="lineNum" name="line_48">48</A>        pool.setMaxActive(<span class="literal">2</span>);<BR/><A class="lineNum" name="line_49">49</A>        pool.setMinIdle(<span class="literal">1</span>);<BR/><A class="lineNum" name="line_50">50</A><BR/><A class="lineNum" name="line_51">51</A>        pool.borrowObject(); <span class="comment">// numActive = 1, numIdle = 0<BR/><A class="lineNum" name="line_52">52</A></span><BR/><A class="lineNum" name="line_53">53</A>        <span class="comment">// Create a test thread that will run once and try a borrow after<BR/><A class="lineNum" name="line_54">54</A></span>        <span class="comment">// 150ms fixed delay<BR/><A class="lineNum" name="line_55">55</A></span>        TestThread borrower = <span class="reserved_word">new</span> TestThread(pool, <span class="literal">1</span>, <span class="literal">150</span>, <span class="reserved_word">false</span>);<BR/><A class="lineNum" name="line_56">56</A>        Thread borrowerThread = <span class="reserved_word">new</span> Thread(borrower);<BR/><A class="lineNum" name="line_57">57</A><BR/><A class="lineNum" name="line_58">58</A>        <span class="comment">// Create another thread that will call ensureMinIdle<BR/><A class="lineNum" name="line_59">59</A></span>        Thread minIdleThread = <span class="reserved_word">new</span> Thread(<span class="reserved_word">new</span> Runnable() {<BR/><A class="lineNum" name="line_60">60</A>            <span class="reserved_word">public</span> <span class="reserved_word">void</span> run() {<BR/><A class="lineNum" name="line_61">61</A>                <span class="reserved_word">try</span> {<BR/><A class="lineNum" name="line_62">62</A>                    pool.evict();<BR/><A class="lineNum" name="line_63">63</A>                } <span class="reserved_word">catch</span> (Exception e) {<BR/><A class="lineNum" name="line_64">64</A>                    <span class="comment">// ignored<BR/><A class="lineNum" name="line_65">65</A></span>                }<BR/><A class="lineNum" name="line_66">66</A>                <span class="reserved_word">try</span> {<BR/><A class="lineNum" name="line_67">67</A>                    pool.ensureMinIdle();<BR/><A class="lineNum" name="line_68">68</A>                } <span class="reserved_word">catch</span> (Exception e) {<BR/><A class="lineNum" name="line_69">69</A>                    <span class="comment">// Ignore<BR/><A class="lineNum" name="line_70">70</A></span>                }<BR/><A class="lineNum" name="line_71">71</A>            }<BR/><A class="lineNum" name="line_72">72</A>        });<BR/><A class="lineNum" name="line_73">73</A><BR/><A class="lineNum" name="line_74">74</A>        <span class="comment">// Off to the races<BR/><A class="lineNum" name="line_75">75</A></span>        minIdleThread.start();<BR/><A class="lineNum" name="line_76">76</A>        borrowerThread.start();<BR/><A class="lineNum" name="line_77">77</A>        minIdleThread.join();<BR/><A class="lineNum" name="line_78">78</A>        borrowerThread.join();<BR/><A class="lineNum" name="line_79">79</A>        <span class="reserved_word">assert</span>(borrower.failed()==<span class="reserved_word">false</span>);<BR/><A class="lineNum" name="line_80">80</A>        pool.close();<BR/><A class="lineNum" name="line_81">81</A>    }<BR/><A class="lineNum" name="line_82">82</A><BR/><A class="lineNum" name="line_83">83</A>    <span class="reserved_word">class</span> TestThread <span class="reserved_word">implements</span> Runnable {<BR/><A class="lineNum" name="line_84">84</A>        java.util.Random _random = <span class="reserved_word">new</span> java.util.Random();<BR/><A class="lineNum" name="line_85">85</A>        ObjectPool _pool = <span class="reserved_word">null</span>;<BR/><A class="lineNum" name="line_86">86</A>        <span class="reserved_word">boolean</span> _complete = <span class="reserved_word">false</span>;<BR/><A class="lineNum" name="line_87">87</A>        <span class="reserved_word">boolean</span> _failed = <span class="reserved_word">false</span>;<BR/><A class="lineNum" name="line_88">88</A>        <span class="reserved_word">int</span> _iter = <span class="literal">100</span>;<BR/><A class="lineNum" name="line_89">89</A>        <span class="reserved_word">int</span> _delay = <span class="literal">50</span>;<BR/><A class="lineNum" name="line_90">90</A>        <span class="reserved_word">boolean</span> _randomDelay = <span class="reserved_word">true</span>;<BR/><A class="lineNum" name="line_91">91</A><BR/><A class="lineNum" name="line_92">92</A>        <span class="reserved_word">public</span> TestThread(ObjectPool pool) {<BR/><A class="lineNum" name="line_93">93</A>            _pool = pool;<BR/><A class="lineNum" name="line_94">94</A>        }<BR/><A class="lineNum" name="line_95">95</A><BR/><A class="lineNum" name="line_96">96</A>        <span class="reserved_word">public</span> TestThread(ObjectPool pool, <span class="reserved_word">int</span> iter) {<BR/><A class="lineNum" name="line_97">97</A>            _pool = pool;<BR/><A class="lineNum" name="line_98">98</A>            _iter = iter;<BR/><A class="lineNum" name="line_99">99</A>        }<BR/><A class="lineNum" name="line_100">100</A><BR/><A class="lineNum" name="line_101">101</A>        <span class="reserved_word">public</span> TestThread(ObjectPool pool, <span class="reserved_word">int</span> iter, <span class="reserved_word">int</span> delay) {<BR/><A class="lineNum" name="line_102">102</A>            _pool = pool;<BR/><A class="lineNum" name="line_103">103</A>            _iter = iter;<BR/><A class="lineNum" name="line_104">104</A>            _delay = delay;<BR/><A class="lineNum" name="line_105">105</A>        }<BR/><A class="lineNum" name="line_106">106</A><BR/><A class="lineNum" name="line_107">107</A>        <span class="reserved_word">public</span> TestThread(ObjectPool pool, <span class="reserved_word">int</span> iter, <span class="reserved_word">int</span> delay,<BR/><A class="lineNum" name="line_108">108</A>                          <span class="reserved_word">boolean</span> randomDelay) {<BR/><A class="lineNum" name="line_109">109</A>            _pool = pool;<BR/><A class="lineNum" name="line_110">110</A>            _iter = iter;<BR/><A class="lineNum" name="line_111">111</A>            _delay = delay;<BR/><A class="lineNum" name="line_112">112</A>            _randomDelay = randomDelay;<BR/><A class="lineNum" name="line_113">113</A>        }<BR/><A class="lineNum" name="line_114">114</A><BR/><A class="lineNum" name="line_115">115</A>        <span class="reserved_word">public</span> <span class="reserved_word">boolean</span> complete() {<BR/><A class="lineNum" name="line_116">116</A>            <span class="reserved_word">return</span> _complete;<BR/><A class="lineNum" name="line_117">117</A>        }<BR/><A class="lineNum" name="line_118">118</A><BR/><A class="lineNum" name="line_119">119</A>        <span class="reserved_word">public</span> <span class="reserved_word">boolean</span> failed() {<BR/><A class="lineNum" name="line_120">120</A>            <span class="reserved_word">return</span> _failed;<BR/><A class="lineNum" name="line_121">121</A>        }<BR/><A class="lineNum" name="line_122">122</A><BR/><A class="lineNum" name="line_123">123</A>        <span class="reserved_word">public</span> <span class="reserved_word">void</span> run() {<BR/><A class="lineNum" name="line_124">124</A>            <span class="reserved_word">for</span> (<span class="reserved_word">int</span> i = <span class="literal">0</span>; i &lt; _iter; i++) {<BR/><A class="lineNum" name="line_125">125</A>                <span class="reserved_word">long</span> delay = _randomDelay ? (<span class="reserved_word">long</span>) _random.nextInt(_delay)<BR/><A class="lineNum" name="line_126">126</A>                             : _delay;<BR/><A class="lineNum" name="line_127">127</A>                <span class="reserved_word">try</span> {<BR/><A class="lineNum" name="line_128">128</A>                    Thread.sleep(delay);<BR/><A class="lineNum" name="line_129">129</A>                } <span class="reserved_word">catch</span> (Exception e) {<BR/><A class="lineNum" name="line_130">130</A>                    <span class="comment">// ignored<BR/><A class="lineNum" name="line_131">131</A></span>                }<BR/><A class="lineNum" name="line_132">132</A>                Object obj = <span class="reserved_word">null</span>;<BR/><A class="lineNum" name="line_133">133</A>                <span class="reserved_word">try</span> {<BR/><A class="lineNum" name="line_134">134</A>                    obj = _pool.borrowObject();<BR/><A class="lineNum" name="line_135">135</A>                } <span class="reserved_word">catch</span> (Exception e) {<BR/><A class="lineNum" name="line_136">136</A>                    e.printStackTrace();<BR/><A class="lineNum" name="line_137">137</A>                    _failed = <span class="reserved_word">true</span>;<BR/><A class="lineNum" name="line_138">138</A>                    _complete = <span class="reserved_word">true</span>;<BR/><A class="lineNum" name="line_139">139</A>                    <span class="reserved_word">break</span>;<BR/><A class="lineNum" name="line_140">140</A>                }<BR/><A class="lineNum" name="line_141">141</A><BR/><A class="lineNum" name="line_142">142</A>                <span class="reserved_word">try</span> {<BR/><A class="lineNum" name="line_143">143</A>                    Thread.sleep(delay);<BR/><A class="lineNum" name="line_144">144</A>                } <span class="reserved_word">catch</span> (Exception e) {<BR/><A class="lineNum" name="line_145">145</A>                    <span class="comment">// ignored<BR/><A class="lineNum" name="line_146">146</A></span>                }<BR/><A class="lineNum" name="line_147">147</A>                <span class="reserved_word">try</span> {<BR/><A class="lineNum" name="line_148">148</A>                    _pool.returnObject(obj);<BR/><A class="lineNum" name="line_149">149</A>                } <span class="reserved_word">catch</span> (Exception e) {<BR/><A class="lineNum" name="line_150">150</A>                    _failed = <span class="reserved_word">true</span>;<BR/><A class="lineNum" name="line_151">151</A>                    _complete = <span class="reserved_word">true</span>;<BR/><A class="lineNum" name="line_152">152</A>                    <span class="reserved_word">break</span>;<BR/><A class="lineNum" name="line_153">153</A>                }<BR/><A class="lineNum" name="line_154">154</A>            }<BR/><A class="lineNum" name="line_155">155</A>            _complete = <span class="reserved_word">true</span>;<BR/><A class="lineNum" name="line_156">156</A>        }<BR/><A class="lineNum" name="line_157">157</A>    }<BR/><A class="lineNum" name="line_158">158</A><BR/><A class="lineNum" name="line_159">159</A>    <span class="reserved_word">public</span> <span class="reserved_word">class</span> SimpleFactory <span class="reserved_word">implements</span> PoolableObjectFactory {<BR/><A class="lineNum" name="line_160">160</A>        <span class="reserved_word">public</span> SimpleFactory() {<BR/><A class="lineNum" name="line_161">161</A>            <span class="reserved_word">this</span>(<span class="reserved_word">true</span>);<BR/><A class="lineNum" name="line_162">162</A>        }<BR/><A class="lineNum" name="line_163">163</A><BR/><A class="lineNum" name="line_164">164</A>        <span class="reserved_word">public</span> SimpleFactory(<span class="reserved_word">boolean</span> valid) {<BR/><A class="lineNum" name="line_165">165</A>            <span class="reserved_word">this</span>(valid, valid);<BR/><A class="lineNum" name="line_166">166</A>        }<BR/><A class="lineNum" name="line_167">167</A><BR/><A class="lineNum" name="line_168">168</A>        <span class="reserved_word">public</span> SimpleFactory(<span class="reserved_word">boolean</span> evalid, <span class="reserved_word">boolean</span> ovalid) {<BR/><A class="lineNum" name="line_169">169</A>            evenValid = evalid;<BR/><A class="lineNum" name="line_170">170</A>            oddValid = ovalid;<BR/><A class="lineNum" name="line_171">171</A>        }<BR/><A class="lineNum" name="line_172">172</A><BR/><A class="lineNum" name="line_173">173</A>        <span class="reserved_word">void</span> setValid(<span class="reserved_word">boolean</span> valid) {<BR/><A class="lineNum" name="line_174">174</A>            setEvenValid(valid);<BR/><A class="lineNum" name="line_175">175</A>            setOddValid(valid);<BR/><A class="lineNum" name="line_176">176</A>        }<BR/><A class="lineNum" name="line_177">177</A><BR/><A class="lineNum" name="line_178">178</A>        <span class="reserved_word">void</span> setEvenValid(<span class="reserved_word">boolean</span> valid) {<BR/><A class="lineNum" name="line_179">179</A>            evenValid = valid;<BR/><A class="lineNum" name="line_180">180</A>        }<BR/><A class="lineNum" name="line_181">181</A><BR/><A class="lineNum" name="line_182">182</A>        <span class="reserved_word">void</span> setOddValid(<span class="reserved_word">boolean</span> valid) {<BR/><A class="lineNum" name="line_183">183</A>            oddValid = valid;<BR/><A class="lineNum" name="line_184">184</A>        }<BR/><A class="lineNum" name="line_185">185</A><BR/><A class="lineNum" name="line_186">186</A>        <span class="reserved_word">public</span> <span class="reserved_word">void</span> setThrowExceptionOnPassivate(<span class="reserved_word">boolean</span> bool) {<BR/><A class="lineNum" name="line_187">187</A>            exceptionOnPassivate = bool;<BR/><A class="lineNum" name="line_188">188</A>        }<BR/><A class="lineNum" name="line_189">189</A><BR/><A class="lineNum" name="line_190">190</A>        <span class="reserved_word">public</span> <span class="reserved_word">void</span> setMaxActive(<span class="reserved_word">int</span> maxActive) {<BR/><A class="lineNum" name="line_191">191</A>            <span class="reserved_word">this</span>.maxActive = maxActive;<BR/><A class="lineNum" name="line_192">192</A>        }<BR/><A class="lineNum" name="line_193">193</A><BR/><A class="lineNum" name="line_194">194</A>        <span class="reserved_word">public</span> <span class="reserved_word">void</span> setDestroyLatency(<span class="reserved_word">long</span> destroyLatency) {<BR/><A class="lineNum" name="line_195">195</A>            <span class="reserved_word">this</span>.destroyLatency = destroyLatency;<BR/><A class="lineNum" name="line_196">196</A>        }<BR/><A class="lineNum" name="line_197">197</A><BR/><A class="lineNum" name="line_198">198</A>        <span class="reserved_word">public</span> <span class="reserved_word">void</span> setMakeLatency(<span class="reserved_word">long</span> makeLatency) {<BR/><A class="lineNum" name="line_199">199</A>            <span class="reserved_word">this</span>.makeLatency = makeLatency;<BR/><A class="lineNum" name="line_200">200</A>        }<BR/><A class="lineNum" name="line_201">201</A><BR/><A class="lineNum" name="line_202">202</A>        <span class="reserved_word">public</span> Object makeObject() {<BR/><A class="lineNum" name="line_203">203</A>            <span class="reserved_word">synchronized</span> (<span class="reserved_word">this</span>) {<BR/><A class="lineNum" name="line_204">204</A>                activeCount++;<BR/><A class="lineNum" name="line_205">205</A>                <span class="reserved_word">if</span> (activeCount &gt; maxActive) {<BR/><A class="lineNum" name="line_206">206</A>                    <span class="reserved_word">throw</span> <span class="reserved_word">new</span> IllegalStateException(<BR/><A class="lineNum" name="line_207">207</A>                        <span class="literal">"Too many active instances: "</span> + activeCount);<BR/><A class="lineNum" name="line_208">208</A>                }<BR/><A class="lineNum" name="line_209">209</A>            }<BR/><A class="lineNum" name="line_210">210</A>            <span class="reserved_word">if</span> (makeLatency &gt; <span class="literal">0</span>) {<BR/><A class="lineNum" name="line_211">211</A>                doWait(makeLatency);<BR/><A class="lineNum" name="line_212">212</A>            }<BR/><A class="lineNum" name="line_213">213</A>            <span class="reserved_word">return</span> String.valueOf(makeCounter++);<BR/><A class="lineNum" name="line_214">214</A>        }<BR/><A class="lineNum" name="line_215">215</A><BR/><A class="lineNum" name="line_216">216</A>        <span class="reserved_word">public</span> <span class="reserved_word">void</span> destroyObject(Object obj) {<BR/><A class="lineNum" name="line_217">217</A>            <span class="reserved_word">if</span> (destroyLatency &gt; <span class="literal">0</span>) {<BR/><A class="lineNum" name="line_218">218</A>                doWait(destroyLatency);<BR/><A class="lineNum" name="line_219">219</A>            }<BR/><A class="lineNum" name="line_220">220</A>            <span class="reserved_word">synchronized</span> (<span class="reserved_word">this</span>) {<BR/><A class="lineNum" name="line_221">221</A>                activeCount--;<BR/><A class="lineNum" name="line_222">222</A>            }<BR/><A class="lineNum" name="line_223">223</A>        }<BR/><A class="lineNum" name="line_224">224</A><BR/><A class="lineNum" name="line_225">225</A>        <span class="reserved_word">public</span> <span class="reserved_word">boolean</span> validateObject(Object obj) {<BR/><A class="lineNum" name="line_226">226</A>            <span class="reserved_word">if</span> (enableValidation) {<BR/><A class="lineNum" name="line_227">227</A>                <span class="reserved_word">return</span> validateCounter++ % <span class="literal">2</span> == <span class="literal">0</span> ? evenValid : oddValid;<BR/><A class="lineNum" name="line_228">228</A>            } <span class="reserved_word">else</span> {<BR/><A class="lineNum" name="line_229">229</A>                <span class="reserved_word">return</span> <span class="reserved_word">true</span>;<BR/><A class="lineNum" name="line_230">230</A>            }<BR/><A class="lineNum" name="line_231">231</A>        }<BR/><A class="lineNum" name="line_232">232</A><BR/><A class="lineNum" name="line_233">233</A>        <span class="reserved_word">public</span> <span class="reserved_word">void</span> activateObject(Object obj) <span class="reserved_word">throws</span> Exception {<BR/><A class="lineNum" name="line_234">234</A>            <span class="reserved_word">if</span> (exceptionOnActivate) {<BR/><A class="lineNum" name="line_235">235</A>                <span class="reserved_word">if</span> (!(validateCounter++ % <span class="literal">2</span> == <span class="literal">0</span> ? evenValid : oddValid)) {<BR/><A class="lineNum" name="line_236">236</A>                    <span class="reserved_word">throw</span> <span class="reserved_word">new</span> Exception();<BR/><A class="lineNum" name="line_237">237</A>                }<BR/><A class="lineNum" name="line_238">238</A>            }<BR/><A class="lineNum" name="line_239">239</A>        }<BR/><A class="lineNum" name="line_240">240</A><BR/><A class="lineNum" name="line_241">241</A>        <span class="reserved_word">public</span> <span class="reserved_word">void</span> passivateObject(Object obj) <span class="reserved_word">throws</span> Exception {<BR/><A class="lineNum" name="line_242">242</A>            <span class="reserved_word">if</span> (exceptionOnPassivate) {<BR/><A class="lineNum" name="line_243">243</A>                <span class="reserved_word">throw</span> <span class="reserved_word">new</span> Exception();<BR/><A class="lineNum" name="line_244">244</A>            }<BR/><A class="lineNum" name="line_245">245</A>        }<BR/><A class="lineNum" name="line_246">246</A><BR/><A class="lineNum" name="line_247">247</A>        <span class="reserved_word">int</span> makeCounter = <span class="literal">0</span>;<BR/><A class="lineNum" name="line_248">248</A>        <span class="reserved_word">int</span> validateCounter = <span class="literal">0</span>;<BR/><A class="lineNum" name="line_249">249</A>        <span class="reserved_word">int</span> activeCount = <span class="literal">0</span>;<BR/><A class="lineNum" name="line_250">250</A>        <span class="reserved_word">boolean</span> evenValid = <span class="reserved_word">true</span>;<BR/><A class="lineNum" name="line_251">251</A>        <span class="reserved_word">boolean</span> oddValid = <span class="reserved_word">true</span>;<BR/><A class="lineNum" name="line_252">252</A>        <span class="reserved_word">boolean</span> exceptionOnPassivate = <span class="reserved_word">false</span>;<BR/><A class="lineNum" name="line_253">253</A>        <span class="reserved_word">boolean</span> exceptionOnActivate = <span class="reserved_word">false</span>;<BR/><A class="lineNum" name="line_254">254</A>        <span class="reserved_word">boolean</span> enableValidation = <span class="reserved_word">true</span>;<BR/><A class="lineNum" name="line_255">255</A>        <span class="reserved_word">long</span> destroyLatency = <span class="literal">0</span>;<BR/><A class="lineNum" name="line_256">256</A>        <span class="reserved_word">long</span> makeLatency = <span class="literal">0</span>;<BR/><A class="lineNum" name="line_257">257</A>        <span class="reserved_word">int</span> maxActive = Integer.MAX_VALUE;<BR/><A class="lineNum" name="line_258">258</A><BR/><A class="lineNum" name="line_259">259</A>        <span class="reserved_word">public</span> <span class="reserved_word">boolean</span> isThrowExceptionOnActivate() {<BR/><A class="lineNum" name="line_260">260</A>            <span class="reserved_word">return</span> exceptionOnActivate;<BR/><A class="lineNum" name="line_261">261</A>        }<BR/><A class="lineNum" name="line_262">262</A><BR/><A class="lineNum" name="line_263">263</A>        <span class="reserved_word">public</span> <span class="reserved_word">void</span> setThrowExceptionOnActivate(<span class="reserved_word">boolean</span> b) {<BR/><A class="lineNum" name="line_264">264</A>            exceptionOnActivate = b;<BR/><A class="lineNum" name="line_265">265</A>        }<BR/><A class="lineNum" name="line_266">266</A><BR/><A class="lineNum" name="line_267">267</A>        <span class="reserved_word">public</span> <span class="reserved_word">boolean</span> isValidationEnabled() {<BR/><A class="lineNum" name="line_268">268</A>            <span class="reserved_word">return</span> enableValidation;<BR/><A class="lineNum" name="line_269">269</A>        }<BR/><A class="lineNum" name="line_270">270</A><BR/><A class="lineNum" name="line_271">271</A>        <span class="reserved_word">public</span> <span class="reserved_word">void</span> setValidationEnabled(<span class="reserved_word">boolean</span> b) {<BR/><A class="lineNum" name="line_272">272</A>            enableValidation = b;<BR/><A class="lineNum" name="line_273">273</A>        }<BR/><A class="lineNum" name="line_274">274</A><BR/><A class="lineNum" name="line_275">275</A>        <span class="reserved_word">private</span> <span class="reserved_word">void</span> doWait(<span class="reserved_word">long</span> latency) {<BR/><A class="lineNum" name="line_276">276</A>            <span class="reserved_word">try</span> {<BR/><A class="lineNum" name="line_277">277</A>                Thread.sleep(latency);<BR/><A class="lineNum" name="line_278">278</A>            } <span class="reserved_word">catch</span> (InterruptedException ex) {<BR/><A class="lineNum" name="line_279">279</A>                <span class="comment">// ignore<BR/><A class="lineNum" name="line_280">280</A></span>            }<BR/><A class="lineNum" name="line_281">281</A>        }<BR/><A class="lineNum" name="line_282">282</A>    }<BR/><A class="lineNum" name="line_283">283</A>}<BR/><A class="lineNum" name="line_284">284</A><BR/><A class="lineNum" name="line_285">285</A>
+</PRE>
+<HR>
+<i>Hammurapi 3.18.4 Copyright &copy; 2004 Hammurapi Group. All Rights Reserved.</i>
+</BODY>
+</HTML>
